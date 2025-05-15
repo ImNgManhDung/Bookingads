@@ -1,0 +1,1447 @@
+﻿@{ 
+    Layout = null;  
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+            <title>BookingAds</title>
+
+                                
+            <!-- FontAwesome -->
+        <link href="~/Theme/assets/fontawesome-6.5.1/css/all.css" rel="stylesheet" type="text/css"/>
+            <!-- Link Swiper's CSS -->
+        <link rel="stylesheet" href="assets/css/swiper.min.css"/>
+            <!-- App css -->
+        <link href="~/Theme/assets/css/app.min.css" rel="stylesheet" type="text/css"/>
+        <link href="~/Theme/assets/css/theme-dark.css?v=1714804730" rel="stylesheet" type="text/css"/>
+        <link href="~/Theme/assets/css/theme-light.css?v=1714804730" rel="stylesheet" type="text/css"/>
+        <link href="~/Theme/assets/css/style.css?v=1714804730" rel="stylesheet" type="text/css"/>
+        <link href="~/Theme/assets/css/style_responsive.css?v=1714804730" rel="stylesheet" type="text/css"/>
+        <link href="~/Theme/assets/css/icons.min.css" rel="stylesheet" type="text/css"/>
+            <script src="~/Theme/js/sweetAlert.js" type="text/javascript"></script>
+        <link href="~/Theme/css/select2.css?v=1.10.6" rel="stylesheet"/>
+        <link href="~/Theme/css/all.min.css?v=1.10.6" rel="stylesheet"/>
+            <script src="~/Theme/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+            <script src="~/Theme/js/select2.min.js?v=1.10.6" type="text/javascript"></script>
+            <script>
+                $(document).ready(function () {
+                    $('[data-dismiss="modal"]').click(function () {
+                        $('.modal').modal('hide');
+                    });
+                });
+            </script>
+            <style>
+                #sidebar-menu .menuitem-active .active {
+                    color: #444;
+                }
+            </style>
+                        <link href="~/Theme/css/tooltipster.bundle.min.css?v=1.10.6" rel="stylesheet"/>
+        <link href="~/Theme/css/themes/tooltipster-sideTip-shadow.min.css?v=1.10.6" rel="stylesheet"/>
+                    <link href="~/Theme/https://support.pavietnam.vn/favicon.ico" rel="shortcut icon"/>
+                            <script src="~/Theme/js/jquery.common.js?v=1.10.6" type="text/javascript"></script>
+        <script src="~/Theme/js/sweetAlert.js" type="text/javascript"></script>
+        <script src="~/Theme/js/tooltipster.bundle.min.js" type="text/javascript"></script>
+        
+        
+            </head>
+    <body class="loading" data-layout-color="light" data-layout-mode="default" data-layout-size="fluid"
+      data-topbar-color="light" data-leftbar-position="fixed" data-leftbar-color="light" data-leftbar-size='default'
+      data-sidebar-user='true'>
+
+    <div id="wrapper">
+        <!-- Topbar Start -->
+        <div class="navbar-custom">
+            <ul class="list-unstyled topnav-menu topnav-menu-left mb-0">
+                <li>
+                    <button class="button-menu-mobile disable-btn waves-effect">
+                        <i class="fe-menu"></i>
+                    </button>
+                </li>
+                <li class="logo-1-dark">
+                                            <a href="https://www.pavietnam.vn/vn" target="_blank" class="logo-no1"><img
+                                    src="assets/images/brands/1_dark_vn.png"></a>
+                                        <a href="index.php" class="logo-sm-mobile"><img src="assets/images/brands/logo-pa-dark-sm.svg"
+                                                                    alt=""
+                                                                    height="25"></a>
+                </li>
+
+                <li class="logo-1-light">
+                                            <a href="https://www.pavietnam.vn/vn" class="logo-no1"><img
+                                    src="assets/images/brands/logo-pa-22-vn.png"></a>
+                                        <a href="index.php" class="logo-sm-mobile"><img src="assets/images/brands/logo-pa-light-sm.svg"
+                                                                    alt=""
+                                                                    height="25"></a>
+                </li>
+
+            </ul>
+
+            <div class="clearfix"></div>
+
+            <ul class="list-unstyled topnav-menu mb-0">
+                <li class="d-none">
+                    <form class="app-search">
+                        <div class="app-search-box">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="top-search">
+                                <button class="btn input-group-text" type="submit">
+                                    <i class="fe-search"></i>
+                                </button>
+                            </div>
+                            <div class="dropdown-menu dropdown-lg" id="search-dropdown">
+                                <!-- item-->
+                                <div class="dropdown-header noti-title">
+                                    <h5 class="text-overflow mb-2">Found 22 results</h5>
+                                </div>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <i class="fe-home me-1"></i>
+                                    <span>Analytics Report</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <i class="fe-aperture me-1"></i>
+                                    <span>How can I help you?</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <i class="fe-settings me-1"></i>
+                                    <span>User profile settings</span>
+                                </a>
+
+                                <!-- item-->
+                                <div class="dropdown-header noti-title">
+                                    <h6 class="text-overflow mb-2 text-uppercase">Users</h6>
+                                </div>
+
+                                <div class="notification-list">
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <div class="d-flex align-items-start">
+                                            <img class="d-flex me-2 rounded-circle" src="assets/images/users/user-2.jpg"
+                                                 alt="Generic placeholder image" height="32">
+                                            <div class="w-100">
+                                                <h5 class="m-0 font-14">Erwin E. Brown</h5>
+                                                <span class="font-12 mb-0">UI Designer</span>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                        <div class="d-flex align-items-start">
+                                            <img class="d-flex me-2 rounded-circle" src="assets/images/users/user-5.jpg"
+                                                 alt="Generic placeholder image" height="32">
+                                            <div class="w-100">
+                                                <h5 class="m-0 font-14">Jacob Deo</h5>
+                                                <span class="font-12 mb-0">Developer</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+                </li>
+
+                <li class="dropdown notification-list topbar-dropdown" style="display:none">
+                    <a class="nav-link dropdown-toggle waves-effect waves-light" data-bs-toggle="dropdown" href="#"
+                       role="button" aria-haspopup="false" aria-expanded="false">
+                        <i class="fe-bell noti-icon"></i>
+                        <span class="badge bg-danger rounded-circle noti-icon-badge">9</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end dropdown-lg">
+
+                        <!-- item-->
+                        <div class="dropdown-item noti-title">
+                            <h5 class="m-0 h5">
+                            <span class="float-end">
+                                <a href="" class="text-dark">
+                                    <small>Xóa tát cả</small>
+                                </a>
+                            </span>Thông báo
+                            </h5>
+                        </div>
+
+                        <div class="noti-scroll" data-simplebar>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item active">
+                                <p class="notify-details">Cristina Pride</p>
+                                <p class="text-muted mb-0 user-msg">
+                                    <small>Hi, How are you? What about our next meeting</small>
+                                </p>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <p class="notify-details">Caleb Flakelar commented on Admin
+                                    <small class="text-muted">1 min ago</small>
+                                </p>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <p class="notify-details">Karen Robinson</p>
+                                <p class="text-muted mb-0 user-msg">
+                                    <small>Wow ! this admin looks good and awesome design</small>
+                                </p>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <p class="notify-details">New user registered.
+                                    <small class="text-muted">5 hours ago</small>
+                                </p>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <p class="notify-details">Caleb Flakelar commented on Admin
+                                    <small class="text-muted">4 days ago</small>
+                                </p>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <p class="notify-details">Carlos Crouch liked
+                                    <b>Admin</b>
+                                    <small class="text-muted">13 days ago</small>
+                                </p>
+                            </a>
+                        </div>
+
+                        <!-- All-->
+                        <a href="javascript:void(0);"
+                           class="dropdown-item text-center text-primary notify-item notify-all">
+                            Xem tất cả
+                            <i class="fe-arrow-right"></i>
+                        </a>
+
+                    </div>
+                </li>
+
+                <li class="dropdown notification-list topbar-dropdown">
+                    <a class='nav-link dropdown-toggle waves-effect waves-light' data-bs-toggle='dropdown' href='#'
+                       role='button' aria-haspopup='false' aria-expanded='false'>
+                        <i class='fe-bell noti-icon'></i>
+                                            </a>
+
+                    <div class="dropdown-menu dropdown-menu-end dropdown-lg">
+
+                        <!-- item-->
+                        <div class="dropdown-item noti-title">
+                            <h5 class="m-0 h5" style="text-align: end">
+                                Xóa tất cả                            </h5>
+                        </div>
+
+                        <div class="noti-scroll" data-simplebar>
+                                                    </div>
+                        <!-- All-->
+                        <a href="index.php?pa=view_all_notification"
+                           class="dropdown-item text-center text-primary notify-item notify-all">
+                            Xem tất cả                            <i class="fe-arrow-right"></i>
+                        </a>
+
+                    </div>
+                </li>
+
+                <li class="dropdown notification-list topbar-dropdown">
+                    <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown"
+                       href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <img src="https://support.pavietnam.vn/assets/images/user.png" alt="user-image"
+                             class="rounded-circle">
+                        <span class="pro-user-name ms-1">
+                        Nguyễn Mạnh Dũng <i class="mdi mdi-chevron-down"></i>
+                    </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
+                        <!-- item-->
+                        <div class="dropdown-header noti-title">
+                            <h6 class="text-overflow m-0 h6">Nguyễn Mạnh Dũng</h6>
+                        </div>
+
+                        <!-- item-->
+                        <a href="/index.php?pa=profile" class="dropdown-item notify-item">
+                            <i class="fe-user"></i>
+                            <span>Thông tin tài khoản</span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="https://www.pavietnam.vn/vn" target="_blank"
+                           class="dropdown-item notify-item">
+                            <i class="mdi mdi-basket-plus"></i>
+                            <span>Mua thêm dịch vụ</span>
+                        </a>
+
+                        <div class="dropdown-divider"></div>
+
+                        <!-- item-->
+                        <a href="/logout.php" class="dropdown-item notify-item">
+                            <i class="fe-log-out"></i>
+                            <span>Đăng xuất</span>
+                        </a>
+
+                    </div>
+                </li>
+
+                <li class="dropdown notification-list topbar-dropdown">
+                    <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown"
+                       href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                                    <img src="assets/images/flags/vn.png" height="15" style="width:18px;height:18px;">
+                                                <span class="pro-user-name">
+                        <i class="mdi mdi-chevron-down"></i>
+                    </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
+                                                    <a href="javascript:void(0)" class="dropdown-item notify-item"
+                               onclick="changeLang('/index.php?pa=new','en');">
+                                <img src="assets/images/flags/eng.png" height="20" style="margin-right: 5px;">
+                                <span>English</span>
+                            </a>
+                        
+                    </div>
+                </li>
+
+                            </ul>
+
+        </div>
+        <!-- end Topbar -->
+        <div class="clr"></div>
+        <!-- ============================================================== -->
+        <style>
+    .ui-corner-all {
+        cursor: pointer;
+        display: block;
+        width: 100%;
+        line-height: 150%
+    }
+
+    .ui-autocomplete {
+        width: 50% !important;
+        background: #f0f0f0 !important;
+        padding-left: 10px;
+        padding-bottom: 10px;
+    }
+
+    .faq-general {
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+
+    .faq-group .faq-q {
+        padding: 15px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .faq-group .faq-q {
+        cursor: pointer;
+        color: #007bff;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .faq-group .faq-a {
+        height: 0px;
+        transition: all 0.2s ease;
+        padding: 0 30px;
+        border-bottom: 0;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .faq-group .faq-a.active {
+        height: auto;
+        /*padding: 15px;*/
+        border-bottom: 1px solid #ccc;
+    }
+
+    .bot-faq {
+        display: none;
+    }
+
+    .faq-group:last-child .faq-a {
+        border-bottom: 0;
+    }
+</style>
+<div id="jn_waiting_popup_bg" style="width: 100%;height: 100%;position: fixed;top: 0;left: 0;background-color: rgba(57, 85, 107, 0.32);z-index: -1;display: none;">
+    <img style="position: fixed;" id="jn_waiting_popup" src="images/waiting.gif">
+</div>
+<script>
+    $(function() {
+        $('.jn_waiting_popup').bind('click', function(event) {
+            if (event) event.preventDefault();
+            showJnWaiting('jn_waiting_popup');
+        });
+    });
+</script>
+<script>
+    function showJnWaiting(popup_id = 'jn_waiting_popup') {
+        $('#' + popup_id + '_bg').css('z-index', 10);
+        $('#' + popup_id + '_bg').show();
+        let pop = $('#' + popup_id);
+        let pos = getPos(pop);
+        pop.css('top', pos.x+'px');
+        pop.css('left', pos.y+'px');
+        pop.css('display', 'block');
+    }
+    function closeJnWaiting(popup_id = 'jn_waiting_popup') {
+        $('#' + popup_id + '_bg').css('z-index', -1);
+        $('#' + popup_id + '_bg').hide();
+        $('#' + popup_id).hide(200);
+    }
+    function getPos(pop) {
+        let popWidth = pop.outerWidth();
+        let popHeight = pop.outerHeight();
+        let viewWidth = $(window).width();
+        let viewHeight = $(window).height();
+        let x = Math.round( (viewHeight - popHeight) / 2 );
+        let y = Math.round( (viewWidth - popWidth) / 2 );
+        return {x : x, y : y};
+    }
+</script>
+<style>
+    body[data-layout-color=dark] .text-dark-white {
+        color: white;
+    }
+</style>
+
+    <div class="content-page yeu-cau-ho-tro">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row mt-3">
+                                            <div class="header-title">
+                                                            <h2 class="h2 mb-1 mt-0">Gửi yêu cầu hỗ trợ</h2>
+                                <p class="p mb-1">Vui lòng chọn chính xác Dịch vụ, Phòng ban để được hỗ trợ nhanh
+                                    nhất.</p>
+                                <p class="p">Quý khách có thể tham khao trang kiến thức tổng hợp <a
+                                            href="https://kb.pavietnam.vn/" target="_blank">[tại đây]</a> để có thể chủ
+                                    động tự giải quyết vấn đề mà không cần gửi yêu cầu trợ giúp</p>
+                                                    </div>
+                        <div class="col-xl-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <form action="" name="frmAddMessage" id="frmAddMessage" onsubmit="return CheckNEW()"
+                                          method="post"
+                                          enctype="multipart/form-data">
+                                        <input type="hidden" name="acc"
+                                               value="0"/>
+                                        <div class="mb-3">
+                                                                                    </div>
+                                                                                                                            <div class="mb-3">
+                                                <label for="example-select" class="form-label">Dịch vụ <span
+                                                            class="red-require" style="color:red">*</span></label>
+                                                                                                <select  required="required"  name="idaccount" id="idaccount" class="form-control select3 box_input cbo">
+                                            <option value="0">-- Chọn loại dịch vụ --</option><option value="2310871">thespotlights.id.vn (Dịch vụ tên miền)</option><option value="2311015">spotlights.vn (Dịch vụ tên miền)</option><option value="2311028">spotlights.vn (Dịch vụ: Cá Nhân)</option></select>                                            </div>
+                                            
+                                        <div class="mb-3">
+                                            <label for="example-select"
+                                                   class="form-label">Lựa chọn phòng ban<span
+                                                        class="red-require" style="color:red">*</span></label>
+                                            <div class="row">
+                                                                                                    <div class="form-check col-xl-6 mb-2">
+                                                        <input required='required'                                                                type='radio' name='dept' id='rb_1'
+                                                                value='1'                                                                 class="form-check-input"/>
+                                                        <label for='rb_1'
+                                                               class="form-check-label">Kỹ Thuật                                                            <span>
+                                                                                                                                            (Hướng dẫn & xử lý sự cố 24/7/365)
+                                                                                                                                        </span>
+                                                        </label>
+                                                    </div>
+                                                                                                        <div class="form-check col-xl-6 mb-2">
+                                                        <input                                                                 type='radio' name='dept' id='rb_2'
+                                                                value='2'                                                                 class="form-check-input"/>
+                                                        <label for='rb_2'
+                                                               class="form-check-label">Dịch vụ khách hàng                                                            <span>
+                                                                                                                                            (Chính sách dịch vụ, tài khoản,    từ 07h45 đến 23h00)
+                                                                                                                                        </span>
+                                                        </label>
+                                                    </div>
+                                                                                                        <div class="form-check col-xl-6 mb-2">
+                                                        <input                                                                 type='radio' name='dept' id='rb_15'
+                                                                value='15'                                                                 class="form-check-input"/>
+                                                        <label for='rb_15'
+                                                               class="form-check-label">Bán Hàng                                                            <span>
+                                                                                                                                            (Tư vấn dịch vụ, báo giá, đăng ký dịch vụ,...)
+                                                                                                                                        </span>
+                                                        </label>
+                                                    </div>
+                                                                                                        <div class="form-check col-xl-6 mb-2">
+                                                        <input                                                                 type='radio' name='dept' id='rb_27'
+                                                                value='27'                                                                 class="form-check-input"/>
+                                                        <label for='rb_27'
+                                                               class="form-check-label">Kế Toán - Hành Chính                                                            <span>
+                                                                                                                                            (Thanh toán, Hóa đơn  từ 07h45 đến 23h00)
+                                                                                                                                        </span>
+                                                        </label>
+                                                    </div>
+                                                                                                        <div class="form-check col-xl-6 mb-2">
+                                                        <input                                                                 type='radio' name='dept' id='rb_4'
+                                                                value='4'                                                                 class="form-check-input"/>
+                                                        <label for='rb_4'
+                                                               class="form-check-label">Tiếp Nhận Than Phiền - Góp ý                                                            <span>
+                                                                                                                                            (Than phiền, Góp ý thái độ, Chất lượng dịch vụ)
+                                                                                                                                        </span>
+                                                        </label>
+                                                    </div>
+                                                                                                </div>
+                                        </div>
+
+                                                                                <div class="mb-3">
+                                            <label for="example-input-small"
+                                                   class="form-label">Tiêu đề yêu cầu <span
+                                                        class="red-require" style="color:red">*</span></label>
+                                            <input class="form-control box_input  "
+                                                   type="text" name="title" id="title"
+                                                   value="" width="100%" maxlength="255">
+                                            <div id="new-pa-related-posts"></div>
+                                        </div>
+                                        
+                                            <div class="mb-3">
+                                                <label for="example-select"
+                                                       class="form-label">Nội dung câu hỏi<span
+                                                            class="red-require" style="color:red">*</span></label>
+                                                <textarea style="width:100%;height:250px" name="message" id="message"
+                                                          class="textarea"> </textarea>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="example-fileinput"
+                                                       class="form-label">Tập tin minh họa nếu có(*.gif,
+                                                    *.jpg, *.jpeg, *.png, *.svg, *.bmp, *.pdf, *.zip,
+                                                    *.rar)  10Mb
+                                                </label>
+                                                <input class="form-control box_input" id="pic" type="file" name="pic"
+                                                       size="20"
+                                                       onchange="document.getElementById('xoafile_pic').style.display='inline-block'">
+                                                <button style="display: none;" id="xoafile_pic" type="button"
+                                                        onclick="xoafile()">
+                                                    Xóa
+                                                    File
+                                                </button>
+                                                <script>
+                                                    function xoafile() {
+                                                        document.getElementById('pic').value = '';
+                                                        $("#xoafile_pic").css("display", "none");
+                                                    }
+                                                </script>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <input type="hidden" value="540eb83603175e0fcb5d1a5840734474"
+                                                       name="anti_spam"/>
+                                                <input type="submit" class="btn btn-pink waves-effect waves-light"
+                                                       name="Submit"
+                                                       value="Gửi yêu cầu"
+                                                       onclick="SelectAll('NGUOIXULY')">
+                                            </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                                    </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Theme/js/jquery-ui.js"></script>
+    <script src="~/Theme/js/quicksearch.js"></script>
+
+    <script type="text/javascript">
+        $("#chx_all").bind("click", function () {
+            if ($(this).is(":checked")) {
+                window.location = 'index.php?pa=new&chx_all=1';
+            } else {
+                window.location = 'index.php?pa=new';
+            }
+        })
+
+        function trimstring(str) {
+            return str.replace(/^\s+/, '').replace(/\s+$/, '');
+        }
+
+        function CheckNEW() {
+
+            if (document.getElementById('idaccount').value == '' || document.getElementById('idaccount').value == '0') {
+                alert("Vui lòng chọn dịch vụ");
+                document.getElementById('chondichvu').focus();
+                return false;
+            }
+            /*
+            if ($("input[name='dept']").val() == 'undefined') {
+                alert("Vui long chon phong ban");
+                $("input[name='dept']").focus();
+                return false;
+            }
+            if (document.getElementById('new_subject').value == '0') {
+                alert("Vui long chon chu de");
+                document.getElementById('new_subject').focus();
+                return false;
+            }*/
+            if (trimstring(document.getElementById('title').value) == '') {
+                alert("Vui lòng nhập tiêu đề");
+                document.getElementById('title').focus();
+                return false;
+            }
+            if (trimstring(tinymce.get('message').getContent()) == '') {
+                alert("Vui lòng nhập nội dung");
+                tinymce.get('message').focus();
+                return false;
+            }
+            var pic_val = document.getElementById('pic').value;
+            if (pic_val != '' && (pic_val.toLowerCase().indexOf('.jpg') < 0 && pic_val.toLowerCase().indexOf('.gif') < 0 && pic_val.toLowerCase().indexOf('.png') < 0 && pic_val.toLowerCase().indexOf('.jpeg') < 0 && pic_val.toLowerCase().indexOf('.svg') < 0 && pic_val.toLowerCase().indexOf('.bmp') < 0 && pic_val.toLowerCase().indexOf('.pdf') < 0 && pic_val.toLowerCase().indexOf('.zip') < 0 && pic_val.toLowerCase().indexOf('.rar') < 0)) {
+                alert("Chỉ chấp nhận file có phần mở rộng là *.jpg, *.gif, *.png, *.jpeg, *.svg, *.bmp, *.pdf, *.zip, *.rar!");
+                return false;
+            }
+
+            $('.pa-btn-primary').addClass('btn-disable');
+            showJnWaiting('jn_waiting_popup');
+
+            return true;
+        }
+
+        function TuongTacListBox(IDAddIn, IDRemoveOut) {
+            ListAddIn = document.getElementById(IDAddIn);
+            ListRemoveOut = document.getElementById(IDRemoveOut);
+            try {
+                for (i = ListRemoveOut.length - 1; i >= 0; i--) {
+                    if (ListRemoveOut.options[i].selected == true) {
+                        objTemp = new Option(ListRemoveOut.options[i].text, ListRemoveOut.options[i].value);
+                        optionRank = ListAddIn.options.length;
+                        ListAddIn.options[optionRank] = objTemp;
+                        ListRemoveOut.options[i] = null;
+                    }
+                }
+
+                i = 0;
+                lenListAddIn = ListAddIn.length;
+                while (i < lenListAddIn) {
+                    for (j = 0; j < ListAddIn.length; j++) {
+                        if ((j != i) && (ListAddIn.options[j].value == ListAddIn.options[i].value)) {
+                            ListAddIn.options[i] = null;
+                            break;
+                        }
+                    }
+                    i++;
+                    lenListAddIn = ListAddIn.length;
+                }
+            } catch (Exception) {
+            }
+        }
+
+        function TuongTacListBoxAll(IDAddIn, IDRemoveOut) {
+            ListAddIn = document.getElementById(IDAddIn);
+            ListRemoveOut = document.getElementById(IDRemoveOut);
+            try {
+                for (i = ListRemoveOut.length - 1; i >= 0; i--) {
+                    objTemp = new Option(ListRemoveOut.options[i].text, ListRemoveOut.options[i].value);
+                    optionRank = ListAddIn.options.length;
+                    ListAddIn.options[optionRank] = objTemp;
+                    ListRemoveOut.options[i] = null;
+                }
+
+                i = 0;
+                lenListAddIn = ListAddIn.length;
+                while (i < lenListAddIn) {
+                    for (j = 0; j < ListAddIn.length; j++) {
+                        if ((j != i) && (ListAddIn.options[j].value == ListAddIn.options[i].value)) {
+                            ListAddIn.options[i] = null;
+                            break;
+                        }
+                    }
+                    i++;
+                    lenListAddIn = ListAddIn.length;
+                }
+            } catch (Exception) {
+            }
+        }
+
+        function SelectAll(IDListBox) {
+            ListBox = document.getElementById(IDListBox);
+            for (i = 0; i < ListBox.length; i++) {
+                ListBox.options[i].selected = true;
+            }
+        }
+
+        $("select#idaccount").bind("change", function () {
+            var $idaccount = $('#idaccount').val();
+            var divDept = $("div#div_dept");
+            /*  divDept.html('<select class="form-control box_input cbo dept" name="dept" id="new_dept">' +
+                  '<option value="0" selected>Vui long cho...</option></select>');*/
+            /*
+        $.get("ajax_load_chu_de.php", {'flag': 'load_phong_ban', 'idaccount': $idaccount}, function ($arr_data) {
+            $(".show_dept").show();
+            $(".show_tech").hide();
+            $("#div_tech ul").html("");
+            $("#div_dept ul").html("");
+            $count_dept = 0;
+            $($arr_data.data).each(function($k,$v){
+                $required = "";
+                if(++$count_dept == 1)
+                {
+                    $required="required='required'";
+                }
+                $("<li><input "+$required+" type='radio' name='dept' id='rb_"+$v['ID']+"' value='"+$v['ID']+"'/> <label for='rb_"+$v['ID']+"'>"+$v['title']+"</label> <div><i>("+$v['comment']+")</i></div></li>").appendTo("#div_dept ul");
+            })
+           // divDept.html($data);
+        },"json");*/
+        });
+        /*
+        $("#frmAddMessage").on("change", "input[name='dept']", function () {
+            var $t = $(this);
+            $.get("ajax_load_chu_de.php", {
+                'flag': 'load_chu_de',
+                "maphong": $t.val(),
+                "idaccount": $('#idaccount').val()
+            }, function ($arr_data) {
+                $(".show_tech").show();
+                $("#div_tech ul").html("");
+                $count_tech = 0;
+                $($arr_data.data).each(function($k,$v){
+                    required = "";
+                    if(++$count_tech == 1)
+                    {
+                        $required="required='required'";
+                    }
+                    $("<li><input "+$required+" type='radio' name='subject' id='rbs_"+$v['tid']+"' value='"+$v['tid']+"'/> <label for='rbs_"+$v['tid']+"'>"+$v['name']+"</label></li>").appendTo("#div_tech ul");
+                })
+            },"json")
+        });*/
+
+        $(function () {
+            /*
+            var $idaccount = $("#idaccount").val();
+            var divDept = $("div#div_dept");
+            if($idaccount > 0 )
+            {
+                $.get("ajax_load_chu_de.php", {'flag': 'load_phong_ban', 'idaccount': $idaccount}, function ($arr_data) {
+                    $(".show_dept").show();
+                    $(".show_tech").hide();
+                    $("#div_tech ul").html("");
+                    $("#div_dept ul").html("");
+                    $count_dept = 0;
+                    $($arr_data.data).each(function($k,$v){
+                        $required = "";
+                        if(++$count_dept == 1)
+                        {
+                            $required="required='required'";
+                        }
+                        $("<li><input "+$required+" type='radio' name='dept' id='rb_"+$v['ID']+"' value='"+$v['ID']+"'/> <label for='rb_"+$v['ID']+"'>"+$v['title']+"</label> <div><i>("+$v['comment']+")</i></div></li>").appendTo("#div_dept ul");
+                    })
+                  //  divDept.html($data);
+                },"json");
+            }*/
+
+            $("a.guide").bind("click", function () {
+                $("div." + $(this).attr("rel")).slideToggle(200);
+            })
+        });
+        //var count_time;
+        var $timeout;
+        $(".title_faq").on("keypress", function () {
+            clearTimeout($timeout);
+            var $text = $(this).val();
+            if ($text.length > 5) {
+                $timeout = setTimeout(function () {
+                    $(".title_faq").trigger('blur');
+                }, 3000);
+            }
+        })
+        $(".title_faq").on("blur", function () {
+            clearTimeout($timeout);
+            var $text = $(this).val();
+            if ($text.length > 5) {
+                $.post("ajax_new_faq.php", {'text': $text}, function ($data) {
+                    if ($data.length > 0 && $data.code != 0) {
+                        var $html = '';
+                        for (var i = 0; i < $data.length; i++) {
+                            $html += '<div class="faq-group">' +
+                                '<div class="faq-q">.:. ' + $data[i].title + '</div>' +
+                                '<div class="faq-a">' + $data[i].content + '</div>' +
+                                '</div>';
+                        }
+                        $('.faq-general').html($html);
+                        $('.bot-faq').show();
+                    } else {
+                        $('.bot-faq').hide();
+                    }
+                }, 'json');
+            }
+        })
+        $('.faq-general').on('click', '.faq-q', function () {
+            if ($(this).next().hasClass('active')) {
+                $(this).next().removeClass('active');
+            } else {
+                $(this).next().addClass('active');
+            }
+        })
+        jQuery(function ($) {
+            $("select.select2").select2({});
+                        $("select.select3").select2();
+            
+                        var ticketTitleEl = $('#frmAddMessage [name="title"]');
+            var relatedPostList = $('#new-pa-related-posts');
+            var oldTicketTitle = '';
+
+            function stringToAscii(inputString) {
+                const normalizedString = inputString.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+                const asciiString = normalizedString.replace(/[^\x00-\x7F]/g, '');
+                return asciiString;
+
+            }
+
+            function getRelatedPostKB() {
+                var title = ticketTitleEl.val().trim();
+                if (title == oldTicketTitle) {
+                    return;
+                }
+                oldTicketTitle = title;
+
+                if (title == '') {
+                    return genRalatedPostKB();
+                }
+                var titleCheck = stringToAscii(title);
+                var regex = /\w/;
+                var toltalMatches = 0;
+                var titleLength = titleCheck.length;
+                for (var i = 0; i < titleLength; i++) {
+                    var char = titleCheck.charAt(i);
+                    var matches = char.match(regex);
+                    if (matches) {
+                        ++toltalMatches;
+                    }
+                }
+                if (toltalMatches < 2) {
+                    return genRalatedPostKB();
+                }
+
+                relatedPostList.html('...');
+
+                var apiLink = `?pa=ticket&act=getRelatedPosts&title=${title}`;
+                $.get(apiLink, function (result) {
+                    if (typeof result === 'string') {
+                        try {
+                            result = JSON.parse(result);
+                        } catch (e) {
+                            console.log(e);
+                            return;
+                        }
+                    }
+                    genRalatedPostKB(result);
+                })
+                    .fail(function (jqXHR, textStatus, errorThrown) {
+                        console.log(jqXHR, textStatus, errorThrown);
+                    });
+            }
+
+            function genRalatedPostKB(data = {}) {
+                relatedPostList.html('');
+                if (typeof data.code == 'undefined') {
+                    return;
+                }
+                if (data.code == 200 && data.result.length > 0) {
+                    relatedPostList.append('<p style="margin-top: 1rem; color: blue">Có thể bạn quan tâm:</p>');
+                    relatedPostList.append('<ul></ul>');
+
+                    var dataLength = data.result.length;
+                    for (var i = 0; i < dataLength; i++) {
+                        var item = data.result[i];
+                        relatedPostList.find('ul').append(`<li class="pa-new-related-post-item">
+                            <a title="${item.title}" href="${item.link}" target="_blank">
+                                <span class="item-title">${item.title}</span>
+                            </a>
+                        </li>`);
+                    }
+                }
+            }
+
+            var isFocusTitlefalse;
+
+            ticketTitleEl.blur(function () {
+                isFocusTitlefalse = false;
+                getRelatedPostKB();
+            });
+            ticketTitleEl.focus(function () {
+                isFocusTitlefalse = true;
+            });
+            ticketTitleEl.on('mouseout', function () {
+                console.log(ticketTitleEl);
+                if (isFocusTitlefalse) {
+                    getRelatedPostKB();
+                }
+            });
+
+            var ticketTitleMaxChar = ticketTitleEl.attr('maxlength') * 1;
+            ticketTitleEl.on('keypress', function () {
+                var currLength = ticketTitleEl.val().length;
+                if (currLength >= ticketTitleMaxChar) {
+                    alert('Tiêu đề yêu cầu tối đa {max} ký tự'.replace('{max}', ticketTitleMaxChar));
+                }
+            });
+                    })
+    </script>
+<style>
+    .show_dept, .show_tech {
+        display: none;
+    }
+
+    #div_dept ul, #div_tech ul {
+        list-style: none;
+        padding: 0px;
+        margin: 0px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #div_dept ul li label {
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    #div_dept ul li, #div_tech ul li {
+        width: 45%;
+        margin-bottom: 5px;
+    }
+
+    #div_dept ul li input, #div_tech ul li input {
+        vertical-align: middle;
+    }
+
+    #div_dept ul li i, #div_tech ul li i {
+        color: #8a8787;
+    }
+
+    #div_dept ul li label, #div_tech ul li label {
+        margin-bottom: 0rem;
+    }
+
+</style>
+        <!-- Footer Start -->
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 mt-1">
+                        <!---<script>document.write(new Date().getFullYear())</script>--->Copyright© <a
+                                href="https://www.pavietnam.vn/" target="_blank" style="color:#dd1b5c">P.A Việt Nam.</a>
+                        All
+                        Rights Reserved.
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-md-end footer-links d-sm-block">
+                            <a>Tham gia để nhận thông tin ưu đãi mỗi ngày</a>
+                            <a href="https://t.me/pavietnam"><img src="assets/images/i-telegram.svg" height="30"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- end Footer -->
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="left-side-menu">
+            <button onClick="togglePanel()"><i class="icon-arrow-right"></i></button>
+            <div class="h-100" data-simplebar>
+
+                <!-- LOGO -->
+                <div class="logo-box">
+                    <a href="index.php" class="logo logo-light text-center">
+                <span class="logo-sm">
+                    <img src="assets/images/brands/logo-pa-light-sm.svg" alt="" height="22">
+                </span>
+                        <span class="logo-lg">
+                    <img src="assets/images/brands/logo-pa-dark.svg" alt="" height="50">
+                </span>
+                    </a>
+                    <a href="index.php" class="logo logo-dark text-center">
+                <span class="logo-sm">
+                    <img src="assets/images/brands/logo-pa-dark-sm.svg" alt="" height="22">
+                </span>
+                        <span class="logo-lg">
+                    <img src="assets/images/brands/logo-pa-light.svg" alt="" height="50">
+                </span>
+                    </a>
+                </div>
+
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+                    <ul id="side-menu">
+                        <li ><a target="_self" href="/" ><i class="fa fa fa-home alt"></i><span >Trang chủ</span></a></li><li class="multi"><a target="_self" href="#new" data-bs-toggle="collapse"class="active" aria-expanded="true"><i class="fa fa-headset"></i><span class="txt">Hỗ trợ</span><span class="menu-arrow"></span></a><div class="collapse show" id="new"><ul class="nav-second-level"><li><a href="index.php?pa=new">Tạo yêu cầu mới</a></li><li><a href="index.php?pa=mysupport&task=sent">Yêu cầu đã gửi</a></li><li><a href="index.php?pa=mysupport&task=reply">Yêu cầu đã có phản hồi</a></li><li><a href="index.php?pa=mysupport&task=closed">Yêu cầu đã hoàn tất</a></li><li><a href="index.php?pa=mysupport">Tất cả yêu cầu</a></li></ul></div><div class="sub-multi"><ul class="nav-second-level"><li><a href="index.php?pa=new">Tạo yêu cầu mới</a></li><li><a href="index.php?pa=mysupport&task=sent">Yêu cầu đã gửi</a></li><li><a href="index.php?pa=mysupport&task=reply">Yêu cầu đã có phản hồi</a></li><li><a href="index.php?pa=mysupport&task=closed">Yêu cầu đã hoàn tất</a></li><li><a href="index.php?pa=mysupport">Tất cả yêu cầu</a></li></ul></div></li><li class="multi"><a target="_self" href="#service" data-bs-toggle="collapse"><i class="fa fa-cog"></i><span class="txt">Dịch vụ</span><span class="menu-arrow"></span></a><div class="collapse " id="service"><ul class="nav-second-level"><li><a href="index.php?pa=service&flag=1&flag_id=0&type=">Đang sử dụng</a></li><li><a href="index.php?pa=service&flag=2&flag_id=0&type=">Sắp hết hạn</a></li><li><a href="index.php?pa=service&flag=3&flag_id=0&type=">Đã hết hạn</a></li><li><a href="index.php?pa=listsuspend">Mở tạm dịch vụ</a></li></ul></div><div class="sub-multi"><ul class="nav-second-level"><li><a href="index.php?pa=service&flag=1&flag_id=0&type=">Đang sử dụng</a></li><li><a href="index.php?pa=service&flag=2&flag_id=0&type=">Sắp hết hạn</a></li><li><a href="index.php?pa=service&flag=3&flag_id=0&type=">Đã hết hạn</a></li><li><a href="index.php?pa=listsuspend">Mở tạm dịch vụ</a></li></ul></div></li><li class="multi"><a target="_self" href="#canh-bao-hanh-chinh" data-bs-toggle="collapse"><i class="fa fa-file-alt"></i><span class="txt">Hồ sơ</span><span class="menu-arrow"></span></a><div class="collapse " id="canh-bao-hanh-chinh"><ul class="nav-second-level"><li><a href="index.php?pa=canh-bao-hanh-chinh">Cảnh báo hành chính</a></li><li><a href="index.php?pa=list_domainvn_suspend&cmd=service">Dịch vụ bị suspend</a></li><li><a href="index.php?pa=thongbaoquantrong">Thông báo quan trọng</a></li><li><a href="index.php?pa=profile#gen_sign">Chữ ký mẫu</a></li></ul></div><div class="sub-multi"><ul class="nav-second-level"><li><a href="index.php?pa=canh-bao-hanh-chinh">Cảnh báo hành chính</a></li><li><a href="index.php?pa=list_domainvn_suspend&cmd=service">Dịch vụ bị suspend</a></li><li><a href="index.php?pa=thongbaoquantrong">Thông báo quan trọng</a></li><li><a href="index.php?pa=profile#gen_sign">Chữ ký mẫu</a></li></ul></div></li><li ><a target="_self" href="index.php?pa=myorder" ><i class="fa fa-clipboard-list"></i><span >Đơn hàng</span></a></li><li class="multi"><a target="_self" href="#profile" data-bs-toggle="collapse"><i class="fa fa-user-tie"></i><span class="txt">Tài khoản</span><span class="menu-arrow"></span></a><div class="collapse " id="profile"><ul class="nav-second-level"><li><a href="index.php?pa=profile">Thông tin tài khoản</a></li><li><a href="index.php?pa=permission">Phân quyền khách hàng</a></li><li><a href="index.php?pa=securityform">Bảo vệ tài khoản</a></li><li><a href="index.php?pa=diemthuongdoiqua">Đổi điểm lấy quà</a></li><li><a href="index.php?pa=vipcard">Đổi điểm lấy thẻ</a></li><li><a href="index.php?pa=push">Chuyển điểm</a></li><li><a href="index.php?pa=promocode">Xem mã khuyến mãi</a></li><li><a href="index.php?pa=profile#gen_sign">Chữ ký mẫu</a></li><li><a href="index.php?pa=binding_payment">Liên kết thẻ/ví điện tử</a></li></ul></div><div class="sub-multi"><ul class="nav-second-level"><li><a href="index.php?pa=profile">Thông tin tài khoản</a></li><li><a href="index.php?pa=permission">Phân quyền khách hàng</a></li><li><a href="index.php?pa=securityform">Bảo vệ tài khoản</a></li><li><a href="index.php?pa=diemthuongdoiqua">Đổi điểm lấy quà</a></li><li><a href="index.php?pa=vipcard">Đổi điểm lấy thẻ</a></li><li><a href="index.php?pa=push">Chuyển điểm</a></li><li><a href="index.php?pa=promocode">Xem mã khuyến mãi</a></li><li><a href="index.php?pa=profile#gen_sign">Chữ ký mẫu</a></li><li><a href="index.php?pa=binding_payment">Liên kết thẻ/ví điện tử</a></li></ul></div></li><li ><a target="_self" href="index.php?pa=hoa-don-dien-tu&act=list-invoice-by-user-account&flag=1&flag_id=1" ><i class="fa fa fa-file-invoice-dollar alt"></i><span >Hóa Đơn</span></a></li><li ><a target="_blank" href="https://kb.pavietnam.vn" ><i class="fa fa-book"></i><span >Kiến thức</span></a></li><li ><a target="_self" href="index.php?pa=eco-system&act=EcoSystem" ><i class="fa fa-network-wired"></i><span >Hệ sinh thái 30s</span></a></li>                    </ul>
+                </div>
+                <div class="toggle-container toggle-theme toggle-dark">
+                    <p><img src="assets/images/i-night.svg" height="18" style="margin-right:10px">Dark mode</p>
+                    <input type="checkbox" id="switch" name="tema"/>
+                    <label for="switch">toggle</label>
+                </div>
+                <div class="toggle-container toggle-theme toggle-light">
+                    <p><img src="assets/images/i-light.svg" height="20" style="margin-right:7px">Light mode</p>
+                    <input type="checkbox" id="switch" name="tema"/>
+                    <label for="switch">toggle</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right-bar">
+        <div data-simplebar class="h-100">
+            <div class="tab-content pt-0">
+                <div class="tab-pane active" id="settings-tab" role="tabpanel">
+                    <div class="p-3">
+                        <h6 class="fw-medium font-14 mb-2 pb-1">Color Scheme</h6>
+                        <div class="form-check form-switch mb-1">
+                            <input type="checkbox" class="form-check-input" name="layout-color" value="light"
+                                   id="light-mode-check"/>
+                            <label class="form-check-label" for="dark-mode-check">Light Mode</label>
+                        </div>
+
+                        <div class="form-check form-switch mb-1">
+                            <input type="checkbox" class="form-check-input" name="layout-color" value="dark"
+                                   id="dark-mode-check" checked/>
+                            <label class="form-check-label" for="dark-mode-check">Dark Mode</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="rightbar-overlay"></div>
+    <script src="~/Theme/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Theme/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="~/Theme/assets/libs/node-waves/waves.min.js"></script>
+    <script src="~/Theme/assets/libs/waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="~/Theme/assets/libs/jquery.counterup/jquery.counterup.min.js"></script>
+    <script src="~/Theme/assets/libs/feather-icons/feather.min.js"></script>
+    <script src="~/Theme/assets/js/app.min.js"></script>
+    <script>
+        let aside = document.querySelector('.left-side-menu');
+        let nav = document.querySelector('.navbar-custom');
+        let footer = document.querySelector('.footer');
+        let content = document.querySelector('.content-page');
+
+        function togglePanel() {
+            aside.classList.toggle('hide');
+            nav.classList.toggle('hide');
+            footer.classList.toggle('hide');
+            content.classList.toggle('hide');
+        }
+
+
+    </script>
+    <script>
+        var checkbox = document.querySelector('input[name=tema]');
+
+        checkbox.addEventListener('change', function () {
+            var key = '729112_dark_light_mode';
+            if (this.checked) {
+                trans()
+                document.documentElement.setAttribute('data-layout-color', 'light');
+                $('body').attr('data-layout-color', 'light');
+                setCache('light', key);
+                return false;
+            } else {
+                trans()
+                document.documentElement.setAttribute('data-layout-color', 'dark');
+                $('body').attr('data-layout-color', 'dark');
+                setCache('dark', key);
+                return false;
+            }
+        })
+
+        let trans = () => {
+            document.documentElement.classList.add('transition');
+            window.setTimeout(() => {
+                document.documentElement.classList.remove('transition')
+            }, 1000)
+        }
+
+        function setCache(mode, key) {
+            $.post("index.php?pa=eco-system&act=setCache", {mode_light: mode, key_mode: key})
+                .done(function (data) {
+
+                })
+                .fail(function (data) {
+                    alert("Đã có lỗi trong quá trình xử lý vui lòng thử lại sau mã lỗi ( '" + data + "' )");
+                });
+        }
+
+    </script>
+
+
+    <style>
+        .sp-aside-box.box_menu .sp-aside-menu {
+            background-color: transparent !important;
+        }
+
+        .sp-sidebar-link.homeactive, .sp-sidebar-link.selected, .sp-sidebar-link.active {
+            background-color: #e7cfc2;
+            color: #000000;
+        }
+
+        .sp-sidebar-link:hover {
+            background-color: #ff75a3;
+        }
+
+
+        .sp-sidebar-link.active:hover {
+            background-color: #f3eae5;
+            color: #000000;
+        }
+
+        .sp-sidebar-child .sp-sidebar-link:hover {
+            color: #dd1a5b;
+            background-color: #f3eae5;
+        }
+
+
+        .sp-aside-link.selected, .sp-aside-link {
+            color: #000000;
+        }
+
+        .sp-aside-item.inside {
+            background-color: transparent !important;
+        }
+
+        .sp-aside-item.menuitem {
+            background-color: transparent !important;
+            border-bottom: 1px dashed;
+            padding: 10px 0px;
+        }
+
+        .pa-bg-gray {
+            background: #e7cfc2;
+        }
+
+    </style>
+        
+<script>
+    //<![CDATA[
+    jQuery(function ($) {
+
+        var $flagthongbao = parseInt("0");
+        var $page = "new";
+        if ($flagthongbao > 0 && $page != "default") {
+            $("div.mainmenu").append('<a href="/" class="thongbao">THÔNG BÁO (' + $flagthongbao + ')</a>');
+        }
+        $("img[src='']", document.body).css({"display": "none"});
+
+        var $tab = $("ul.tab");
+        if ($tab != null && $tab.is(":visible") && !$tab.hasClass("ignore")) {
+            $("a", $tab).bind("click", function (event) {
+                var $obj = $(this);
+                var $parent = $obj.parent("li");
+                $parent.siblings("li").removeClass("selected");
+                $parent.addClass("selected");
+                if ($("div.tab").html() != null) {
+                    $("div.tab").addClass("hide");
+                    $("div.tab[class~=" + $parent.attr("rel") + "]").removeClass("hide");
+                }
+                Set_Cookie("tab_account", $parent.attr("rel"), 1000 * 60 * 60 * 24);
+            });
+            var $tabaccount = getCookie("tab_account");
+                        var $li_item = $("li[rel=" + $tabaccount + "]", $tab);
+            if ($tabaccount != null && $tabaccount != "" && typeof ($tabaccount) != "undefined") {
+                if ($li_item.is(":visible")) {
+                    $li_item.children("a:first").trigger("click");
+                } else {
+                    $("a:first", $tab).trigger("click");
+                }
+            } else {
+                $("a:first", $tab).trigger("click");
+            }
+        }
+        $("form#frmtracuudichvu").submit(function (event) {
+            var $txt = $("input#tenormail", $(this));
+            $txt.val($txt.val().replace(/^\s+/, '').replace(/\s+$/, ''));
+            if ($txt.val().length < 3) {
+                $txt.focus().select();
+                event.preventDefault();
+            }
+        });
+        $("form#frmtracuucauhoi").submit(function (event) {
+            event.preventDefault();
+            var $txt = $("input#tukhoa", $(this));
+            $loaitukhoa = $("select[name='loaitukhoa']").val();
+            $txt.val($txt.val().replace(/^\s+/, '').replace(/\s+$/, ''));
+            if ($txt.val().length <= 0 && $loaitukhoa != 5) {
+                $txt.focus();
+                return false;
+            }
+
+            document.frmtracuucauhoi.action = "index.php?pa=home&task=ten";
+            if ($loaitukhoa == 4) {
+                document.frmtracuucauhoi.action = "index.php?pa=job_search";
+            } else if ($loaitukhoa == 5) {
+                document.frmtracuucauhoi.action = "index.php?pa=home&task=report_support";
+            }
+            document.frmtracuucauhoi.submit();
+        });
+        $("input:radio", $("form#frmtracuucauhoi")).bind("click", function () {
+            $("input#tukhoa").focus();
+        });
+        $("label", $("form#frmtracuucauhoi")).bind("click", function (event) {
+            event.stopPropagation();
+            event.preventDefault();
+            $(this).prev('input').trigger("click");
+            $("input#tukhoa").focus();
+        });
+
+        if ($('#flag-hidden').val() == 1) {
+            $('#popup_notice').css('display', 'none');
+        }
+
+
+        $("#type_search").bind("change", function () {
+            if ($(this).val() == 2) {
+                $("#frm_search_form").attr("action", "index.php?pa=searchmysupport");
+            } else {
+                $("#frm_search_form").attr("action", "index.php?pa=service");
+            }
+        })
+    })
+    //]]>
+</script>
+<script src="~/Theme/js/divbox.js?v=1.10.6" type="text/javascript"></script>
+<script src="~/Theme/js/jquery-ui-1.8.2.custom.min.js" type="text/javascript"></script>
+<script src="~/Theme/js/select2.min.js?v=1.10.6" type="text/javascript"></script>
+<script src="~/Theme/js/jquery.library.js?v=1.10.6" type="text/javascript"></script>
+<script src="~/Theme/js/jquery.fancybox.pack.js?v=1.10.6" type="text/javascript"></script>
+<script src="~/Theme/js/jquery.number.min.js?v=1.10.6" type="text/javascript"></script>
+<script src="~/Theme/js/jquery.scrollTo-min.js?v=1.10.6" type="text/javascript"></script>
+<script src="~/Theme/js/tinymce/tinymce.min.js?v=1.10.6" type="text/javascript"></script>
+<script type="text/javascript">
+    $('document').ready(function () {
+        $('select.detroy_select').each(function (i, obj) {
+            if ($(obj).hasClass("select2-hidden-accessible")) {
+                $(obj).select2('destroy');
+            }
+        });
+
+        $('.total_comment').click(function (e) {
+            e.stopPropagation();
+            if ($('.dropdown-menu.sp-notification').hasClass('show')) {
+                $('.dropdown-menu.sp-notification').removeClass('show');
+            } else {
+                $('.dropdown-menu.sp-notification').toggleClass('show');
+            }
+
+        })
+    })
+
+</script>
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+        const toggleInput = document.getElementById('newLayout');
+        if (toggleInput) {
+            toggleInput.addEventListener('click', function (event) {
+                event.preventDefault();
+                let status = '';
+                let uid = '729112';
+                status = this.getAttribute('data-value');
+                setNewLayout(uid, status);
+            });
+        }
+    });
+
+    function setNewLayout(uid, status) {
+        let linkReturn = 'setAllowListNewLayout';
+        if (status == 'off'){
+            linkReturn = 'setDenyListNewLayout';
+        }
+        $.post("index.php?pa=eco-system&act="+linkReturn, {
+            uid: uid,
+            status: status
+        })
+            .done(function (data) {
+                let json_data = JSON.parse(data);
+                if (json_data.code == 200 && json_data.msg == 'success') {
+                    window.location.reload();
+                }
+            })
+            .fail(function (data) {
+                alert("Đã có lỗi trong quá trình xử lý vui lòng thử lại sau mã lỗi ( '" + data + "' )");
+            });
+    }
+</script>
+    <script type="text/javascript">
+        tinymce.init({
+            selector: '.textarea,#textarea',
+            plugins: 'save paste lists advlist print table charmap pagebreak hr fullscreen autosave',
+            toolbar: 'undo redo | forecolor | alignleft aligncenter alignright | bold underline italic superscript subscript | bullist numlist | table',
+            contextmenu: 'link',
+            menubar: false,
+            statusbar: false,
+            relative_urls: false,
+            entity_encoding: 'raw'
+        });
+    </script>
+        <script type='text/javascript' src="js/popper.min.js"></script>
+    <script type='text/javascript' src="js/bootstrap.min.js"></script>
+    <script type='text/javascript' src="js/moment-with-locales.min.js"></script>
+    <script type='text/javascript' src="js/tempusdominus-bootstrap-4.min.js"></script>
+    <script type="text/javascript">
+        function tab_click(obj) {
+            var tab = obj.attr('data-tab');
+            var content = obj.attr('data-content');
+            obj.parent().children().removeClass('current');
+            obj.addClass('current');
+
+            $('#' + content + ' .tabcontent').removeClass('current');
+            $('#' + tab).addClass('current');
+        }
+
+        var sidebar = $('.sp-sidebar'),
+            sidebarMini = $('.sp-sidebar-mini'),
+            sidebarChild = $('.sp-sidebar-child'),
+            sp_sidebar_overlay = $('.sp-sidebar-overlay'),
+            btnSidebarLeft = $('.sp-mobile-l'),
+            boxSidebarLeft = $('.sp-sidebar-left');
+        sp_main = $(".sp-main");
+        var main_width = $(".sp-main").outerWidth() - 10;
+        var sidebar_width = sidebarMini.width();
+
+        $(document).ready(function () {
+            $('.tab-link').click(function () {
+                $(this).addClass('clicked');
+            });
+
+            sp_main.click(function () {
+                var tab_clicked = 0;
+                $('.tab-link').each(function () {
+                    if ($(this).hasClass('clicked')) {
+                        tab_clicked++;
+                    }
+                });
+                if (tab_clicked > 0) {
+                    $('.tab-link').removeClass('clicked');
+                } else {
+                    $('.dropdown-menu.sp-notification').removeClass('show');
+                }
+            });
+
+            $('.sp-mobile-r').bind('click', function () {
+                $('body').css({'overflow': 'hidden'});
+                sidebar.addClass('active');
+                sp_sidebar_overlay.addClass('active');
+                $('#' + sidebarMini.find('.sp-sidebar-link.selected').data('pa')).removeClass('hide');
+            });
+        });
+
+        if ($(window).width() > 992) {
+
+            sp_main.click(function () {
+
+                if (sidebarChild.find('.sp-sidebar-menu').hasClass('active')) {
+                    // sp_main.removeClass("col-lg-9").addClass('col-lg-11');
+                    var child_width = main_width - sp_main.outerWidth();
+                    child_width = 0;
+                    sidebarChild.css({'right': sidebar_width, 'width': child_width + "px"});
+                    sidebarChild.find('.sp-sidebar-menu').removeClass('active');
+                    sidebarMini.children().removeClass('active');
+                }
+            });
+            sidebarMini.children().click(function () {
+                sidebarMini.children().removeClass('selected');
+                var data_type = $(this).data('pa');
+                if ($('#' + data_type).length > 0) {
+                    // $(".sp-main").removeClass("col-lg-11").addClass('col-lg-9');
+                    var child_width = main_width - $(".sp-main").outerWidth();
+                    child_width = 200;
+                    sidebarChild.css({'right': sidebar_width, 'width': child_width + "px"});
+                    sidebarChild.find('.sp-sidebar-menu').removeClass('active');
+                    sidebarMini.children().removeClass('active');
+                    $('#' + data_type).addClass('active');
+                    $(this).addClass('active');
+                    return false;
+                }
+            });
+
+        } else {
+
+            sidebarChild.css({'right': '-200px'}).removeClass('active').children().addClass('hide');
+            sidebarMini.on('click', '.sp-sidebar-link', function (e) {
+                sidebarMini.children().removeClass('selected');
+                sidebarMini.children().removeClass('active');
+                sidebarChild.children().addClass('hide');
+
+                let cur_menu = $(this).data('pa');
+                $('#' + cur_menu).removeClass('hide');
+                $(this).addClass('active');
+
+                sidebarChild.css({'right': '-200px'});
+                if ($('#' + cur_menu).length > 0) {
+                    e.preventDefault();
+                    sidebarChild.css({'right': sidebarMini.width()});
+                }
+            });
+            btnSidebarLeft.bind('click', function (e) {
+                e.preventDefault();
+                boxSidebarLeft.css('left', '0');
+                sp_sidebar_overlay.addClass('active');
+            });
+            sp_sidebar_overlay.bind('click', function () {
+                $('body').css({'overflow': 'auto'});
+                sidebar.removeClass('active');
+                boxSidebarLeft.css('left', '-80%');
+                sp_sidebar_overlay.removeClass('active');
+            });
+        }
+
+        $(window).resize(function () {
+            if ($(this).width() > 992) {
+                sidebarChild.children().removeClass('hide');
+                $(".sp-sidebar-link.selected").trigger("click");
+                sidebarMini.children().click(function () {
+                    sidebarMini.children().removeClass('selected');
+                    var data_type = $(this).data('pa');
+                    if ($('#' + data_type).length > 0) {
+                        $(".sp-main").removeClass("col-lg-11").addClass('col-lg-9');
+                        var child_width = main_width - $(".sp-main").outerWidth();
+
+                        sidebarChild.css({'right': sidebar_width, 'width': child_width + "px"});
+                        sidebarChild.find('.sp-sidebar-menu').removeClass('active');
+                        sidebarMini.children().removeClass('active');
+                        $('#' + data_type).addClass('active');
+                        $(this).addClass('active');
+                        return false;
+                    }
+                });
+            } else {
+                sidebarChild.css({'right': '-200px'}).removeClass('active').children().addClass('hide');
+                sidebarMini.on('click', '.sp-sidebar-link', function (e) {
+                    sidebarMini.children().removeClass('active');
+                    sidebarChild.children().addClass('hide');
+                    let cur_menu = $(this).data('pa');
+                    $('#' + cur_menu).removeClass('hide');
+                    $(this).addClass('active');
+
+                    sidebarChild.css({'right': '-200px'});
+                    if ($('#' + cur_menu).length > 0) {
+                        e.preventDefault();
+                        sidebarChild.css({'right': sidebarMini.width()});
+                    }
+                });
+                $('.sp-mobile-r').bind('click', function () {
+                    $('body').css({'overflow': 'hidden'});
+                    sidebar.addClass('active');
+                    sp_sidebar_overlay.addClass('active');
+                    $('#' + sidebarMini.find('.sp-sidebar-link.selected').data('pa')).removeClass('hide');
+                });
+                btnSidebarLeft.bind('click', function (e) {
+                    e.preventDefault();
+                    boxSidebarLeft.css('left', '0');
+                    sp_sidebar_overlay.addClass('active');
+                });
+                sp_sidebar_overlay.bind('click', function () {
+                    $('body').css({'overflow': 'auto'});
+                    sidebar.removeClass('active');
+                    boxSidebarLeft.css('left', '-80%');
+                    sp_sidebar_overlay.removeClass('active');
+                });
+            }
+        })
+
+    </script>
+    <script src="~/Theme/js/new_notification.js?v=1.10.6" type="text/javascript"></script>
+</body>
+</html>

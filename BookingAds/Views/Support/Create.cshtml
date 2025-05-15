@@ -1,0 +1,178 @@
+﻿@model BookingAds.Models.Supports.ViewCreate
+@using BookingAds.Entities
+@using BookingAds.Modules
+@using BookingAds.Controllers
+@using BookingAds.Constants
+@{
+    ViewBag.Title = "Gửi yêu cầu hỗ trợ";
+    var employeeID = ConvertUtils<Employee>.Deserialize(User.Identity.Name).EmployeeID;
+    var defaultPhoto = "/Images/defaultUpload.png";
+}
+
+
+<div class="container-fluid">
+    <div class="row mt-3" style="margin-left: 0px; margin-right: 0px; ">
+        
+          
+            <p class="p mb-1">
+                Vui lòng chọn chính xác Dịch vụ, Phòng ban để được hỗ trợ nhanh
+                nhất.
+            </p>
+            <p class="p">
+
+            </p>
+      
+
+
+        <!-- ============================================================== --><!-- ============================================================== -->
+        <div class="col-xl-12">
+            <div class="card" style="box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px; background: #fff; width: 100%;">
+                <div class="card-body" style="flex: 1 1 auto; padding: 1.5rem 4.5rem;">
+
+
+
+
+                    @using (Html.BeginForm("Create", "Support", FormMethod.Post, new { enctype = "multipart/form-data", id = "frmAddMessage" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        
+                        <div class="mb-3">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">
+                                Dịch vụ <span class="red-require" style="color:red">
+    *
+    @Html.ValidationMessageFor(m => m.OderID, "", new { @class = "error-msg input-distance" })
+    @**  @if (TempData.ContainsKey("error_OderID"))
+        {
+            <span class="err-msg" style="color: red; font-weight: bold;"> @TempData["error_OderID"]</span>
+        }*@
+</span>
+                            </label>
+                            @Html.DropDownListFor(m => m.OderID, SelectListHelper.ListService(employeeID), new { @class = "form-control select3 box_input cbo select2-hidden-accessible", tabindex = "-1", aria_hidden = "true", required = "required" })
+                            
+
+                        </div>
+                        <!-- ============================================================== -->
+                        <div class="mb-3" style="margin-top:15px">
+                            <label asp-for="To" class="form-label">Lựa chọn phòng ban<span class="red-require" style="color:red">*</span></label>
+                            <div class="row" style="margin-right: -15px; margin-left: 22px;">
+                                <div class="form-check col-xl-6 mb-2">
+                                    <input required="required" type="radio" name="to" id="rb_1" value="Kỹ Thuật" class="form-check-input">
+                                    <label for="rb_1" class="form-check-label">
+                                        Kỹ Thuật                                                            <span>
+                                            (Hướng dẫn &amp; xử lý sự cố 24/7/365)
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="form-check col-xl-6 mb-2">
+                                    <input type="radio" name="to" id="rb_2" value=" Dịch vụ khách hàng" class="form-check-input">
+                                    <label for="rb_2" class="form-check-label">
+                                        Dịch vụ khách hàng                                                            <span>
+                                            (Chính sách dịch vụ, tài khoản,    từ 07h45 đến 23h00)
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="form-check col-xl-6 mb-2">
+                                    <input type="radio" name="to" id="rb_15" value="Bán Hàng" class="form-check-input">
+                                    <label for="rb_15" class="form-check-label">
+                                        Bán Hàng                                                            <span>
+                                            (Tư vấn dịch vụ, báo giá, đăng ký dịch vụ,...)
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="form-check col-xl-6 mb-2">
+                                    <input type="radio" name="to" id="rb_27" value="Kế Toán - Hành Chính" class="form-check-input">
+                                    <label for="rb_27" class="form-check-label">
+                                        Kế Toán - Hành Chính                                                            <span>
+                                            (Thanh toán, Hóa đơn  từ 07h45 đến 23h00)
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="form-check col-xl-6 mb-2">
+                                    <input type="radio" name="to" id="rb_4" value="Tiếp Nhận Than Phiền - Góp ý" class="form-check-input">
+                                    <label for="rb_4" class="form-check-label">
+                                        Tiếp Nhận Than Phiền - Góp ý                                                            <span>
+                                            (Than phiền, Góp ý thái độ, Chất lượng dịch vụ)
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ============================================================== -->
+                        <div class="mb-3" style="margin-top:15px">
+                            <label asp-for="Subject" class="form-label">
+                                Tiêu đề yêu cầu <span class="red-require" style="color:red">*</span>
+
+                                @Html.ValidationMessageFor(m => m.Subject, "", new { @class = "error-msg input-distance" })
+                            </label>
+                            @*<input asp-for="Subject" class="form-control box_input" >*@
+
+                            @Html.TextBoxFor(m => m.Subject, new { @class = "form-control box_input", @style = "width= 100% ; maxlength= 255px" })
+
+
+                        </div>
+                        <!-- ============================================================== -->
+                        <div class="mb-3" style="margin-top:15px">
+                            <label asp-for="SubjectMessener" class="form-label">
+                                Nội dung câu hỏi<span class="red-require" style="color:red">*</span>
+
+
+
+
+                                @Html.ValidationMessageFor(m => m.SubjectMessener, "", new { @class = "error-msg input-distance" })
+
+                            </label>
+                            @*<textarea asp-for="SubjectMessener" class="form-control box_input" style="width: 1733px; height: 170px; max-block-size: 330px; max-width:1733px ;min-width:1733px"></textarea>*@
+                            @Html.TextAreaFor(m => m.SubjectMessener, new { @class = "form-control box_input", @style = " height: 170px; max-block-size: 330px; max-width:1733px ;min-width:auto" })
+                           
+
+                        </div>
+                        <!-- ============================================================== -->
+                        <div class="mb-3" style="margin-top:15px">
+                            <label asp-for="photoUploaded" class="form-label">Tập tin minh họa nếu có (*.gif, *.jpg, *.jpeg, *.png)</label>
+
+
+                            <img id="photo" src="@defaultPhoto"
+                                 class="img-responsive img-rounded box-info" style="border: 1px solid #ddd;"
+                                 width="175" height="175" alt="">
+
+
+                            @Html.TextBox("photoUploaded", null, new
+                            {
+                                @class = "form-control",
+                                @id = "pic",
+                                @type = "file",
+                                @size = "20",
+                                @accept = "image/*",
+        @onchange = "document.getElementById('photo').src = window.URL.createObjectURL(this.files[0]); document.getElementById('xoafile_pic').style.display='inline-block';"
+                            })
+                            <button style="display: none;" id="xoafile_pic" type="button" onclick="xoafile()">
+                                Xóa File
+                            </button>
+                        </div>
+
+                        <div class="mb-3" style="margin-top:20px">
+                            <button class="btn btn-pink waves-effect waves-light" type="submit">Gửi yêu cầu</button>
+                        </div>
+                    }
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+    function xoafile() {
+        document.getElementById('pic').value = '';
+        $("#photo").css("display", "none");
+    }
+</script>

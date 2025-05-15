@@ -1,0 +1,51 @@
+body[data-layout-color="light"] .navbar-custom,
+body[data-layout-color="light"] .left-side-menu,
+body[data-layout-color="light"] .logo-box,
+body[data-layout-color="light"] .footer,
+body[data-layout-color="light"] .left-side-menu button,
+body[data-layout-color="light"] .content-page .ipt-option-form-under-header,
+body[data-layout-color="light"] .navbar-custom .dropdown-menu,
+body[data-layout-color="light"] .btn-pagination .dropdown-menu {
+  background-color: #fff;
+}
+
+body[data-layout-color="light"] .toggle-dark label:after {
+  left: auto;
+  right: 0;
+}
+
+body[data-layout-color="light"] .toggle-light {
+  display: flex;
+  margin-bottom: 20px !important;
+}
+
+body[data-layout-color="light"] .toggle-off,
+body[data-layout-color="light"] .toggle-dark,
+body[data-layout-color="light"] .logo-1-dark,
+body[data-layout-color="light"] .logo-dark {
+  display: none;
+}
+
+body[data-layout-color="light"] .h1,
+body[data-layout-color="light"] .h2,
+body[data-layout-color="light"] .h3,
+body[data-layout-color="light"] .h4,
+body[data-layout-color="light"] .h5,
+body[data-layout-color="light"] .h6,
+body[data-layout-color="light"] .content-page .ipt-option-form-under-header {
+  color: #444;
+}
+
+body[data-layout-color="light"] #sidebar-menu > ul > li > a:active,
+body[data-layout-color="light"] #sidebar-menu > ul > li > a:focus,
+body[data-layout-color="light"] #sidebar-menu > ul > li > a:hover,
+body[data-layout-color="light"] #sidebar-menu .menuitem-active .active,
+body[data-layout-color="light"] body.nav-second-level li a:focus,
+body[data-layout-color="light"] .nav-second-level li a:hover {
+  color: #444;
+  background: #eaeaea;
+}
+body[data-layout-color="light"] #sidebar-menu > ul > li > a.active {
+  color: #444;
+  background: #eaeaea;
+}

@@ -1,0 +1,279 @@
+﻿@using BookingAds.Entities
+@using BookingAds.Modules
+@using BookingAds.Areas.Admin.Models.ManageOrder
+@model BookingAds.Areas.Admin.Models.ManageOrder.ViewManageOrder
+@{
+    ViewBag.Title = "Quản lý đơn hàng";
+    var fromUserName = ConvertUtils<Account>.Deserialize(User.Identity.Name).UserName;
+}
+
+<style>
+
+    .filterDateTime {
+        display: flex; 
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+
+    @@media only screen and (min-width: 1290px) {
+
+        #searchField {
+            margin-top: -22px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #inputsearch {
+            margin-left: 5px;
+        }
+
+        #forminputSeacrh {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #btnFilter {
+            width: 7%;
+        }
+    }
+
+
+    @@media only screen and (min-width: 1200px) and (max-width:1290px) {
+
+        #searchField {
+            margin-top: -44px;
+            display: flex;
+            flex-direction: column;
+            align-items: normal;
+        }
+
+        #forminputSeacrh {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #btnFilter {
+            width: 7%;
+        }
+    }
+
+
+
+
+    @@media only screen and (min-width: 992px) and (max-width:1199px) {
+
+        #searchField {
+            margin-top: 4px;
+            margin-left: 30%;
+        }
+
+        #forminputSeacrh {
+            display: flex;
+        }
+
+        #inputsearch {
+            margin-left: 5px;
+        }
+
+        #btnFilter {
+            margin-top: 25px;
+            width: 7%;
+        }
+    }
+
+    @@media only screen and (min-width: 768px) and (max-width:992px) {
+
+        #searchField {
+            margin-top: -22px;
+        }
+
+        #forminputSeacrh {
+            display: flex;
+        }
+    }
+
+    @@media only screen and (min-width: 768px) and (max-width:788px) {
+
+        #searchField {
+            margin-top: -44px;
+        }
+
+        #forminputSeacrh {
+            display: flex;
+        }
+    }
+
+    @@media only screen and (max-width: 768px) {
+
+        #searchField {
+            margin-top: 10px;
+        }
+
+        #btnFilter {
+            margin-top: 52px;
+            width: auto;
+        }
+
+        .filterDateTime {
+            display: flex; 
+            align-items: center;
+            flex-wrap: wrap;
+        }
+    }
+
+    @@media only screen and (max-width: 320px) {
+
+        #btnFilter {
+            width: auto;
+        }
+    }
+
+    /*
+
+    @@media only screen and (min-width: 992px) {
+
+        #searchField {
+            padding-top: 0px;
+
+        }
+
+        #inputsearch {
+            margin-left: 0px;
+        }
+    }
+</style>
+
+
+
+<ol class="breadcrumb" style="background-color: #fff; ">
+    <li><a href="~/Admin">Trang chủ</a></li>
+    <li class="active">Quản lý đơn hàng</li>
+</ol>
+
+<input type="hidden" id="fromUserName" value="@fromUserName" />
+
+<div id="clientErrMsg" class="error-msg text-center" style="font-weight: bold;"></div>
+<form id="formFilter" class="area-filter" 
+      style="display: flex; align-items: center; justify-content: center; padding-bottom:5px;" 
+      action="~/Admin/ManageOrder/Filter" method="POST">
+
+    <div class="row " style="width:auto;">
+
+        <div class="col-lg-12" style="padding-bottom:10px">
+
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteAll">
+                <i class="glyphicon glyphicon-remove"></i> Xóa tất cả đơn đã từ chối / bị hủy
+            </button>
+
+            @*Model All Delete*@
+            <div class="modal fade" id="deleteAll" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="border-radius: 10px;">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>
+                            <h4 class="modal-title custom_align" id="Heading">Xóa tất cả đơn hàng bị từ chối hoặc bị hủy</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="alert alert-danger">
+                                <span class="glyphicon glyphicon-warning-sign"></span>
+                                Bạn có chắc chắn xóa vĩnh viễn tất cả đơn hàng bị từ chối hoặc bị hủy không?
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button id="btnDeleteAllOrders" type="button" class="btn btn-success"
+                                    data-dismiss="modal" data-url="/Admin/ManageOrder/DeleteAll">
+                                <span class="glyphicon glyphicon-ok-sign"></span>
+                                Đồng ý
+                            </button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                <span class="glyphicon glyphicon-remove"></span>
+                                Từ chối
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        @*<div class="col-lg-2 col-sm-3 col-md-3 col-sm-offset-1 col-xs-6">*@
+        <div class="col-lg-3 col-md-6 col-sm-4 col-xs-12 ">
+            <select class="form-control" name="OrderStatus" id="orderStatus">
+                <option value="@OrderStatus.DEFAULT">--Lọc theo trạng thái đơn đặt--</option>
+                <option value="@OrderStatus.CANCELED.Code" selected="@(Model.Status == OrderStatus.CANCELED.Code)">
+                    @OrderStatus.CANCELED.Message
+                </option>
+                <option value="@OrderStatus.REJECTED.Code" selected="@(Model.Status == OrderStatus.REJECTED.Code)">
+                    @OrderStatus.REJECTED.Message
+                </option>
+                <option value="@OrderStatus.PENDING.Code" selected="@(Model.Status == OrderStatus.PENDING.Code)">
+                    @OrderStatus.PENDING.Message
+                </option>
+                <option value="@OrderStatus.WAITING.Code" selected="@(Model.Status == OrderStatus.WAITING.Code)">
+                    @OrderStatus.WAITING.Message
+                </option>
+                <option value="@OrderStatus.PAYING.Code" selected="@(Model.Status == OrderStatus.PAYING.Code)">
+                    @OrderStatus.PAYING.Message
+                </option>
+                <option value="@OrderStatus.SUCCESSED.Code" selected="@(Model.Status == OrderStatus.SUCCESSED.Code)">
+                    @OrderStatus.SUCCESSED.Message
+                </option>
+                <option value="@OrderStatus.FAILED.Code" selected="@(Model.Status == OrderStatus.FAILED.Code)">
+                    @OrderStatus.FAILED.Message
+                </option>
+            </select>
+        </div>
+        <div class="filterDateTime col-lg-5 col-md-6 col-sm-4 col-xs-12">
+            <input class="form-control" type="datetime-local" id="fromDatetime"
+                   value="@(string.IsNullOrWhiteSpace(Model.FromDatetime) ? "" : Model.FromDatetime)" />
+            <div style="margin: 0 5px;">đến</div>
+            <input class="form-control" type="datetime-local" id="toDatetime"
+                   value="@(string.IsNullOrWhiteSpace(Model.ToDatetime) ? "" : Model.ToDatetime)" />
+
+        </div>
+
+
+
+        <div class="col-lg-3 col-md-4 col-sm-3 col-xs-7" id="searchField" style="">
+            <div id="forminputSeacrh">
+                <div>
+                    <input id="searchField-@SearchField.EMPLOYEE_FULLNAME" type="radio" name="SearchField"
+                           checked="@(Model.SearchField == @SearchField.EMPLOYEE_FULLNAME)"
+                           value="@SearchField.EMPLOYEE_FULLNAME" />
+                    <span>Họ và tên khách hàng</span>
+                </div>
+                <div id="inputsearch" @*style="margin-left: 5px;"*@>
+                    <input id="searchField-@SearchField.FOOD_NAME" type="radio" name="SearchField"
+                           checked="@(Model.SearchField == @SearchField.FOOD_NAME)"
+                           value="@SearchField.FOOD_NAME" />
+                    <span>Tên quảng cáo</span>
+                </div>
+            </div>
+            <input id="searchValue" name="searchValue" type="text" class="form-control"
+                   style="border-radius: 5px;" placeholder="Tìm kiếm..." value="@Model.SearchValue" />
+
+        </div>
+
+        <button id="btnFilter" type="button" class="btn btn-warning col-sm-1">
+            <i class="glyphicon glyphicon-filter"></i> Lọc
+        </button>
+
+    </div>
+</form>
+
+<div id="filterResult"></div>
+
+<input type="hidden" id="currentPageSize" value="@Model.CurrentPageSize" />
+
+
+@section Scripts {
+    <script src="~/Scripts/Admin/ManageOrder/index.js"></script>
+}
+
+
+

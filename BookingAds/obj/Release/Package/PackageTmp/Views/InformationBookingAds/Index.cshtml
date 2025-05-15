@@ -1,0 +1,179 @@
+﻿@using BookingAds.Entities
+@using BookingAds.Modules
+@using BookingAds.Controllers
+@using BookingAds.Constants
+@using BookingAds.Models.InformationBookingAds
+@model BookingAds.Models.InformationBookingAds.ViewIndex
+<style>
+    .msg-tempdata {
+        position: fixed;
+        right: 1rem;
+        bottom: 3rem;
+    }
+
+    .tempdata-show {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        width: 250px;
+        height: 40px;
+        cursor: pointer;
+    }
+
+    .alert {
+        padding: 20px;
+        background-color: #f44336;
+        color: white;
+        opacity: 1;
+        transition: opacity 0.6s;
+        margin-bottom: 15px;
+    }
+
+        .alert.success {
+            background-color: #04AA6D;
+        }
+
+        .alert.info {
+            background-color: #2196F3;
+        }
+
+        .alert.warning {
+            background-color: #ff9800;
+        }
+
+    .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        .closebtn:hover {
+            color: black;
+        }
+
+    .error-msg {
+        color: red;
+        font-weight: bold;
+    }
+
+    .box.box-success {
+        padding: 7px;
+        margin-bottom: 0px;
+    }
+
+    #formFilter {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+
+    .form-group {
+        margin-bottom: 30px
+    }
+
+    #searchValue {
+        border-radius: 5px;
+    }
+</style>
+@{
+    string failedOrder = "Failed Order";
+    ViewBag.Title = "Xem thông tin dịch vụ";
+    var payType = Model.PayType;
+    var catelogProducts = SelectListUtils.GetCatelogProducts();
+    var fromUserName = ConvertUtils<Account>.Deserialize(User.Identity.Name).UserName;
+    var keyMsgPaymentSuccessed = "KeyMsgPaymentSuccessed";
+}
+
+
+
+<input type="hidden" id="fromUserName" value="@fromUserName" />
+
+<div class="row">
+    <form id="formFilter" class="area-filter"
+          action="~/InformationBookingAds/Filter" method="POST">
+        <input type="hidden" id="currentPageSize" value="@Model.CurrentPageSize" />
+        <div class="box box-success">
+
+            <div class="form-group">
+
+                <div class="col-lg-3">
+                    <select class="form-control" id="sort">
+                        <option value="@SortField.Default-@SortTypeConstant.DEFAULT"
+                                selected="@(Model.SortType == SortTypeConstant.DEFAULT)">
+                            --Sắp xếp--
+                        </option>
+                        <option value="@SortField.Price-@SortTypeConstant.DESC"
+                                selected="@(Model.Sort == $"{SortField.Price}-{SortTypeConstant.DESC}")">
+                            Giá từ cao đến thấp
+                        </option>
+                        <option value="@SortField.Price-@SortTypeConstant.ASC"
+                                selected="@(Model.Sort == $"{SortField.Price}-{SortTypeConstant.ASC}")">
+                            Giá từ thấp đến cao
+                        </option>
+                        <option value="@SortField.Quantity-@SortTypeConstant.DESC"
+                                selected="@(Model.Sort == $"{SortField.Quantity}-{SortTypeConstant.DESC}")">
+                            Số lượng giảm dần
+                        </option>
+                        <option value="@SortField.Quantity-@SortTypeConstant.ASC"
+                                selected="@(Model.Sort == $"{SortField.Quantity}-{SortTypeConstant.ASC}")">
+                            Số lượng tăng dần
+                        </option>
+                    </select>
+
+                </div>
+
+                <div class="col-lg-3">
+                    @Html.DropDownListFor(m => m.CatelogProductsID, catelogProducts, new { @class = "form-control" })
+
+                </div>
+
+                <div class="col-lg-4 col-lg-offset-2">
+                    <div class="input-group">
+                        <input id="searchValue" name="searchValue" value="@Model.SearchValue" type="text" class="form-control"
+                               placeholder="Tìm kiếm...">
+                        <span id="btnFilter" class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </form>
+
+</div>
+
+<div id="filterResult"></div>
+@if (TempData.ContainsKey(failedOrder))
+{
+    <div id="error-msg" class="msg-tempdata">
+        <div class="alert" style="border-radius: 10px;padding: 10px;">
+            <div class="tempdata-show">
+                @TempData[failedOrder]
+            </div>
+        </div>
+    </div>
+}
+
+@if (TempData.ContainsKey(keyMsgPaymentSuccessed))
+{
+    <div id="success-msg" class="msg-tempdata">
+        <div class="alert success" style="border-radius: 10px;padding: 10px;">
+            <div class="tempdata-show">
+                @TempData[keyMsgPaymentSuccessed]
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <script src="~/Scripts/Employee/InformationBookingAds/index.js"></script>
+   
+}

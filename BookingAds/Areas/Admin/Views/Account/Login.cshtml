@@ -1,0 +1,114 @@
+﻿@model BookingAds.Common.Models.Account.ViewLogin
+@{
+    Layout = null;
+    string failedLogin = "Failed Login";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Đăng nhập tài khoản quản trị viên</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .success-msg {
+            font-weight: bold;
+        }
+
+        #errorLogin {
+            margin: 2px 0 12px 0;
+        }
+
+        .error-msg {
+            color: red;
+            font-weight: bold;
+        }
+
+        .flex-middle-col {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .flex-middle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .icon {
+            height: 34px;
+            width: 34px;
+        }
+
+        .input-distance {
+            margin-top: -12px;
+            margin-bottom: 10px;
+        }
+
+        .btnLogin {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title text-center">Đăng nhập tài khoản giành cho quản trị viên</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { accept_charset = "UTF-8", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <fieldset class="flex-middle-col">
+                                <div class="form-group input-group flex-middle">
+                                    <span class="input-group-addon icon"><i class="glyphicon glyphicon-user"></i></span>
+                                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", placeholder = "Nhập tên đăng nhập..." })
+                                </div>
+                                @Html.ValidationMessageFor(m => m.UserName, "", new
+                                {
+                                    @class = "error-msg input-distance",
+                                })
+
+                                <div class="form-group input-group flex-middle">
+                                    <span class="input-group-addon icon"><i class="glyphicon glyphicon-lock"></i></span>
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Nhập mật khẩu..." })
+                                </div>
+                                @Html.ValidationMessageFor(m => m.Password, "", new
+                                {
+                                    @class = "error-msg input-distance",
+                                })
+
+                                @if (ViewData.ModelState.Keys.Contains(failedLogin))
+                                {
+                                    <div id="errorLogin" class="error-msg text-center">
+                                        @ViewData.ModelState.SingleOrDefault(m => m.Key == failedLogin).Value.Errors.SingleOrDefault().ErrorMessage
+                                    </div>
+                                }
+
+                                <input class="btnLogin btn btn-lg btn-success" type="submit" value="Đăng nhập">
+                            </fieldset>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script>
+        $(document).ready(function () {
+            setTimeout(() => {
+                $('#errorLogin').remove();
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

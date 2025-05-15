@@ -1,0 +1,306 @@
+﻿
+@using BookingAds.Modules
+@using BookingAds.Common.Repository.Account
+@using BookingAds.Entities
+@{
+    var currentEmployee = ConvertUtils<Employee>.Deserialize(User.Identity.Name);
+
+}
+@{
+
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>BookingAds - Home</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <!-- <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+
+
+    <link href="~/Content/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/Content/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/Content/assets/css/style.css" rel="stylesheet">
+
+    <style>
+        #popup {
+            display: none; /* Hidden by default */
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            border-radius: 10px;
+            max-width: 300px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+            #popup p {
+                margin: 0 0 20px 0;
+                font-size: 16px;
+                color: #333;
+            }
+
+            #popup .closePopup {
+                position: absolute;
+                top: -1px;
+                right: 4px;
+                background: transparent;
+                border: none;
+                font-size: 20px;
+                cursor: pointer;
+                color: #888;
+            }
+
+                #popup .closePopup:hover {
+                    color: #333;
+                }
+
+        #overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        #header.headtop nav.navbar ul li.dropdown > a {
+            color: white; /* Màu chữ trắng */
+        }
+
+        #header.headtop nav.navbar ul li.dropdown ul li a {
+            color: black; /* Màu chữ đen */
+        }
+
+        #header.headtop nav.navbar ul li:nth-child(2) a,
+        #header.headtop nav.navbar ul li:nth-child(3) a {
+            color: white; /* Màu chữ trắng */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="popup">
+        <button class="closePopup" id="closePopup">&times;</button>
+        <p>Gửi thành công!</p>
+    </div>
+    <div id="overlay"></div>
+
+
+    <header id="header" class="headtop" style="display: block;background-color: rgb(65, 64, 66); color: white; padding: 0px;">
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <h1 class="logo"><a href=""></a></h1>
+
+            @if (currentEmployee != null)
+            {
+                var fullName = $"{currentEmployee.LastName} {currentEmployee.FirstName}";
+                <nav id="navbar" class="navbar">
+                    <ul>
+                        <li class="dropdown">
+                            <a href="#"><span>Xin chào | @fullName</span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="~/InformationBookingAds">Dịch vụ</a></li>
+                                <li><a href="~/Account/Update">Tài Khoản</a></li>
+                                <li><a href="~/InformationBookingAds/Recharge">Nạp Tiền</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="nav-link scrollto" href="~/Account/Logout">Đăng Xuất</a></li>
+                        <li><a class="nav-link scrollto" href="#services">Hỗ Trợ</a></li>
+                    </ul>
+                    <i class="bi bi-list mobile-nav-toggle"></i>
+                </nav>
+            }
+            else
+            {
+                <nav id="navbar" class="navbar">
+                    <ul>
+                        <li class="dropdown">
+                            <a href="~/Account/Login"><span>Đăng Nhập</span></a>
+
+                        </li>
+
+                        <li><a class="nav-link scrollto" href="~/Support">Hỗ Trợ</a></li>
+                    </ul>
+                    <i class="bi bi-list mobile-nav-toggle"></i>
+                </nav>
+            }
+        </div>
+    </header>
+
+    <header id="header" class="">
+
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <h1 class="logo"><a href="#">BookingAds</a></h1>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto active" href="#hero">Trang Chủ</a></li>
+                    <li><a class="nav-link scrollto" href="#about">Giới Thiệu</a></li>
+                    <li><a class="nav-link scrollto" href="#services">Dịch Vụ</a></li>
+
+
+
+                    <li><a class="nav-link scrollto" href="#contact">Liên Hệ</a></li>
+                    <li><a class="nav-link scrollto" href="~/InformationBookingAds">Quảng Cáo</a></li>
+
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+
+        </div>
+    </header>
+
+    <main id="main">
+
+
+        <!-- ======= Services Section ======= -->
+        @RenderBody()
+
+
+    </main>
+
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+
+
+
+        <div class="container d-md-flex py-4">
+
+            <div class="me-md-auto text-center text-md-start">
+                <div class="copyright">
+                    &copy; Copyright <strong><span>BookingAds</span></strong>. All Rights Reserved
+                </div>
+                <div class="credits">
+                    Designed by <a href="https://www.facebook.com/profile.php?id=100022339071613">Keith</a>
+                </div>
+            </div>
+            <div class="social-links text-center text-md-right pt-3 pt-md-0">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=100022339071613" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <div id="preloader"></div>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const fullname = document.getElementById("namesendmail");
+            const mail = document.getElementById("emailsendmail");
+            const subject = document.getElementById("subjectsendmail");
+            const message = document.getElementById("messagesendmail");
+            const submit = document.getElementById("submitsendmail");
+            const popup = document.getElementById("popup");
+            const overlay = document.getElementById("overlay");
+            const closePopup = document.getElementById("closePopup");
+
+            submit.addEventListener("click", async () => {
+                if (fullname.value && mail.value) {
+                    const data = {
+                        name: fullname.value,
+                        mail: mail.value,
+                        subject: subject.value,
+                        message: message.value,
+                    };
+
+                    try {
+                        await postData(data);
+
+                        fullname.value = "";
+                        mail.value = "";
+                        subject.value = "";
+                        message.value = "";
+
+                        // Display the popup
+                        popup.style.display = "block";
+                        overlay.style.display = "block";
+                    } catch (error) {
+                        console.error("Error:", error);
+                        alert("Có lỗi xảy ra khi gửi dữ liệu. Vui lòng thử lại.");
+                    }
+                } else {
+                    alert("Vui lòng nhập đầy đủ thông tin.");
+                }
+            });
+
+            closePopup.addEventListener("click", () => {
+                popup.style.display = "none";
+                overlay.style.display = "none";
+            });
+        });
+
+        async function postData(data) {
+            const formUrl = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSc-BS_kYLgdj047t1uaEOR-312JkI3dGnDxdUCytrqMf5JVSg/formResponse";
+            const formData = new FormData();
+
+            formData.append("entry.1605674038", data.name);
+            formData.append("entry.280020028", data.mail);
+            formData.append("entry.961061593", data.subject);
+            formData.append("entry.680326809", data.message);
+
+            await fetch(
+                formUrl,
+                {
+                    method: "POST",
+                    body: formData,
+                    mode: "no-cors",
+                }
+            );
+        }
+
+    </script>
+
+
+
+    @*<script src="~/Content/assets/js/js.js"></script>*@
+    <!-- Vendor JS Files -->
+    <script src="~/Content/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="~/Content/assets/vendor/aos/aos.js"></script>
+    <script src="~/Content/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/Content/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/Content/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/Content/assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/Content/assets/js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,316 @@
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\BookingAds.dll.config
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\BookingAds.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\BookingAds.pdb
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\csc.exe
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\csc.exe.config
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\csc.rsp
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\csi.exe
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\csi.exe.config
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\csi.rsp
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\System.AppContext.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\System.Console.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\System.IO.Compression.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\System.Net.Http.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\System.Net.Sockets.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\System.ValueTuple.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\vbc.exe
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\vbc.exe.config
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\vbc.rsp
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\VBCSCompiler.exe
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\BookingAds.dll.CodeAnalysisLog.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\BookingAds.dll.lastcodeanalysissucceeded
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Antlr3.Runtime.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\BouncyCastle.Crypto.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\BouncyCastle.Cryptography.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Dapper.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\EPPlus.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\EPPlus.Interfaces.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\EPPlus.System.Drawing.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\MailKit.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Microsoft.IdentityModel.Logging.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Microsoft.Owin.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Microsoft.Owin.Security.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\MimeKit.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Newtonsoft.Json.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Owin.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\RestSharp.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\StyleCop.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Buffers.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.ComponentModel.Annotations.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Formats.Asn1.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Memory.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Net.Http.Formatting.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Numerics.Vectors.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Text.Encodings.Web.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Text.Json.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Threading.Tasks.Extensions.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.ValueTuple.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Web.Helpers.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Web.Http.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Web.Http.WebHost.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Web.Mvc.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Web.Optimization.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Web.Razor.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Web.WebPages.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Web.WebPages.Razor.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Twilio.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\WebGrease.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\BouncyCastle.Crypto.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\BouncyCastle.Cryptography.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Dapper.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\EPPlus.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\MailKit.pdb
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\MailKit.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Microsoft.AspNet.SignalR.Core.pdb
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Microsoft.AspNet.SignalR.SystemWeb.pdb
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Microsoft.IdentityModel.Abstractions.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Microsoft.IdentityModel.Logging.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Microsoft.IO.RecyclableMemoryStream.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Microsoft.Owin.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Microsoft.Owin.Security.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\MimeKit.pdb
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\MimeKit.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Newtonsoft.Json.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\RestSharp.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\StyleCop.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Buffers.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Formats.Asn1.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Memory.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Numerics.Vectors.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Text.Encodings.Web.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Text.Json.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.ValueTuple.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Web.Helpers.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Web.Mvc.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Web.Optimization.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Web.Razor.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Web.WebPages.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Web.WebPages.Razor.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Twilio.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Antlr3.Runtime.pdb
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Net.Http.Formatting.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Web.Http.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\System.Web.Http.WebHost.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\obj\Debug\BookingAds.csproj.AssemblyReference.cache
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\obj\Debug\BookingAds.Properties.Resources.resources
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\obj\Debug\BookingAds.csproj.GenerateResource.cache
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\obj\Debug\BookingAds.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\obj\Debug\BookingAds.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\obj\Debug\BookingAds.csproj.CopyComplete
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\obj\Debug\BookingAds.dll
+C:\Users\Admin\Desktop\DATN\ADs - Copy\BookingAds\obj\Debug\BookingAds.pdb
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\BookingAds.dll.config
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\BookingAds.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\BookingAds.pdb
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\csc.exe
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\csc.exe.config
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\csc.rsp
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\csi.exe
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\csi.exe.config
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\csi.rsp
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\System.AppContext.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\System.Console.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\System.IO.Compression.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\System.Net.Http.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\System.Net.Sockets.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\System.ValueTuple.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\System.Xml.XPath.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\vbc.exe
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\vbc.exe.config
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\vbc.rsp
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\VBCSCompiler.exe
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\BookingAds.dll.CodeAnalysisLog.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\BookingAds.dll.lastcodeanalysissucceeded
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Antlr3.Runtime.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\BouncyCastle.Crypto.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\BouncyCastle.Cryptography.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Dapper.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\EPPlus.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\EPPlus.Interfaces.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\EPPlus.System.Drawing.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\MailKit.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Microsoft.IdentityModel.Logging.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Microsoft.Owin.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Microsoft.Owin.Security.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\MimeKit.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Newtonsoft.Json.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Owin.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\RestSharp.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\StyleCop.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Buffers.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.ComponentModel.Annotations.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Formats.Asn1.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Memory.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Net.Http.Formatting.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Numerics.Vectors.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Text.Encodings.Web.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Text.Json.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Threading.Tasks.Extensions.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.ValueTuple.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Web.Helpers.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Web.Http.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Web.Http.WebHost.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Web.Mvc.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Web.Optimization.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Web.Razor.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Web.WebPages.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Web.WebPages.Razor.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Twilio.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\WebGrease.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\BouncyCastle.Crypto.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\BouncyCastle.Cryptography.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Dapper.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\EPPlus.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\MailKit.pdb
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\MailKit.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Microsoft.AspNet.SignalR.Core.pdb
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Microsoft.AspNet.SignalR.SystemWeb.pdb
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Microsoft.IdentityModel.Abstractions.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Microsoft.IdentityModel.Logging.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Microsoft.IdentityModel.Tokens.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Microsoft.IO.RecyclableMemoryStream.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Microsoft.Owin.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Microsoft.Owin.Security.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\MimeKit.pdb
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\MimeKit.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Newtonsoft.Json.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\RestSharp.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\StyleCop.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Buffers.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Formats.Asn1.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Memory.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Numerics.Vectors.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Text.Encodings.Web.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Text.Json.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.ValueTuple.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Web.Helpers.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Web.Mvc.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Web.Optimization.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Web.Razor.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Web.WebPages.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Web.WebPages.Razor.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Twilio.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Antlr3.Runtime.pdb
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Net.Http.Formatting.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Web.Http.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\System.Web.Http.WebHost.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\obj\Debug\BookingAds.csproj.AssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\obj\Debug\BookingAds.Properties.Resources.resources
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\obj\Debug\BookingAds.csproj.GenerateResource.cache
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\obj\Debug\BookingAds.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\obj\Debug\BookingAds.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\obj\Debug\BookingAds.csproj.CopyComplete
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\obj\Debug\BookingAds.dll
+C:\Users\Admin\Documents\GitHub\Booking-Ads\BookingAds\obj\Debug\BookingAds.pdb

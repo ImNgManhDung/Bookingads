@@ -1,0 +1,117 @@
+﻿<style>
+    .icon-bar {
+        display: inline-block;
+        cursor: pointer;
+      
+    }
+        /* Định dạng khi dấu hiện tại là > */
+        .icon-bar[data-content=">"]::after {
+            content: ">";
+        }
+        /* Định dạng khi dấu hiện tại là < */
+        .icon-bar[data-content="<"]::after {
+            content: "<";
+        }
+</style>
+
+<section class="sidebar" style="height: auto;">
+
+    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button" style="position: absolute;right: -20px;top: 100px;color: black;font-weight: 700;border: none;background: #fff;width: 20px;height: 40px;z-index: 9;border-radius: 0 5px 5px 0;text-align: center;padding: ;padding-top: 10px;">
+
+        <span class="icon-bar"  data-content=">" ></span>
+       
+    </a>
+
+    <ul class="sidebar-menu tree" data-widget="tree">
+        <li class="">
+            <a href="/Home">
+                <svg height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M22 12.2039V13.725C22 17.6258 22 19.5763 20.8284 20.7881C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.7881C2 19.5763 2 17.6258 2 13.725V12.2039C2 9.91549 2 8.77128 2.5192 7.82274C3.0384 6.87421 3.98695 6.28551 5.88403 5.10813L7.88403 3.86687C9.88939 2.62229 10.8921 2 12 2C13.1079 2 14.1106 2.62229 16.116 3.86687L18.116 5.10812C20.0131 6.28551 20.9616 6.87421 21.4808 7.82274" stroke="#000000" stroke-width="1.5" stroke-linecap="round"></path> <path d="M15 18H9" stroke="#000000" stroke-width="1.5" stroke-linecap="round"></path> </g></svg>
+                <span>Trang Chủ</span>
+                <span class="pull-right-container">
+
+                </span>
+            </a>
+
+        </li>
+        <li class="treeview">
+            <a href="#">
+                <svg width="20px" height="20px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#000000" d="M864 409.6a192 192 0 0 1-37.888 349.44A256.064 256.064 0 0 1 576 960h-96a32 32 0 1 1 0-64h96a192.064 192.064 0 0 0 181.12-128H736a32 32 0 0 1-32-32V416a32 32 0 0 1 32-32h32c10.368 0 20.544.832 30.528 2.432a288 288 0 0 0-573.056 0A193.235 193.235 0 0 1 256 384h32a32 32 0 0 1 32 32v320a32 32 0 0 1-32 32h-32a192 192 0 0 1-96-358.4 352 352 0 0 1 704 0zM256 448a128 128 0 1 0 0 256V448zm640 128a128 128 0 0 0-128-128v256a128 128 0 0 0 128-128z"></path></g></svg>
+                
+                
+                <span>Hỗ Trợ</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="~/Support/Create"><i class="fa fa-circle-o"></i>Tạo yêu cầu mới</a></li>
+                <li><a href="~/Support/RequestSent  "><i class="fa fa-circle-o"></i>Yêu cầu đã gửi</a></li>
+                <li><a href="~/Support/Request_for_feedback"><i class="fa fa-circle-o"></i>Yêu cầu đã có phản hồi</a></li>
+                <li><a href="~/Support/RequestDone"><i class="fa fa-circle-o"></i>Yêu cầu đã hoàn tất</a></li>
+                <li><a href="~/Support/Index"><i class="fa fa-circle-o"></i>Tất cả yêu cầu</a></li>
+            </ul>
+        </li>
+
+        <li class="treeview">
+            <a href="#">
+                <i class="">
+                    <svg width="20px" height="20px" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M772.672 575.808V448.192l70.848-70.848a370.688 370.688 0 0 0-56.512-97.664l-96.64 25.92-110.528-63.808-25.92-96.768a374.72 374.72 0 0 0-112.832 0l-25.92 96.768-110.528 63.808-96.64-25.92c-23.68 29.44-42.816 62.4-56.576 97.664l70.848 70.848v127.616l-70.848 70.848c13.76 35.264 32.832 68.16 56.576 97.664l96.64-25.92 110.528 63.808 25.92 96.768a374.72 374.72 0 0 0 112.832 0l25.92-96.768 110.528-63.808 96.64 25.92c23.68-29.44 42.816-62.4 56.512-97.664l-70.848-70.848z m39.744 254.848l-111.232-29.824-55.424 32-29.824 111.36c-37.76 10.24-77.44 15.808-118.4 15.808-41.024 0-80.768-5.504-118.464-15.808l-29.888-111.36-55.424-32-111.168 29.824A447.552 447.552 0 0 1 64 625.472L145.472 544v-64L64 398.528A447.552 447.552 0 0 1 182.592 193.28l111.168 29.824 55.424-32 29.888-111.36A448.512 448.512 0 0 1 497.472 64c41.024 0 80.768 5.504 118.464 15.808l29.824 111.36 55.424 32 111.232-29.824c56.32 55.68 97.92 126.144 118.592 205.184L849.472 480v64l81.536 81.472a447.552 447.552 0 0 1-118.592 205.184zM497.536 627.2a115.2 115.2 0 1 0 0-230.4 115.2 115.2 0 0 0 0 230.4z m0 76.8a192 192 0 1 1 0-384 192 192 0 0 1 0 384z" fill="#000000"></path></g></svg>  </i> 
+                
+                <span>Dịch Vụ</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="~/Admin/Supplier"><i class="fa fa-circle-o"></i>Tạo Dịch Vụ</a></li>
+                <li><a href="~/Admin/Supplier"><i class="fa fa-circle-o"></i>Đang Hoàn Thành</a></li>
+                <li><a href="~/Admin/Category"><i class="fa fa-circle-o"></i>Đã hoàn thành</a></li>
+                <li><a href="~/HistoryOrderProduct"><i class="fa fa-circle-o"></i>Lịch sử Dịch Vụ</a></li>
+               
+
+            </ul>
+        </li>
+
+
+
+
+      
+        <li class="">
+            <a href="/Messenger">
+                <svg height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M17 3.33782C15.5291 2.48697 13.8214 2 12 2C6.47715 2 2 6.47715 2 12C2 13.5997 2.37562 15.1116 3.04346 16.4525C3.22094 16.8088 3.28001 17.2161 3.17712 17.6006L2.58151 19.8267C2.32295 20.793 3.20701 21.677 4.17335 21.4185L6.39939 20.8229C6.78393 20.72 7.19121 20.7791 7.54753 20.9565C8.88837 21.6244 10.4003 22 12 22C17.5228 22 22 17.5228 22 12C22 10.1786 21.513 8.47087 20.6622 7" stroke="#000000" stroke-width="1.5" stroke-linecap="round"></path> </g></svg>
+                
+                <span>Trò Chuyện</span>
+
+            </a>
+        </li>
+        <li>
+            <a href="/InformationBookingAds">
+              
+                <svg height="20px" version="1.1" id="Uploaded to svgrepo.com" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <style type="text/css">
+                                                                                                                                                                                                                                                                                                                                                                       .feather_een {
+                                                                                                                                                                                                                                                                                                                                                                           fill: #000000;
+                                                                                                                                                                                                                                                                                                                                                                       }
+</style> <path class="feather_een" d="M27,6h-5.292c-0.466,0-0.925-0.108-1.342-0.317l-6.733-3.367C13.217,2.108,12.758,2,12.292,2H5 C3.343,2,2,3.343,2,5v18c0,1.657,1.343,3,3,3h6.75c0.492,0,0.977,0.121,1.412,0.353l6.176,3.294C19.773,29.879,20.258,30,20.75,30 H27c1.657,0,3-1.343,3-3V9C30,7.343,28.657,6,27,6z M29,27c0,1.103-0.897,2-2,2h-6.25c-0.327,0-0.653-0.081-0.941-0.235 l-6.177-3.294C13.055,25.163,12.404,25,11.75,25H5c-1.103,0-2-0.897-2-2V5c0-1.103,0.897-2,2-2h7.292 c0.309,0,0.618,0.073,0.894,0.211l6.733,3.367C20.472,6.854,21.09,7,21.708,7H27c1.103,0,2,0.897,2,2V27z M27.854,24.854L26.707,26 l1.146,1.146c0.195,0.195,0.195,0.512,0,0.707C27.756,27.951,27.628,28,27.5,28s-0.256-0.049-0.354-0.146L26,26.707l-1.146,1.146 C24.756,27.951,24.628,28,24.5,28s-0.256-0.049-0.354-0.146c-0.195-0.195-0.195-0.512,0-0.707L25.293,26l-1.146-1.146 c-0.195-0.195-0.195-0.512,0-0.707s0.512-0.195,0.707,0L26,25.293l1.146-1.146c0.195-0.195,0.512-0.195,0.707,0 S28.049,24.658,27.854,24.854z M12,4.5v1C12,5.776,11.776,6,11.5,6S11,5.776,11,5.5v-1C11,4.224,11.224,4,11.5,4S12,4.224,12,4.5z M12,7.5v1C12,8.776,11.776,9,11.5,9S11,8.776,11,8.5v-1C11,7.224,11.224,7,11.5,7S12,7.224,12,7.5z M12,10.5v1 c0,0.276-0.224,0.5-0.5,0.5S11,11.776,11,11.5v-1c0-0.276,0.224-0.5,0.5-0.5S12,10.224,12,10.5z M12,13.5v1 c0,0.276-0.224,0.5-0.5,0.5S11,14.776,11,14.5v-1c0-0.276,0.224-0.5,0.5-0.5S12,13.224,12,13.5z M12,16.5v1 c0,0.276-0.224,0.5-0.5,0.5S11,17.776,11,17.5v-1c0-0.276,0.224-0.5,0.5-0.5S12,16.224,12,16.5z M12,19.5v1 c0,0.276-0.224,0.5-0.5,0.5S11,20.776,11,20.5v-1c0-0.276,0.224-0.5,0.5-0.5S12,19.224,12,19.5z M12,22.5v1 c0,0.276-0.224,0.5-0.5,0.5S11,23.776,11,23.5v-1c0-0.276,0.224-0.5,0.5-0.5S12,22.224,12,22.5z M21,8.5v1 c0,0.276-0.224,0.5-0.5,0.5S20,9.776,20,9.5v-1C20,8.224,20.224,8,20.5,8S21,8.224,21,8.5z M21,11.5v1c0,0.276-0.224,0.5-0.5,0.5 S20,12.776,20,12.5v-1c0-0.276,0.224-0.5,0.5-0.5S21,11.224,21,11.5z M21,14.5v1c0,0.276-0.224,0.5-0.5,0.5S20,15.776,20,15.5v-1 c0-0.276,0.224-0.5,0.5-0.5S21,14.224,21,14.5z M21,17.5v1c0,0.276-0.224,0.5-0.5,0.5S20,18.776,20,18.5v-1 c0-0.276,0.224-0.5,0.5-0.5S21,17.224,21,17.5z M21,20.5v1c0,0.276-0.224,0.5-0.5,0.5S20,21.776,20,21.5v-1 c0-0.276,0.224-0.5,0.5-0.5S21,20.224,21,20.5z M21,23.5v1c0,0.276-0.224,0.5-0.5,0.5S20,24.776,20,24.5v-1 c0-0.276,0.224-0.5,0.5-0.5S21,23.224,21,23.5z M21,26.5v1c0,0.276-0.224,0.5-0.5,0.5S20,27.776,20,27.5v-1 c0-0.276,0.224-0.5,0.5-0.5S21,26.224,21,26.5z"></path> </g></svg>
+                <span>Xem Thông Tin Dịch Vụ</span>
+
+            </a>
+        </li>
+    </ul>
+
+
+
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var iconBar = document.querySelector('.icon-bar');
+        iconBar.addEventListener('click', function () {
+            var currentContent = this.getAttribute('data-content');
+            if (currentContent === '>') {
+                this.setAttribute('data-content', '<');
+            } else {
+                this.setAttribute('data-content', '>');
+            }
+        });
+    });
+</script>

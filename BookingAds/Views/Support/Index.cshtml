@@ -1,0 +1,106 @@
+﻿@using BookingAds.Entities
+@using BookingAds.Modules
+@using BookingAds.Controllers
+@using BookingAds.Entities
+@model BookingAds.Models.Supports.ViewIndex
+
+@{
+    ViewBag.Title = "Yêu Cầu";
+}
+
+<style>
+
+    @@media only screen and (min-width: 1500px) {
+        .container {
+            width: 1500px;
+        }
+    }
+
+    #filterResult {
+        background-color: white;
+    }
+</style>
+
+<section class="">
+
+    <form class="row" id="formFilter" action="~/Support/SearchRequest" method="POST">
+        <div class="box box-success" style="padding:7px">
+            <div class="form-group" style="margin-bottom: 30px">
+
+                <div class="col-lg-2">
+                    <select id="orderStatus" name="orderstatus" class="form-control">
+                        <option value="@SupportsStatus.DEFAULT">-- Lọc theo trạng thái --</option>
+                        <option value="@SupportsStatus.RequestSend.Code">Đã Gửi</option>
+                        <option value="@SupportsStatus.RequestForFeedback.Code">Đã Có Phản Hồi</option>
+                        <option value="@SupportsStatus.RequestDone.Code">Đã Hoàn Tất</option>
+                    </select>
+
+                </div>
+
+                <div class="col-lg-6" style="display: flex;align-items: center;justify-content: center;">
+                    <label for="birthday">Lọc Theo ngày:</label>
+                    <input type="datetime-local" id="startDatetime" class="form-control" name="startDatetime" value="@Model.DateStart"
+                           style="width: 250px; margin: 0 5px;">
+                    đến
+                    <input type="datetime-local" id="endDatetime" class="form-control" name="endDatetime" value="@Model.DateEnd"
+                           style="width: 250px; margin: 0 5px;">
+                </div>
+
+
+
+                <div class="col-lg-4">
+                    <div class="input-group">
+                        <input id="searchValue" name="searchValue" class="form-control" placeholder="Tìm kiếm" type="text"
+                               value="@Model.SearchValue">
+                        <span id="btnFilter" class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </form>
+
+
+    <div class="container">
+
+        <div id="filterResult" class="table-responsive"></div>
+
+    </div>
+
+
+    <div class="row">
+
+        <div class="clearfix"></div>
+
+        <input type="hidden" id="currentPageSize" value="@Model.CurrentPageSize" />
+        <ul class="pagination" style="display: flex; justify-content: center; align-items: center;">
+            <li id="btnPrev">
+                <a href="javascript:void(0)" style="height: 34px;"><span class="glyphicon glyphicon-chevron-left"></span></a>
+            </li>
+            <li>
+                <input id="currentPage" class="input-sm"
+                       style="max-width: 55px; outline: none; border: 1px solid #ddd; height: 34px;"
+                       type="number" min="1" value="@Model.CurrentPage" />
+            </li>
+            <li>
+                <span>/</span>
+            </li>
+            <li>
+                <span>@Model.TotalPage trang</span>
+            </li>
+            <li id="btnNext">
+                <a href="javascript:void(0)" style="height: 34px;"><span class="glyphicon glyphicon-chevron-right"></span></a>
+            </li>
+        </ul>
+    </div>
+</section>
+
+
+
+
+@section Scripts {
+    <script src="~/Scripts/Employee/Support/index.js"></script>
+}

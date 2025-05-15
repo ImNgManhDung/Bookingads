@@ -1,0 +1,183 @@
+﻿@using BookingAds.Modules
+@using BookingAds.Common.Repository.Account
+@using BookingAds.Entities
+@{
+    var currentEmployee = ConvertUtils<Employee>.Deserialize(User.Identity.Name);
+    var newEmployee = new AccountRepository().GetEmployee(currentEmployee.UserName);
+}
+
+<style>
+    dropdown-menu.sidebar-menu.tree :hover {
+        margin: 10px;
+        border-radius: 16px;
+        font-size: 12px;
+        font-style: initial;
+        font-family: Roboto;
+    }
+
+    .user-header :hover {
+        border-radius: 16px 16px 0 0;
+    }
+
+    .user.user-logout :hover {
+        border-radius: 0 0 16px 16px ;
+    }
+
+</style>
+<header class="main-header">
+
+    <a href="~/InformationBookingAds" class="logo">
+
+        <span class="logo-mini"><b>Ads</b></span>
+
+        <span class="logo-lg"><b>BookingAds</b></span>
+    </a>
+
+    <nav class="navbar navbar-static-top">
+        <div class="navbar-custom-menu" style="float:left ;padding:15px 0px 15px 5px;color:white">
+
+            <ul class="nav navbar-nav">
+
+                <li class="dropdown user user-menu ">
+                    <span class="" style="font-weight:bold; color: black;">@ViewBag.Title</span>
+
+                </li>
+
+            </ul>
+        </div>
+
+
+
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+
+                <li id="btnIconBell" class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle glyphicon glyphicon-bell" data-toggle="dropdown" aria-expanded="true"></a>
+                    <ul class="dropdown-menu sidebar-menu tree" data-widget="tree">
+
+                        <li>
+                            <a id="notifyOrder" href="~/HistoryOrderProduct" 
+                               style="display: flex; align-items: center;">
+                                <i class="	glyphicon glyphicon-calendar"></i>
+                                <span>Thông báo đơn hàng</span>
+                                <span id="badgeNotifyOrder" style="margin-left: 5px; display: none;" class="badge alert-danger">0</span>
+                                <span class="pull-right-container"></span>
+                            </a>
+
+                        </li>
+
+                        <li>
+                            <a id="notifyMessage" href="~/Messenger"
+                               style="display: flex; align-items: center;">
+                                <i class="glyphicon glyphicon-envelope"></i>
+                                <span>Tin nhắn</span>
+                                <span id="badgeNotifyMessage" style="margin-left: 5px; display: none;" class="badge alert-danger">0</span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                    <span id="activeNotify" class="glyphicon glyphicon-certificate" 
+                            style="color: red; font-size: 10px; position: absolute; margin: 25px 0px 0px 23px; display:none;">
+                    </span>
+
+                </li>
+
+
+
+                @if (currentEmployee != null)
+                {
+                    var fullName = $"{currentEmployee.LastName} {currentEmployee.FirstName}";
+                    var balance = newEmployee.Coin.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"));
+
+                    <li class="dropdown user user-menu ">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <img style="object-fit: contain;" id="employeeAvatarNavbar" 
+                                 src="~/Images/Employees/@currentEmployee.Avatar" class="user-image" alt="User Image">
+                            <span id="employeeFullNameNavbar" class="hidden-xs">@fullName</span>
+                        </a>
+                        <ul class="dropdown-menu sidebar-menu tree" data-widget="tree" style="margin: 10px;border-radius: 16px;font-size: 12px;font-style: initial;font-family: Roboto;">
+
+                            <li class="user-header">
+                                @*<img src="~/Images/Employees/@currentEmployee.Avatar" class="img-circle" alt="User Image">*@
+                                <p>
+                                    @fullName
+
+                                    <small class="text-muted" style="color: yellow;">
+                                        <i class="glyphicon glyphicon-credit-card"></i>
+                                        <span id="employeeCoin">@balance</span>
+                                    </small>
+                                </p>
+                            </li>
+
+                            @*<li>
+            <a href="~/InformationBookingAds">
+                <i class="glyphicon glyphicon-home"></i>
+                <span>Xem Thông Tin Quảng Cáo</span>
+            </a>
+        </li>
+
+        <li class="">
+            <a href="~/HistoryOrderProduct">
+                <i class="	glyphicon glyphicon-calendar"></i>
+                <span>Lịch Sử Đặt Món</span>
+                <span class="pull-right-container">
+                </span>
+            </a>
+        </li>
+
+        <li class="">
+            <a href="~/Messenger">
+                <i class="glyphicon glyphicon-envelope"></i>
+                <span>Trò Chuyện</span>
+            </a>
+        </li>
+                            *@
+                            <li class="">
+                                <a href="~/InformationBookingAds/Recharge">
+                                    <i class="glyphicon glyphicon-credit-card"></i>
+                                    <span>Nạp tiền vào tài khoản</span>
+                                </a>
+                            </li>
+
+                            <li class="">
+                                <a href="~/InformationBookingAds">
+                                    <i class="glyphicon glyphicon-shopping-cart"    ></i>
+                                    <span>Mua thêm dịch vụ</span>
+                                </a>
+                            </li>
+
+                            <li class="">
+                                <a href="~/Account/Update">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                    <span>Thông tin cá nhân</span>
+                                </a>
+                            </li>
+
+                            <li class="user-footer">
+                                @*<div class="pull-left">
+                <a href="~/Account/ChangePassword" class="btn btn-default btn-flat">Đổi mật khẩu</a>
+            </div>*@
+                                @*<div class="pull-right">
+                <input type="hidden" id="currentUserName" value="@currentEmployee.UserName" />
+                <a id="btnLogout" href="~/Account/Logout" class="btn btn-default btn-flat">Đăng Xuất</a>
+
+            </div>*@
+
+                            <li class="user-logout">
+                                <a href="~/Account/Logout" style="border-radius: 0 0 16px 16px;">
+                                    <input type="hidden" id="currentUserName" value="@currentEmployee.UserName" />
+                                    <i class="glyphicon glyphicon-log-out"></i>
+                                    <span>Đăng Xuất</span>
+                                </a>
+                            </li>
+
+
+                        </ul>
+                    </li>
+                }
+
+            </ul>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,51 @@
+body[data-layout-color="dark"] .navbar-custom {
+  background-color: var(--bg-dark-default);
+}
+body[data-layout-color="dark"] .logo-light,
+body[data-layout-color="dark"] .logo-1-light,
+body[data-layout-color="dark"] .toggle-light {
+  display: none;
+}
+
+body[data-layout-color="dark"] .h1,
+body[data-layout-color="dark"] .h2,
+body[data-layout-color="dark"] .h3,
+body[data-layout-color="dark"] .h4,
+body[data-layout-color="dark"] .h5,
+body[data-layout-color="dark"] .h6,
+body[data-layout-color="dark"] .p {
+  color: #fff;
+}
+
+body[data-layout-color="dark"] h1,
+body[data-layout-color="dark"] h2,
+body[data-layout-color="dark"] h3,
+body[data-layout-color="dark"] h4,
+body[data-layout-color="dark"] h5,
+body[data-layout-color="dark"] h6 {
+  color: #444444;
+}
+
+body[data-layout-color="dark"] .toggle-dark label:after {
+  background: #62d76b;
+  left: 0;
+}
+
+body[data-layout-color="dark"] .nav-pills > li > a,
+body[data-layout-color="dark"] .nav-tabs > li > a {
+  color: #a5a5a5;
+}
+
+body[data-layout-color="dark"] .ql-editor {
+  color: var(--color-text-light);
+}
+
+body[data-layout-color="dark"] .ql-snow .ql-fill {
+  fill: #6c757d;
+}
+body[data-layout-color="dark"] .ql-snow .ql-stroke {
+  stroke: #6c757d;
+}
+body[data-layout-color="dark"] .ql-toolbar span {
+  color: #6c757d;
+}

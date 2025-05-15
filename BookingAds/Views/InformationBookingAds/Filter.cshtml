@@ -1,0 +1,193 @@
+﻿@using BookingAds.Entities
+@using BookingAds.Modules
+@using BookingAds.Controllers
+@using BookingAds.Constants
+@model BookingAds.Models.InformationBookingAds.ViewIndex
+@{
+	ViewBag.Title = "Filter";
+	Layout = null;
+	var currentEmployee = ConvertUtils<Employee>.Deserialize(User.Identity.Name);
+}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
+
+<style>
+	@@media only screen and (min-width:992px) {
+
+		.btn.btn-success {
+			position: initial;
+			margin-left: -33px;
+		}
+	}
+
+	@@media only screen and (min-width:1200px) {
+
+		.btn.btn-success {
+			position: initial;
+			margin-left: 0px;
+		}
+	}
+
+	#msg-error {
+		font-weight: bold;
+		color: red;
+	}
+
+	#text-h3 {
+		width: 300px;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+
+	.pagination {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	#currentPage {
+		max-width: 55px;
+		outline: none;
+		border: none;
+	}
+
+
+    thumbnail1 {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background-color: #ffffff;
+        padding: 30px;
+        width: 450px;
+        border-radius: 20px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+
+</style>
+
+<div class="container">
+	<div class="row">
+
+		@if (Model.Data.Count == 0)
+		{
+			<p id="msg-error" class="text-center">Không có quảng cáo nào</p>
+		}
+		@foreach (var items in Model.Data)
+		{
+			var product = ConvertUtils<Product>.Serialize(items);
+
+			<div class="col-sm-6 col-md-4">
+				<div class="thumbnail">
+
+					<img src="~/Images/Products/@items.Photo" alt="Ảnh quảng cáo" style="height: 200px; width: 300px; object-fit: contain;">
+					<div class="caption">
+						<div class="row" style="align-items: flex-end;">
+							<div class="col-lg-12" style="padding-left: 30px;
+">
+								<h3 id="text-h3">
+                                    <a href="~/InformationBookingAds/Details?productID=@items.ProductID"> @items.ProductName </a>
+									
+								</h3>
+							</div>
+							<div class="col-lg-7 col-md-8 col-sm-7 col-xs-7">
+								<div class="col-lg-12">
+									<p>Báo Giá: @items.Price đ</p>
+								</div>
+								<div class="col-lg-12">
+									<p>Thể Loại : @items.CatelogProduct.CatelogName</p>
+								</div>
+							</div>
+
+							<div class="col-lg-5 col-md-4 col-sm-5 col-xs-5">
+								<p>
+									<button type="button" class="btn btn-success"
+											data-toggle="modal" data-target="#edit-@items.ProductID">
+										Đặt Dịch Vụ
+									</button>
+								</p>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+			<div class="modal fade" id="edit-@items.ProductID" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+				@using (Html.BeginForm("OrderProduct", "InformationBookingAds", method: FormMethod.Post))
+				{
+
+					@Html.Hidden("productID", items.ProductID.ToString())
+					@Html.Hidden("employeeID", currentEmployee.EmployeeID.ToString())
+
+
+					<div class="modal-dialog">
+						<div class="modal-content" style="border-radius: 10px;">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+									<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+								</button>
+								<h4 class="modal-title custom_align" id="Heading">Hình thức thanh toán</h4>
+							</div>
+							<div class="modal-body">
+
+								<div class="form-group">
+									<div class="form-control radioPayType">
+										@Html.RadioButtonFor(model => model.PayType, "WALLET", new { @class = "payType", id = "option1" })
+										<i class="fa fa-credit-card"></i>
+										<label for="option1">Ví BookingAds</label><br>
+									</div>
+
+									@*<div class="form-control radioPayType" style="margin-top: 10px;">
+										@Html.RadioButtonFor(model => model.PayType, "CASH", new { @class = "payType", id = "option2" })
+										<i class="fa fa-money-bill"></i>
+										<label for="option2">Tiền mặt</label><br>
+									</div>*@
+								</div>
+
+							</div>
+							<div class="modal-footer">
+								<button type="button"
+										data-employeeID="@currentEmployee.EmployeeID"
+										data-employeeFullName="@currentEmployee.LastName @currentEmployee.FirstName"
+										data-product="@product"
+										data-dismiss="modal"
+										class="btn btn-success btn-sm btnSubmitEvent">
+									Đồng ý đặt
+								</button>
+							</div>
+						</div>
+
+					</div>
+				}
+
+
+			</div>
+		}
+
+	</div>
+	<div class="text-center">
+		<ul class="pagination">
+			<li id="btnPrev">
+				<a href="javascript:void(0)" style="height: 34px;"><span class="glyphicon glyphicon-chevron-left"></span></a>
+			</li>
+			<li>
+				<input id="currentPage" class="input-sm"
+					   style="border: 1px solid #ddd; height: 34px;"
+					   type="number" min="1"
+					   value="@Model.CurrentPage" />
+			</li>
+			<li>
+				<span>/</span>
+			</li>
+			<li>
+				<span>@Model.TotalPage trang</span>
+			</li>
+			<li id="btnNext">
+				<a href="javascript:void(0)" style="height: 34px;"><span class="glyphicon glyphicon-chevron-right"></span></a>
+			</li>
+		</ul>
+	</div>
+
+</div>

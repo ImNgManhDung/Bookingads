@@ -1,0 +1,451 @@
+﻿@using BookingAds.Constants
+@using BookingAds.Modules
+@using BookingAds.Entities
+@model BookingAds.Areas.Admin.Models.ManageOrder.ViewManageOrder
+@{
+    Layout = null;
+}
+
+<table id="mytable" class="table table-striped table-bordered" style="">
+    <tr>
+        @*<th><input type="checkbox" id="checkall" /></th>*@
+        <th>Họ và tên khách hàng</th>
+        <th>Tên quảng cáo</th>
+        <th>Ngày đặt đơn</th>
+        <th>Trạng thái đơn</th>
+        <th>Hình thức thanh toán</th>
+        <th>Số tiền phải trả</th>
+        <th colspan="3" class="text-center">Chức năng</th>
+    </tr>
+    <tbody id="tbBodyOrder">
+        @if (Model.Data.Count == 0
+            || !DateTimeUtils.IsValidDateTimeSQL(Model.FromDatetime)
+            || !DateTimeUtils.IsValidDateTimeSQL(Model.ToDatetime))
+        {
+            <tr>
+                <td colspan="8" class="text-danger text-center" style="font-weight: bold">Không có đơn nào</td>
+            </tr>
+        }
+        @foreach (var order in Model.Data)
+        {
+            var orderJson = ConvertUtils<Order>.Serialize(order);
+            var canceled = OrderStatus.CANCELED.Code.ToString();
+            var orderedTime = string.Format("{0:dd/MM/yyyy HH:mm:ss tt}", order.OrderedTime);
+            var payType = order.Type == PayTypeConstant.CASH ? "Tiền mặt" : "Ví điện tử";
+            var formatStatus = @StatusType.ToFormat(order.Status);
+            var status = @StatusType.ToMessage(order.Status);
+            var totalMoney = order.TotalMoney.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"));
+
+            <tr>
+                @*<td><input type="checkbox" class="checkthis" id="@item.EmployeeID" /></td>*@
+                <td>@order.Employee.LastName @order.Employee.FirstName</td>
+                <td id="productName-@order.OrderID">@order.Product.ProductName ( @order.CatelogProduct.CatelogName )</td>
+                <td>@orderedTime</td>
+                <td id="status-@order.OrderID" class=@formatStatus> <b> @status </b></td>
+                <td>@payType</td>
+                <td id="productPrice-@order.OrderID">
+                    @totalMoney
+                </td>
+
+                <td>
+                    <div id="dropdown-@order.OrderID" class="dropdown">
+                        <button style="width:100%" class="btn btn-primary dropdown-toggle
+                                @((order.Status == OrderStatus.CANCELED.Code
+                                    || order.Status == OrderStatus.REJECTED.Code
+                                    || order.Status == OrderStatus.SUCCESSED.Code
+                                    || order.Status == OrderStatus.FAILED.Code)
+                                ? "disabled" : "")"
+                                type="button" id="btnProcessOrder"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span>Xử lý đơn</span>
+                            <span class="caret"></span>
+                        </button>
+                        <ul id="btnAction-@order.OrderID" class="dropdown-menu" aria-labelledby="btnProcessOrder">
+                            @if (order.Status == OrderStatus.PENDING.Code)
+                            {
+                                <li class="btnActionOrder"
+                                    data-nextStatus="@OrderStatus.WAITING.Code"
+                                    data-url="/Admin/ManageOrder/Approve">
+                                    <a style="color: green !important;" href="#" data-toggle="modal" data-target="#process-@order.OrderID">
+                                        Phê duyệt
+                                    </a>
+                                </li>
+                            }
+                            @if (order.Status == OrderStatus.WAITING.Code)
+                            {
+                                <li class="btnActionOrder"
+                                    data-nextStatus="@OrderStatus.PAYING.Code"
+                                    data-url="/Admin/ManageOrder/AcceptGotProduct">
+                                    <a style="color: green !important;" href="#" data-toggle="modal" data-target="#sucsess-@order.OrderID">
+                                        Xác nhận hoàn thành
+                                    </a>
+                                </li>
+                            }
+                            @if (order.Status == OrderStatus.PAYING.Code)
+                            {
+                                <li class="btnActionOrder"
+                                    data-nextStatus="@OrderStatus.SUCCESSED.Code"
+                                    data-url="/Admin/ManageOrder/AcceptPayed">
+                                    <a style="color: green !important;" href="#" data-toggle="modal" data-target="#sucsess-@order.OrderID">
+                                        Xác nhận đã thanh toán
+                                    </a>
+                                </li>
+                            }
+                            <li role="separator" class="divider"></li>
+                            @if (order.Status == OrderStatus.PENDING.Code)
+                            {
+                                <li class="btnActionOrder"
+                                    data-nextStatus="@OrderStatus.REJECTED.Code"
+                                    data-url="/Admin/ManageOrder/Reject">
+                                    <a style="color: red !important;" href="#" data-toggle="modal" data-target="#process-@order.OrderID">
+                                        Từ chối
+                                    </a>
+                                </li>
+                            }
+                            @if (order.Status == OrderStatus.PAYING.Code)
+                            {
+                                <li class="btnActionOrder"
+                                    data-nextStatus="@OrderStatus.FAILED.Code"
+                                    data-url="/Admin/ManageOrder/AcceptNotPayed">
+                                    <a style="color: red !important;" href="#" data-toggle="modal" data-target="#process-@order.OrderID">
+                                        Xác nhận không thanh toán
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+
+
+                        @*}*@
+                    </div>
+                </td>
+                <td class="text-center">
+                    <p data-placement="top" data-toggle="tooltip" title="Xóa vĩnh viễn">
+                        <button class="btn btn-danger btn-xs @((order.Status == OrderStatus.CANCELED.Code
+                                    || order.Status == OrderStatus.REJECTED.Code)
+                                ? "" : "disabled")" data-toggle="modal"
+                                data-target="@((order.Status == OrderStatus.CANCELED.Code || order.Status == OrderStatus.REJECTED.Code)
+                                ? $"#delete-{order.OrderID}" : "")">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </p>
+                </td>
+
+
+                @if (order.Status == OrderStatus.WAITING.Code || order.Status == OrderStatus.SUCCESSED.Code)
+                {
+                   
+                
+                <td id="btnAction-@order.OrderID" class="text-center">
+                    <a href="/Admin/ManageOrder/DetailsMess?orderID=@order.OrderID" class="btn btn-info" style="font-size: 9px;" role="button">
+                        <svg width="20px" height="20px" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <defs>
+                                    <style>
+                                        .cls-1 {
+                                            fill: none;
+                                            stroke: #ffffff;
+                                            stroke-linecap: round;
+                                            stroke-linejoin: round;
+                                            stroke-width: 20px;
+                                        }
+                                    </style>
+                                </defs>
+                                <g data-name="Layer 2" id="Layer_2"> <g data-name="E425, History, log, manuscript" id="E425_History_log_manuscript"> <path class="cls-1" d="M75.11,117h0A21.34,21.34,0,0,1,53.83,95.57V31.39A21.34,21.34,0,0,1,75.11,10h0A21.34,21.34,0,0,1,96.39,31.39V95.57A21.34,21.34,0,0,1,75.11,117Z"></path> <rect class="cls-1" height="64.17" width="319.22" x="96.39" y="31.39"></rect> <rect class="cls-1" height="320.87" width="319.22" x="96.39" y="95.57"></rect> <path class="cls-1" d="M34.34,39.08H53.83a0,0,0,0,1,0,0v48.8a0,0,0,0,1,0,0H34.34A24.34,24.34,0,0,1,10,63.54v-.13A24.34,24.34,0,0,1,34.34,39.08Z"></path> <path class="cls-1" d="M436.89,117h0a21.34,21.34,0,0,0,21.28-21.39V31.39A21.34,21.34,0,0,0,436.89,10h0a21.34,21.34,0,0,0-21.28,21.39V95.57A21.34,21.34,0,0,0,436.89,117Z"></path> <path class="cls-1" d="M482.51,39.08H502a0,0,0,0,1,0,0v48.8a0,0,0,0,1,0,0H482.51a24.34,24.34,0,0,1-24.34-24.34v-.13a24.34,24.34,0,0,1,24.34-24.34Z" transform="translate(960.17 126.96) rotate(-180)"></path> <path class="cls-1" d="M75.11,395h0a21.34,21.34,0,0,0-21.28,21.39v64.18A21.34,21.34,0,0,0,75.11,502h0a21.34,21.34,0,0,0,21.28-21.39V416.43A21.34,21.34,0,0,0,75.11,395Z"></path> <rect class="cls-1" height="64.17" width="319.22" x="96.39" y="416.43"></rect> <path class="cls-1" d="M34.34,424.12H53.83a0,0,0,0,1,0,0v48.8a0,0,0,0,1,0,0H34.34A24.34,24.34,0,0,1,10,448.58v-.13A24.34,24.34,0,0,1,34.34,424.12Z"></path> <path class="cls-1" d="M436.89,395h0a21.34,21.34,0,0,1,21.28,21.39v64.18A21.34,21.34,0,0,1,436.89,502h0a21.34,21.34,0,0,1-21.28-21.39V416.43A21.34,21.34,0,0,1,436.89,395Z"></path> <path class="cls-1" d="M482.51,424.12H502a0,0,0,0,1,0,0v48.8a0,0,0,0,1,0,0H482.51a24.34,24.34,0,0,1-24.34-24.34v-.13a24.34,24.34,0,0,1,24.34-24.34Z" transform="translate(960.17 897.04) rotate(-180)"></path> <line class="cls-1" x1="143.41" x2="256" y1="140.11" y2="140.11"></line> <line class="cls-1" x1="143.41" x2="371.26" y1="186.47" y2="186.47"></line> <line class="cls-1" x1="143.41" x2="371.26" y1="232.82" y2="232.82"></line> <line class="cls-1" x1="143.41" x2="371.26" y1="279.18" y2="279.18"></line> <line class="cls-1" x1="143.41" x2="371.26" y1="325.53" y2="325.53"></line> <line class="cls-1" x1="256" x2="371.26" y1="371.89" y2="371.89"></line> </g> </g>
+                            </g>
+                        </svg>
+                        Details
+                    </a>
+
+
+                </td>
+                }
+               
+            </tr>
+
+
+            @*Model Process*@
+            <div class="modal fade" id="process-@order.OrderID" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="border-radius: 10px;">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>
+                            <h4 class="modal-title custom_align" id="Heading">Xử lý đơn đặt của khách hàng</h4>
+                        </div>
+                        <div class="modal-body alert alert-info" style="margin-bottom: 0px;">
+                            <strong>
+                                <i class="glyphicon glyphicon-info-sign"></i>
+                            </strong>
+                            Bạn có chắc chắn <span class="actionNameOrder"></span> với đơn này không?
+                        </div>
+                        <div class="modal-footer">
+                            <button id="btnProcessOrder-@order.OrderID" type="button" class="btnProcessOrder btn btn-success"
+                                    data-id="@order.OrderID"
+                                    data-employeeUserName="@order.Employee.UserName"
+                                    data-productName="@order.Product.ProductName"
+                                    data-orderedTime="@order.OrderedTime"
+                                    data-payType="@order.Type"
+                                    data-textlink="@order.Textlink"
+                                    data-productPrice="@order.Product.Price"
+                                    data-action=""
+                                    data-url=""
+                                    data-nextStatus=""
+                                    data-dismiss="modal">
+                                <span class="glyphicon glyphicon-ok-sign"></span> Đồng ý
+                            </button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                <span class="glyphicon glyphicon-remove"></span>
+                                Từ chối
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*Model Sucsess*@
+            <div class="modal fade" id="sucsess-@order.OrderID" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="border-radius: 10px;">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>
+                            <h4 class="modal-title custom_align" id="Heading">Xử lý đơn đặt của khách hàng</h4>
+                        </div>
+                        <div class="modal-body alert alert-info" style="margin-bottom: 0px;">
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <strong>
+                                        <i class="glyphicon glyphicon-info-sign"></i>
+                                    </strong> Vui lòng nhập link bằng chứng để xác nhận
+                                </div>
+
+                                <div class="col-lg-12" style="position: relative; min-height: 1px; padding-right: 15px; padding-left: 15px;"> <input type="text" id="linkInput-@order.OrderID" name="linkInput" placeholder="Nhập link xác minh"></div>
+
+
+                            </div>
+
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button id="btnSucsessOrder-@order.OrderID" type="button" class="btnSucsessOrder btn btn-success"
+                                    data-id="@order.OrderID"
+                                    data-employeeUserName="@order.Employee.UserName"
+                                    data-productName="@order.Product.ProductName"
+                                    data-orderedTime="@order.OrderedTime"
+                                    data-payType="@order.Type"
+                                    data-textlink="@order.Textlink"
+                                    data-productPrice="@order.Product.Price"
+                                    data-action=""
+                                    data-url="/Admin/ManageOrder/AcceptGotProduct"
+                                    data-nextStatus=""
+                                    data-dismiss="modal">
+                                <span class="glyphicon glyphicon-ok-sign"></span> Đồng ý
+                            </button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                <span class="glyphicon glyphicon-remove"></span>
+                                Từ chối
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <script>
+    var orderHub = $.connection.orderHub;
+
+// Start SignalR connection
+$.connection.hub.start()
+    .done(function () {
+        console.log('SignalR connection established.');
+
+        // Bắt sự kiện khi modal được mở
+        $('#sucsess-@order.OrderID').on('shown.bs.modal', function () {
+            // Bắt sự kiện khi nút "Đồng ý" được click
+            $('#btnSucsessOrder-@order.OrderID').click(function() {
+                // Lấy giá trị từ các thuộc tính data-
+                var orderID = $(this).attr('data-id');
+                var employeeUserName = $(this).attr('data-employeeUserName');
+                var productName = $(this).attr('data-productName');
+                var orderedTime = $(this).attr('data-orderedTime');
+                var payType = $(this).attr('data-payType');
+                var textlink = $(this).attr('data-textlink');
+                var productPrice = $(this).attr('data-productPrice');
+                var action = $(this).attr('data-action');
+                var url = $(this).attr('data-url');
+                var nextStatus = $(this).attr('data-nextStatus');
+
+                // Biểu thức chính quy để kiểm tra link
+                var regex = /\b(?:https?|ftp|file):\/\/[-A-Za-z0-9+&@@#\/%?=~_|!:,.;]*[-A-Za-z0-9+&@@#\/%=~_|]/;
+
+                // Lấy giá trị từ ô nhập
+                var inputValue = $('#linkInput-@order.OrderID').val();
+
+                // Kiểm tra dữ liệu nhập vào với regex
+                if (regex.test(inputValue)) {
+                    // Nếu link hợp lệ, thực hiện AJAX request
+                    var orderID = '@order.OrderID'; // Lấy orderID từ HTML
+                    var url = '/Admin/ManageOrder/AcceptGotProduct'; // Thay YOUR_API_ENDPOINT bằng endpoint của bạn
+
+                    // Dữ liệu để gửi qua AJAX request
+                    var data = {
+                        OrderID: orderID,
+                        linksucess: inputValue // Thay `linksucess` bằng tên trường dữ liệu của bạn
+                    };
+
+                    // Thực hiện AJAX request
+                    $.ajax({
+                        contentType: 'application/json',
+                        url: url,
+                        method: "POST",
+                        data: JSON.stringify(data),
+                        success: function (res) {
+                            console.log('AJAX success: ', res);
+
+                            // Tạo đối tượng notificationData để gửi qua SignalR
+                            const notificationData = {
+                                orderID: orderID,
+                                productName: productName,
+                                orderedTime: orderedTime,
+                                
+                                textlink: inputValue,
+                               
+                               
+                                nextStatus: 99
+                            };
+
+                            console.log('Notification Data: Admin - user', notificationData);
+
+                            // Gửi thông báo qua SignalR tới yousser
+                            orderHub.server.notifyOrder(['admin'], JSON.stringify(notificationData), employeeUserName);
+                        },
+                        error: function (err) {
+                            console.error('AJAX error: ', err);
+                        }
+                    });
+                } else {
+                    // Nếu sai, hiển thị một cảnh báo
+                    alert("Link không hợp lệ!");
+                }
+            });
+        });
+    })
+    .fail(function (error) {
+        console.error('SignalR connection error: ' + error);
+        // Xử lý lỗi kết nối SignalR
+    });
+
+
+            </script>
+
+
+
+
+
+            @*Model Process*@
+            <div class="modal fade" id="process-@order.OrderID" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="border-radius: 10px;">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>
+                            <h4 class="modal-title custom_align" id="Heading">Xử lý đơn đặt của khách hàng</h4>
+                        </div>
+                        <div class="modal-body alert alert-info" style="margin-bottom: 0px;">
+                            <strong>
+                                <i class="glyphicon glyphicon-info-sign"></i>
+                            </strong>
+                            Bạn có chắc chắn <span class="actionNameOrder"></span> với đơn này không?
+                        </div>
+                        <div class="modal-footer">
+                            <button id="btnProcessOrder-@order.OrderID" type="button" class="btnProcessOrder btn btn-success"
+                                    data-id="@order.OrderID"
+                                    data-employeeUserName="@order.Employee.UserName"
+                                    data-productName="@order.Product.ProductName"
+                                    data-orderedTime="@order.OrderedTime"
+                                    data-payType="@order.Type"
+                                    data-textlink="@order.Textlink"
+                                    data-productPrice="@order.Product.Price"
+                                    data-action=""
+                                    data-url=""
+                                    data-nextStatus=""
+                                    data-dismiss="modal">
+                                <span class="glyphicon glyphicon-ok-sign"></span> Đồng ý
+                            </button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                <span class="glyphicon glyphicon-remove"></span>
+                                Từ chối
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*Model Delete*@
+            <div class="modal fade" id="delete-@order.OrderID" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="border-radius: 10px;">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>
+                            <h4 class="modal-title custom_align" id="Heading">Xóa đơn đặt của khách hàng</h4>
+                        </div>
+                        <div class="alert alert-danger" style="margin-bottom: 0px;">
+
+                            <span class="glyphicon glyphicon-exclamation-sign"></span>
+                            Bạn có chắc chắn xóa vĩnh viễn đơn này không?
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btnDeleteOrder btn btn-success"
+                                    data-id="@order.OrderID"
+                                    data-url="/Admin/ManageOrder/Delete"
+                                    data-dismiss="modal">
+                                <span class="glyphicon glyphicon-ok-sign"></span>
+                                Đồng ý
+                            </button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                <span class="glyphicon glyphicon-remove"></span>
+                                Từ chối
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </tbody>
+</table>
+
+
+
+<div class="clearfix"></div>
+
+<ul class="pagination" style="display: flex; justify-content: center; align-items: center;">
+    <li id="btnPrev">
+        <a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a>
+    </li>
+    <li>
+        <input id="currentPage" class="input-sm"
+               style="max-width: 55px; outline: none; border: 1px solid #ddd; height: 34px;"
+               type="number" min="1"
+               value="@Model.CurrentPage" />
+    </li>
+    <li>
+        <span>/</span>
+    </li>
+    <li>
+        <span>@Model.TotalPage trang</span>
+    </li>
+    <li id="btnNext">
+        <a href="#"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </li>
+</ul>
+

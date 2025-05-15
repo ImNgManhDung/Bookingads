@@ -1,0 +1,81 @@
+﻿@model BookingAds.Models.ForgotPassword.ViewForgotPassword
+@{
+    Layout = "~/Views/Shared/_LayoutForgotPassword.cshtml";
+}
+
+
+
+
+
+@helper RenderResultFail()
+{
+    <p class="error-msg" style="margin-top: 8px; margin-bottom: -7px; margin-left: 42px; ">
+        Tài khoản không tồn tại
+    </p>
+}
+
+@helper RenderResultSuccess()
+{
+    <p class="error-msg" style="margin-top: 8px; margin-bottom: -7px; margin-left: 42px; ">
+        Đổi mật khẩu thành công
+    </p>
+}
+
+@helper RenderResultFailToken()
+{
+    <p class="error-msg" style="margin-top: 8px; margin-bottom: -7px; margin-left: 42px; ">
+        Quá thời gian đổi mật khẩu
+    </p>
+}
+
+
+
+
+@using (Html.BeginForm("Index", "ForgotPassword", FormMethod.Post, new { accept_charset = "UTF-8", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="flex-column">
+        <label>Username </label>
+    </div>
+    <div class="inputForm">
+        <svg height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M12 14C8.13401 14 5 17.134 5 21H19C19 17.134 15.866 14 12 14Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>   @*<input placeholder="enter your email" class="input" type="text">*@
+        @Html.TextBoxFor(m => m.Username, new { @class = "input", placeholder = "Nhập tên tài khoản", @id = "textbox" })
+
+
+    </div>
+    @Html.ValidationMessageFor(m => m.Username, null, new
+{
+@class = "error-msg",
+@id = "error-msg",
+@style = "margin-top: 8px;  margin-bottom: -7px;  margin-left: 42px;",
+})
+
+
+    if ((ViewBag.IsFail as bool?) != null)
+    {
+        @RenderResultFail()
+    }
+    else if ((ViewBag.IsSuccess as bool?) != null)
+    {
+        @RenderResultSuccess()
+    }
+    else if ((ViewBag.IsFailToken as bool?) != null)
+    {
+        @RenderResultFailToken()
+    }
+    <div class="flex-row">
+        <div>
+
+        </div>
+        <span class="span"> <a href="/Account/Login">Quay lại đăng nhập</a></span>
+    </div>
+    <button class="button-submit" type="submit" name="buttonAction" id="input" value="Tiếp tục">Tiếp Tục</button>
+
+
+
+}
+
+
+

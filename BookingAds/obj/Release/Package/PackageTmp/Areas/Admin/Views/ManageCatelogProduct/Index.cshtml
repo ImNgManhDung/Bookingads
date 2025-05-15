@@ -1,0 +1,83 @@
+﻿@using BookingAds.Modules
+@using BookingAds.Constants
+@using BookingAds.Areas.Admin.Models.ManageCatelogProduct
+@model BookingAds.Areas.Admin.Models.ManageCatelogProduct.ViewManageCatelogProduct
+
+@{
+    ViewBag.Title = "Quản lý loại quảng cáo";
+}
+
+<ol class="breadcrumb" style="background-color: #fff;">
+    <li><a href="~/Admin">Trang chủ</a></li>
+    <li class="active">Quản lý loại quảng cáo</li>
+</ol>
+
+<form id="formFilter" class="area-filter" style="display: flex; align-items: center; justify-content: space-between; padding: 10px 0;" 
+      action="~/Admin/ManageCatelogProduct/Filter" method="POST">
+    <div>
+        <button type="button" data-toggle="modal" data-target="#add" class="btn btn-primary"><i class=""></i> Thêm</button>
+
+        @*Model Add*@
+        <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
+            <div class="modal-dialog">
+
+                <div class="modal-content" style="border-radius: 10px;">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        </button>
+                        <h4 class="modal-title custom_align" id="Heading">Thông tin loại quảng cáo</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="box-body" style="display: flex; justify-content: center;">
+                            <div class="input-group form-group">
+                                <span class="input-group-addon">Tên loại quảng cáo</span>
+                                <input id="catelogNameAdd" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btnAddCatelogProduct btn btn-success"
+                                @*data-dismiss="modal"*@
+                                data-url="/Admin/ManageCatelogProduct/Add"
+                                data-dismiss="modal"
+                                type="submit">
+                            <span class="glyphicon glyphicon-ok-sign"></span> Đồng ý
+                        </button>
+                        <button type="button" data-target="#edit" class="btn btn-default" data-dismiss="modal">
+                            <span class="glyphicon glyphicon-remove"></span>
+                            Từ chối
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    @*Search*@
+    <div>
+        <div class="input-group" style="display: flex; align-items: center;">
+            <input id="searchValue" name="searchValue" value="@Model.SearchValue" type="text" class="form-control" style="border-radius: 5px;" placeholder="Tìm kiếm...">
+            <button type="submit" class="btn btn-warning"><i class="glyphicon glyphicon-filter"></i> Lọc</button>
+        </div>
+    </div>
+</form>
+
+@* Filter Result *@
+<div id="errorMsg" class="text-center" style="font-weight: bold; color: red;"></div>
+<div id="filterResult" class="table-responsive"></div>
+
+<input type="hidden" id="currentPageSize" value="@Model.CurrentPageSize" />
+
+@section Scripts {
+    <script src="~/Scripts/Admin/ManageCatelogProduct/index.js"></script>
+}
+
+
+

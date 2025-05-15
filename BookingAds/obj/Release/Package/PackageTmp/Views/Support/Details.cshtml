@@ -1,0 +1,369 @@
+﻿@using BookingAds.Entities
+@using BookingAds.Modules
+@using BookingAds.Controllers
+@using BookingAds.Entities
+@model BookingAds.Models.Supports.ViewDetails
+@using BookingAds.Models
+
+@{
+    var defaultPhoto = "/Images/defaultUpload.png";
+    ViewBag.Title = "Details";
+
+    var employeeId = ConvertUtils<Employee>.Deserialize(User.Identity.Name).EmployeeID.ToString();
+    var firstName = ConvertUtils<Employee>.Deserialize(User.Identity.Name).FirstName.ToString();
+    var lastName = ConvertUtils<Employee>.Deserialize(User.Identity.Name).LastName.ToString();
+    string fullName = firstName + " " + lastName;
+
+
+}
+<style>
+    
+
+    .thumbnail {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+        margin-right: 10px;
+        position: relative;
+    }
+
+    .thumbnail-container {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+        .thumbnail-container .thumbnail-wrapper {
+            position: relative;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .thumbnail-container .remove-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: rgba(255, 0, 0, 0.7);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+    #image-count {
+        margin-left: 10px;
+    }
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 20px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+    }
+
+    .pa-bd-yellow {
+        border-color: #ffcf00 !important
+    }
+
+    .border {
+        border: 1px solid
+    }
+
+    .pb-2 {
+        padding-bottom: .75rem !important
+    }
+
+    .p-3 {
+        padding: 1.5rem !important
+    }
+
+    .border-danger {
+        border-color: #ff5b5b !important
+    }
+
+    .border-bottom {
+        border-bottom: 1px solid var(--ct-border-color) !important
+    }
+
+    .pa-bd-red-light {
+        background-color: #ffa0a0 !important
+    }
+
+    .d-inline-block {
+        display: inline-block !important
+    }
+
+    .mb-0 {
+        margin-bottom: 0 !important
+    }
+
+    .pa-bd-yellow {
+        border-color: #ffcf00 !important
+    }
+
+    .pa-bg-yellow {
+        background-color: #ffcf00 !important
+    }
+
+    .p-10 {
+        padding: 10px
+    }
+</style>
+Be
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+    <div class="col-12">
+
+
+
+        <div class="form" style="margin-top:10px">
+            <table align="center" border="1" cellpadding="0" cellspacing="0" width="100%" class="lg" style="margin-bottom:30px">
+                <thead style="background:#ededed;border-right:solid 1px #ccc;border-top:solid 1px #ccc">
+                    <tr class="titlerow">
+                        <th style="text-align:center">Mã câu hỏi</th>
+                        <th style="text-align:center">Dịch vụ</th>
+                        <th style="text-align:center">Yêu cầu</th>
+                        <th style="text-align:center">Phòng xử lý</th>
+                        <th style="text-align:center">Nhân viên xử lý</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr class="light">
+                        <td class="align-middle" style="text-align:center"><strong class="pa-text-primary">@Model.Supports.SupportsID</strong></td>
+                        <td class="align-middle" style="text-align:center">@Model.Supports.Service.ProductName (@Model.Supports.CatelogProduct.CatelogName) </td>
+                        <td class="align-middle" style="text-align:center"></td>
+                        <td class="align-middle" style="text-align:center"> @Model.Supports.To </td>
+                        <td class="align-middle" style="text-align:center"> Admin </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="bodycontent">
+                <!-------------------Admin-------------------->
+                <div class="boxsup corner_81 relative p-3 border pa-bd-yellow rounded">
+                    <h5 class="font-weight-bold pb-2 border-bottom border-danger" style="border-color:#ff5b5b;border-bottom:1px solid">
+                        <i class="fa fa-question-circle fa-lg fa-fw pa-text-primary"></i> NỘI DUNG YÊU CẦU - <span class="text-danger">      @Model.Supports.Subject     </span>
+                    </h5>
+                    <div class="middle">
+                        <p> @Model.Supports.SubjectMesseger </p>
+
+
+                        @if (Model.Supports.ImageRequest != null)
+                        {
+                            <hr>
+                            <a href="~/Images/SuportDetails/@Model.Supports.ImageRequest" target="_blank">
+                                <img src="~/Images/SuportDetails/@Model.Supports.ImageRequest" border="0" class="sup" style="max-height:100px">
+                            </a>
+                        }
+
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+
+                @foreach (var items in Model.SupportsDetail)
+                {
+
+                    if (items.SenderID != employeeId)
+                    {
+                        <div class="boxsub table-show mt-4">
+                            <h6 class="d-inline-block pa-bg-red-light pa-bd-red-light text-dark font-weight-bold border border-bottom-0 rounded-top p-10 mb-0">@items.SenderID [@items.TimeRep]</h6>
+                            <div class="middle border rounded-right rounded-bottom p-3">
+                                @items.Messeger
+
+                                @if (items.Image != null)
+                                {
+
+                                    <hr>
+                                    <!-------------------Anh-------------------->
+                                    <a href="~/Images/SuportDetails/@items.Image" target="_blank">
+                                        <img border="0" src="~/Images/SuportDetails/@items.Image" class="sup" style="max-height:100px">
+                                    </a>
+                                }
+
+
+
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <!-------------------Khachh hhang-------------------->
+                        <div class="boxsub table-show yellow mt-4">
+                            <h6 class="d-inline-block pa-bg-yellow text-danger font-weight-bold border border-bottom-0 rounded-top p-10 mb-0"><i class="fa fa-question-circle fa-lg fa-fw"></i> @fullName [@items.TimeRep]</h6>
+                            <div class="middle border rounded-right pa-bd-yellow rounded-bottom p-3">
+
+                                <!-------------------Messenger-------------------->
+                                <p>
+                                    @items.Messeger
+                                </p>
+
+
+
+                                @if (items.Image != null)
+                                {
+
+                                    <hr>
+                                    <!-------------------Anh-------------------->
+                                    <a href="~/Images/SuportDetails/@items.Image" target="_blank">
+                                        <img border="0" src="~/Images/SuportDetails/@items.Image" class="sup" style="max-height:100px">
+                                    </a>
+                                }
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    }
+
+
+                }
+                @if (Model.Supports.Status == 2)
+                {
+                    <div class="boxsub table-show yellow mt-4">
+                        <h6 class="d-inline-block pa-bg-yellow text-danger font-weight-bold border border-bottom-0 rounded-top p-10 mb-0"><i class="fa fa-question-circle fa-lg fa-fw"></i> @fullName </h6>
+                        <div class="middle border rounded-right pa-bd-yellow rounded-bottom p-3">
+
+
+                            !!!! Yêu cầu này đã xử lý dứt điểm (hoặc đã được chúng tôi trả lời hơn 3 ngày mà không có sự phản hồi của quý khách)
+                            <br />
+                            !!!!Vì câu hỏi này đã quá 1 tháng kể từ khi câu hỏi bị đóng nên không có nút mở lại câu hỏi.
+                            <br />
+                            Nếu gặp vấn đề khác vui lòng mở câu hỏi mới.
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+
+                    using (Html.BeginForm("Save", "Support", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        @Html.HiddenFor(m => m.Supports.SupportsID);
+                        <div class="mb-3" style="margin-top:15px">
+                            <label for="example-select" class="form-label">
+                                Nội dung câu hỏi<span class="red-require" style="color:red">*</span>
+
+                                <span>
+                                    @if (TempData.ContainsKey("error_message"))
+                                    {
+                                        <span class="error-msg input-distance" style="color: red; font-weight: bold;"> @TempData["error_message"]</span>
+                                    }
+
+                                </span>
+
+                            </label>
+
+                            @Html.TextAreaFor(m => m.Messenger, new { @class = "form-control box_input", @id = "title", @style = "width: 1733px; height: 170px; max-block-size: 330px; max-width:100% ;min-width:100%" })
+
+
+
+
+
+
+                        </div>
+
+                        <div class="mb-3" style="margin-top:15px">
+                            <label for="example-fileinput" class="form-label">
+                                Tập tin minh họa nếu có(*.gif, *.jpg, *.jpeg, *.png)
+                            </label>
+
+
+                            <img id="photo" src="@defaultPhoto"
+                                 class="img-responsive img-rounded box-info" style="border: 1px solid #ddd;"
+                                 width="175" height="175" alt="Ảnh quảng cáo">
+
+
+                            @*<input type="file" class="form-control" name="photoUploaded" accept="image/*"
+                                onchange="document.getElementById('photo').src = window.URL.createObjectURL(this.files[0])" />*@
+
+                            @*@Html.TextBoxFor(m => m.Images, new { @class = "form-control box_input", @id = "pic", @type = "file", @size = "20", @accept = "image/*" , @onchange = "document.getElementById('xoafile_pic').style.display='inline-block'" })*@
+
+                            @Html.TextBox("photoUploaded", null, new
+                            {
+                                @class = "form-control",
+                                @id = "pic",
+                                @type = "file",
+                                @size = "20",
+                                @accept = "image/*",
+                           @onchange = "document.getElementById('photo').src = window.URL.createObjectURL(this.files[0]); document.getElementById('xoafile_pic').style.display='inline-block';"
+                            })
+
+
+
+                            <button style="display: none;" id="xoafile_pic" type="button" onclick="xoafile()">
+                                Xóa
+                                File
+                            </button>
+
+                        </div>
+
+                        <div class="mb-3" style="margin-top:20px">
+
+                            <input type="submit" class="btn btn-pink waves-effect waves-light" name="Submit" value="Gửi yêu cầu">
+
+                        </div>
+                    }
+
+
+
+                    @*<form>
+
+                        <div class="mb-3" style="margin-top:15px">
+                            <label for="example-select" class="form-label">Nội dung câu hỏi<span class="red-require" style="color:red">*</span></label>
+                            <textarea class="form-control box_input" type="text" name="title" id="title" value="" style="width: 1733px; height: 170px; max-block-size: 330px; max-width:100% ;min-width:100%"></textarea>
+                        </div>
+
+                        <div class="mb-3" style="margin-top:15px">
+                            <label for="example-fileinput" class="form-label">
+                                Tập tin minh họa nếu có(*.gif, *.jpg, *.jpeg, *.png)
+                            </label>
+                            <input class="form-control box_input" id="pic" type="file" name="pic" size="20" onchange="document.getElementById('xoafile_pic').style.display='inline-block'">
+                            <button style="display: none;" id="xoafile_pic" type="button" onclick="xoafile()">
+                                Xóa
+                                File
+                            </button>
+                            <script>
+                                function xoafile() {
+                                    document.getElementById('pic').value = '';
+                                    $("#xoafile_pic").css("display", "none");
+                                }</script>
+                        </div>
+
+                        <div class="mb-3" style="margin-top:20px">
+                            <input type="hidden" value="4a2ef89778d2a1894740557dcb1d97c8" name="anti_spam">
+                            <input type="submit" class="btn btn-pink waves-effect waves-light" name="Submit" value="Gửi yêu cầu" onclick="SelectAll('NGUOIXULY')">
+                        </div>
+
+                        </form>*@
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function xoafile() {
+        document.getElementById('pic').value = '';
+        $("#xoafile_pic").css("display", "none");
+    }
+</script>

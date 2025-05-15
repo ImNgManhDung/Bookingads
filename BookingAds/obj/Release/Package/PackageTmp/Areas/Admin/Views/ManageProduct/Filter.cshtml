@@ -1,0 +1,114 @@
+﻿@model BookingAds.Areas.Admin.Models.ManageProduct.ViewManageBookingAds
+@{
+    Layout = null;
+}
+
+<ul class="pagination" style="display: flex; justify-content: center; align-items: center;">
+    <li id="btnPrev">
+        <a href="javascript:void(0)"><span class="glyphicon glyphicon-chevron-left"></span></a>
+    </li>
+    <li>
+        <input id="currentPage" class="input-sm" 
+               style="max-width: 55px; outline: none; border: 1px solid #ddd; height: 34px;" 
+               type="number" min="1" 
+               value="@Model.CurrentPage" />
+    </li>
+    <li>
+        <span>/</span>
+    </li>
+    <li>
+        <span>@Model.TotalPage trang</span>
+    </li>
+    <li id="btnNext">
+        <a href="javascript:void(0)"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </li>
+</ul>
+
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            @if (Model.Data.Count == 0)
+            {
+                <p class="text-center" style="font-weight: bold;">Không có quảng cáo nào</p>
+            }
+            @foreach (var product in Model.Data)
+            {
+                <div class="col-lg-3 col-md-4 col-sm-6" style="padding: 2px 3px;">
+                    <div class="card mb-4 box-shadow" style="background-color: #eee">
+                        <img class="card-img-top thumbnail center-block"
+                             src="~/Images/Products/@product.Photo"
+                             style="height: 200px; width: 250px; object-fit: contain;">
+                        <div class="card-body" style="padding-left: 20px;">
+                            <h3 class="card-text text-center">@product.ProductName</h3>
+                            @*<p>Số lượng: @product.Quantity</p>*@
+                            <p>Loại: @product.CatelogProduct.CatelogName</p>
+                            <p>
+                                Trạng thái hiện tại: <span class=@(product.IsLocked ? "text-danger" : "text-success") style="font-weight: bold;">
+                                    @(product.IsLocked ? "Đã ẩn" : "Đang hiển thị")
+                                </span>
+                            </p>
+                            <div style="display: flex; align-items: center; justify-content: space-around;">
+                                <strong class="text-muted text-info">
+                                    @product.Price.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("vi-VN"))
+                                </strong>
+                                <div class="btn-group">
+                                    <a href="~/Admin/ManageProduct/Edit/@product.ProductID" title="Sửa" class="btn btn-sm btn-warning">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </a>
+                                    @if (product.IsLocked)
+                                    {
+                                        <button type="button" title="Khôi phục" data-toggle="modal"
+                                                data-target="#delete-@product.ProductID" class="btn btn-sm btn-success">
+                                            <span class="glyphicon glyphicon-repeat"></span>
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button type="button" title="Xóa tạm" data-toggle="modal"
+                                                data-target="#delete-@product.ProductID" class="btn btn-sm btn-danger">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @*Model Delete*@
+                <div class="modal fade" id="delete-@product.ProductID" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="border-radius: 10px;">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                </button>
+                                <h4 class="modal-title custom_align" id="Heading">@(product.IsLocked ? "Hiển thị" : "Ẩn đi") thông tin quảng cáo</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="alert alert-danger">
+                                    <span class="glyphicon glyphicon-warning-sign"></span>
+                                    Bạn có chắc chắn @(product.IsLocked ? "hiển thị" : "ẩn đi") thông tin quảng cáo này không?
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btnUpdateProductStatus btn btn-success"
+                                        data-dismiss="modal"
+                                        data-id="@product.ProductID"
+                                        data-url=@(product.IsLocked ? "/Admin/ManageProduct/Restore" : "/Admin/ManageProduct/SoftDelete")
+                                        type="button">
+                                    <span class="glyphicon glyphicon-ok-sign"></span> Đồng ý
+                                </button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                    Từ chối
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

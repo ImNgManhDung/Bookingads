@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Admin Dashboard</title>
+    @RenderSection("styles", required: false)
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        html {
+            overflow-y: auto;
+        }
+
+        .error-msg {
+            color: red;
+            font-weight: bold;
+        }
+
+        .glyphicon.spinning {
+            animation: spin 1s infinite linear;
+            -webkit-animation: spin2 1s infinite linear;
+        }
+
+        @@keyframes spin {
+            from {
+                transform: scale(1) rotate(0deg);
+            }
+
+            to {
+                transform: scale(1) rotate(360deg);
+            }
+        }
+
+        @@-webkit-keyframes spin2 {
+            from {
+                -webkit-transform: rotate(0deg);
+            }
+
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @@-o-keyframes fadeIt {
+          0%   { background-color: #FFFFFF; }
+          50%  { background-color: #AD301B; }
+          100% { background-color: #FFFFFF; }
+        }
+
+        @@keyframes fadeIt {
+          0%   { background-color: #FFFFFF; }
+          50%  { background-color: #AD301B; }
+          100% { background-color: #FFFFFF; }
+        }
+
+        .backgroundAnimated{    
+            background-image:none !important; 
+                 -o-animation: fadeIt 5s ease-in-out; 
+                    animation: fadeIt 5s ease-in-out; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container-fluid body-content">
+        <div class="row">
+            @Html.Partial("_LeftSideBarMenu")
+            <div class="col-lg-10 col-md-12 col-xs-12 col-sm-12 container">
+                @RenderBody()
+                
+                <footer class="text-center">
+                    @*style="position: fixed; bottom: 5px; left: 50%; transform: translateX(-50%);"*@
+                    <p>&copy; @DateTime.Now.Year - BookingAds</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/signalR")
+    <script src="~/signalr/hubs"></script>
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/Common/Chat/admin-chat.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

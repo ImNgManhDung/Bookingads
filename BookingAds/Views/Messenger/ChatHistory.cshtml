@@ -1,0 +1,46 @@
+﻿@using BookingAds.Modules
+@using BookingAds.Entities
+@model BookingAds.Models.Messenger.ViewChatHistory
+@{
+    Layout = null;
+    var currentUser = ConvertUtils<Account>.Deserialize(User.Identity.Name);
+}
+
+<input type="hidden" id="countChatHistory" value="@Model.Messages.Count" />
+<input type="hidden" id="oldCountChatHistory" value="0" />
+@foreach (var message in Model.Messages.Reverse())
+{
+    var createdTime = DateTimeUtils.ConvertToExposeTime(message.CreatedTime);
+    var readTime = DateTimeUtils.ConvertToExposeTime(message.ReadTime).Trim();
+    var defaultDatetime = "01/01/0001 00:00:00 AM";
+
+    // When I am the sender
+    if (currentUser.UserName == message.SenderID)
+    {
+        <li class="chat-my-message clearfix" title="@(createdTime != null ? $"Đã gửi vào lúc {createdTime}" : "")">
+            <div class="message my-message float-right">
+                @message.Content
+            </div>
+            <div class="message-data float-right message-sender">
+                @if (readTime != null && readTime != defaultDatetime)
+                {
+                    <small class="message-data-time">
+                        <i class="fa fa-check"></i>
+                        @readTime
+                    </small>
+                }
+            </div>
+        </li>
+    }
+
+    // When I am the receiver
+    if (currentUser.UserName == message.ReceiverID)
+    {
+        <li class="clearfix message-receiver" title="@(readTime != null && readTime != defaultDatetime ? $"Bạn đã xem vào lúc {readTime}" : "")">
+            <div class="message-data">
+                <span class="message-data-time">@createdTime</span>
+            </div>
+            <div class="message other-message">@message.Content</div>
+        </li>
+    }
+}

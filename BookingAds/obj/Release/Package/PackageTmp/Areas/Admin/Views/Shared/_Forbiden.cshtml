@@ -1,0 +1,29 @@
+﻿@using BookingAds.Constants
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Forbiden Error</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="text-center text-danger" style="font-weight: bold;">
+        Lỗi 403: Không được phép truy cập vào trang này !!!
+    </div>
+    @if (ViewData.ContainsKey(RoleConstant.ADMIN))
+    {
+        @Html.ActionLink("Trở về", "Index", "", new { area = "Admin" },
+            new { @class = "btn btn-success", @style = "display: block; margin: 2px auto; width: 120px;" })
+    } else
+    {
+        @Html.ActionLink("Trở về", "Index", "", new { area = "" },
+            new { @class = "btn btn-success", @style = "display: block; margin: 2px auto; width: 120px;" })
+    }
+</body>
+</html>

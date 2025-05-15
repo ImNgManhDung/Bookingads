@@ -1,0 +1,292 @@
+﻿@model BookingAds.Areas.Admin.Models.Dashboard.ViewIndexDashboard
+@{
+	ViewBag.Title = "Trang dashboard của quản trị viên";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+	  integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+	  crossorigin="anonymous" referrerpolicy="no-referrer" />
+@section Styles {
+	<style>
+		/* chart */
+		p {
+			margin-top: 2rem;
+			font-size: 13px;
+		}
+
+		#bar-chart {
+			width: 400px;
+			height: 300px;
+			position: relative;
+		}
+
+		#line-chart {
+			width: 400px;
+			height: 300px;
+			position: relative;
+		}
+
+			#bar-chart::before, #line-chart::before {
+				content: "";
+				position: absolute;
+				display: block;
+				width: 240px;
+				height: 30px;
+				left: 155px;
+				top: 254px;
+				/*background: #FAFAFA;
+		box-shadow: 1px 1px 0 0 #DDD;*/
+			}
+
+		#pie-chart {
+			width: 400px;
+			height: 250px;
+			position: relative;
+		}
+
+			#pie-chart::before {
+				content: "";
+				position: absolute;
+				display: block;
+				width: 120px;
+				height: 115px;
+				left: 315px;
+				top: 0;
+				/*background: #FAFAFA;
+			box-shadow: 1px 1px 0 0 #DDD;*/
+			}
+
+			#pie-chart::after {
+				content: "";
+				position: absolute;
+				display: block;
+				top: 260px;
+				left: 70px;
+				width: 170px;
+				height: 2px;
+				/*background: rgba(0,0,0,0.1);
+			border-radius: 50%;
+			box-shadow: 0 0 3px 4px rgba(0,0,0,0.1);*/
+			}
+
+		@@media only screen and (max-width: 425px) {
+			#bar-chart {
+				width: 400px;
+				height: 300px;
+				position: relative;
+			}
+
+			#line-chart {
+				width: 400px;
+				height: 300px;
+				position: relative;
+			}
+
+			#pie-chart {
+				width: 400px;
+				height: 250px;
+				position: relative;
+			}
+		}
+
+		@@media only screen and (min-width: 0px) and (max-width: 768px) {
+			.body-content {
+				padding-left: 15px;
+				padding-right: 15px;
+				overflow-x: hidden;
+				overflow-y: auto;
+			}
+
+			#bar-chart {
+				width: 350px;
+				height: 300px;
+				position: relative;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+
+			#line-chart {
+				width: 200px;
+				height: 300px;
+				position: relative;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+
+			#pie-chart {
+				width: 350px;
+				height: 250px;
+				position: relative;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+		}
+
+		.distance {
+			margin: 2px 15px;
+		}
+
+		.text-bold {
+			font-weight: bold;
+		}
+
+		.chart-flex {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-items: start;
+		}
+
+		.info-box {
+			display: block;
+			min-height: 90px;
+			background: #fff;
+			width: 100%;
+			box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+			border-radius: 2px;
+			margin-bottom: 15px;
+			cursor: pointer;
+			text-decoration: none;
+			color: #333;
+		}
+
+		.info-box-content {
+			padding: 5px 10px;
+			margin-left: 90px;
+			text-decoration: none;
+		}
+
+		.info-box-icon {
+			border-top-left-radius: 2px;
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+			border-bottom-left-radius: 2px;
+			display: block;
+			float: left;
+			height: 90px;
+			width: 90px;
+			text-align: center;
+			font-size: 45px;
+			line-height: 90px;
+			background: rgba(0, 0, 0, 0.2);
+			color: white;
+		}
+
+		.info-box-text {
+			text-transform: uppercase;
+		}
+
+		.info-box-number {
+			display: block;
+			font-weight: bold;
+			font-size: 18px;
+		}
+
+		.mt-container {
+			margin-top: 20px;
+		}
+
+		.bg-employee {
+			background-color: dodgerblue;
+		}
+
+		.bg-product {
+			background-color: lightcoral;
+		}
+
+		.bg-order {
+			background-color: green;
+		}
+
+		.bg-money {
+			background-color: #dddd14;
+		}
+
+		.text-static {
+			cursor: default;
+			text-decoration: none;
+		}
+	</style>
+}
+
+<ol class="breadcrumb" style="background-color: #fff;">
+	<li><a href="~/Admin">Trang chủ</a></li>
+	<li class="active">Thống kê</li>
+</ol>
+
+<div class="container mt-container">
+	<div class="row">
+		<div class="col-md-3 col-sm-6 col-xs-12">
+			<a href="~/Admin/ManageEmployee" class="info-box">
+				<span class="info-box-icon bg-employee"><i class="fa-solid fa-user-group"></i></span>
+				<div class="info-box-content">
+					<span class="info-box-text">Khách hàng</span>
+					<span class="info-box-number">@Model.CountEmployee</span>
+				</div>
+
+			</a>
+
+		</div>
+
+		<div class="col-md-3 col-sm-6 col-xs-12">
+			<a href="~/Admin/ManageProduct" class="info-box">
+				<span class="info-box-icon bg-product"><i class="fa-solid fa-border-all"></i></span>
+				<div class="info-box-content">
+					<span class="info-box-text">Quảng cáo</span>
+					<span class="info-box-number">@Model.CountProduct</span>
+				</div>
+
+			</a>
+
+		</div>
+
+
+		<div class="clearfix visible-sm-block"></div>
+		<div class="col-md-3 col-sm-6 col-xs-12">
+			<a href="~/Admin/ManageOrder" class="info-box">
+				<span class="info-box-icon bg-order"><i class="fa-solid fa-bag-shopping"></i></span>
+				<div class="info-box-content">
+					<span class="info-box-text">Đơn đặt hàng</span>
+					<span id="totalOrder" class="info-box-number">@Model.CountOrder</span>
+				</div>
+
+			</a>
+
+		</div>
+
+		<div class="col-md-3 col-sm-6 col-xs-12">
+			<div class="info-box text-static">
+				<span class="info-box-icon bg-money"><i class="fa-solid fa-money-bill"></i></span>
+				<div class="info-box-content">
+					<span class="info-box-text">Tổng doanh thu</span>
+					<span class="info-box-number">@Model.CountRevenue</span>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div id="loadHTML"></div>
+
+	<div id="areaChart" class="row chart-flex" style="display: none;">
+		<div class="col-md-5 col-xs-12">
+			<h5 class="text-center text-bold">Thống kê quảng cáo được đặt nhiều nhất</h5>
+			<div id="pie-chart"></div>
+		</div>
+
+		<div class="col-md-5 col-xs-12">
+			<h5 class="text-center text-bold">Thống kê doanh thu tháng hiện tại</h5>
+			<div id="line-chart"></div>
+		</div>
+	</div>
+</div>
+
+
+
+@section Scripts {
+	<script src="~/Scripts/Chart/loader.js"></script>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script src="~/Scripts/Admin/Dashboard/index.js"></script>
+}

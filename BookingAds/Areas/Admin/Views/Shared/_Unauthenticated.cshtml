@@ -1,0 +1,21 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Unauthenticated Error</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="text-center text-danger" style="font-weight: bold;">
+        Lỗi 401: Không được ủy quyền hoặc xác thực !!!
+    </div>
+    @Html.ActionLink("Trở về", "Login", "Account", new { area = "" },
+        new { @class = "btn btn-success", @style = "display: block; margin: 2px auto; width: 120px;" })
+</body>
+</html>

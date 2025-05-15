@@ -1,0 +1,224 @@
+﻿@model BookingAds.Models.Register.ViewRegister
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 450px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .title {
+            font-size: 28px;
+            color: royalblue;
+            font-weight: 600;
+            letter-spacing: -1px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding-left: 30px;
+        }
+
+            .title::before, .title::after {
+                position: absolute;
+                content: "";
+                height: 16px;
+                width: 16px;
+                border-radius: 50%;
+                left: 0px;
+                background-color: royalblue;
+            }
+
+            .title::before {
+                width: 18px;
+                height: 18px;
+                background-color: royalblue;
+            }
+
+            .title::after {
+                width: 18px;
+                height: 18px;
+                animation: pulse 1s linear infinite;
+            }
+
+        .message, .signin {
+            color: rgba(88, 87, 87, 0.822);
+            font-size: 14px;
+        }
+
+        .signin {
+            text-align: center;
+        }
+
+            .signin a {
+                color: royalblue;
+            }
+
+                .signin a:hover {
+                    text-decoration: underline royalblue;
+                }
+
+        .flex {
+            display: flex;
+            width: 100%;
+            gap: 6px;
+        }
+
+        .form label {
+            position: relative;
+        }
+
+            .form label .input {
+                width: 100%;
+                padding: 10px 10px 20px 10px;
+                outline: 0;
+                border: 1px solid rgba(105, 105, 105, 0.397);
+                border-radius: 10px;
+            }
+
+                .form label .input + span {
+                    position: absolute;
+                    left: 10px;
+                    top: 15px;
+                    color: grey;
+                    font-size: 0.9em;
+                    cursor: text;
+                    transition: 0.3s ease;
+                }
+
+                .form label .input:placeholder-shown + span {
+                    top: 15px;
+                    font-size: 0.9em;
+                }
+
+                .form label .input:focus + span, .form label .input:valid + span {
+                    top: 30px;
+                    font-size: 0.7em;
+                    font-weight: 600;
+                }
+
+                .form label .input:valid + span {
+                    color: red;
+                }
+
+        .submit {
+            border: none;
+            outline: none;
+            background-color: royalblue;
+            padding: 10px;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 16px;
+            transform: .3s ease;
+        }
+
+            .submit:hover {
+                background-color: rgb(56, 90, 194);
+            }
+
+        @@keyframes pulse {
+            from {
+                transform: scale(0.9);
+                opacity: 1;
+            }
+
+            to {
+                transform: scale(1.8);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body style=" background-color: #f8f9fd;">
+
+    <div class="container" style="
+    margin-right: 100px;
+    margin-top: 150px;
+">
+
+        @using (Html.BeginForm("Index", "Register", FormMethod.Post, new { accept_charset = "UTF-8", @class = "form", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <p class="title">Đăng ký tài khoản </p>
+            <p class="message">Đăng ký tài khoản để sử dụng dịch vụ </p>
+            <div class="flex" >
+                <label>
+                    @*<input required="" placeholder="" type="text" class="input">*@
+
+                    @Html.TextBoxFor(m => m.FirstName, new { @class = "input", type = "text", placeholder = "Nhập họ của bạn" })
+                    <span>@Html.ValidationMessageFor(m => m.FirstName, "")</span>
+                </label>
+
+                <label>
+                    @*<input required="" placeholder="" type="text" class="input">*@
+                    @Html.TextBoxFor(m => m.LastName, new { @class = "input", type = "text", placeholder = "Nhập tên của bạn" })
+                    <span>@Html.ValidationMessageFor(m => m.LastName, "")</span>
+                </label>
+            </div>
+
+            <label>
+                @*<input required="" placeholder="" type="email" class="input" style="max-width: 410px;">*@
+                @Html.TextBoxFor(m => m.Email, new { @class = "input", type = "text", placeholder = "Nhập email của bạn", style = "max-width: 410px;" })
+                <span>@Html.ValidationMessageFor(m => m.Email, "")</span>
+            </label>
+
+            <label style="display: flex; align-items: center; height: 100%;">
+                <span class="input-group-addon" style="height: 52px; width: 50px; display: flex; justify-content: center; align-items: center; ">(+84)</span>
+
+                @Html.TextBoxFor(m => m.Phone, new { @class = "input", type = "text", placeholder = "Nhập số điện thoại", style = "max-width: 410px; border-radius: 0px 10px 10px 0px;" })
+                <span>@Html.ValidationMessageFor(m => m.Phone, "", new { @class = "field-validation-valid" })</span>
+            </label>
+
+
+
+            <select class="form-control" id="gender" name="Gender" style="
+    border-radius: 8px;
+    height: 52px;
+    max-width: 408px;
+">
+                <option value="1" selected="selected">
+                    Nam
+                </option>
+                <option value="0">
+                    Nữ
+                </option>
+            </select>
+
+            <label>
+                @*<input required="" placeholder="" type="password" class="input" style="max-width: 410px;">*@
+                @Html.TextBoxFor(m => m.Password, new { @class = "input", type = "password", placeholder = "Nhập mật khẩu", style = "max-width: 410px;" })
+                <span>@Html.ValidationMessageFor(m => m.Password, "")</span>
+
+            </label>
+            <label>
+                @*<input required="" placeholder="" type="password" class="input" style="max-width: 410px;">*@
+                @Html.TextBoxFor(m => m.ConfirmPassword, new { @class = "input", type = "password", placeholder = "Nhập lại", style = "max-width: 410px;" })
+                <span>@Html.ValidationMessageFor(m => m.ConfirmPassword, "")</span>
+            </label>
+            <button class="submit">Đăng Ký</button>
+            <p class="signin">Đã có tài khoản ? <a href="~/Account/Login">Đăng Nhập</a> </p>
+        }
+
+
+    </div>
+
+</body>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+</html>

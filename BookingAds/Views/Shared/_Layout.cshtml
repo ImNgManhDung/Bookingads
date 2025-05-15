@@ -1,0 +1,149 @@
+﻿<html style="height: auto; min-height: 100%;">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BookingAds | @ViewBag.Title</title>
+
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+
+    <link rel="stylesheet" href="~/Content/a.css">
+
+    <link rel="stylesheet" href="~/Content/bb.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
+
+    @RenderSection("styles", required: false)
+
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+        html {
+            overflow-y: auto;
+        }
+
+        body {
+            background: aliceblue;
+        }
+
+        .error-msg {
+            color: red;
+            font-weight: bold;
+        }
+
+        .glyphicon.spinning {
+            animation: spin 1s infinite linear;
+            -webkit-animation: spin2 1s infinite linear;
+        }
+
+        @@keyframes spin {
+            from {
+                transform: scale(1) rotate(0deg);
+            }
+
+            to {
+                transform: scale(1) rotate(360deg);
+            }
+        }
+
+        @@-webkit-keyframes spin2 {
+            from {
+                -webkit-transform: rotate(0deg);
+            }
+
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @@-o-keyframes fadeIt {
+            0% {
+                background-color: #FFFFFF;
+            }
+
+            50% {
+                background-color: #AD301B;
+            }
+
+            100% {
+                background-color: #FFFFFF;
+            }
+        }
+
+        @@keyframes fadeIt {
+            0% {
+                background-color: #FFFFFF;
+            }
+
+            50% {
+                background-color: #AD301B;
+            }
+
+            100% {
+                background-color: #FFFFFF;
+            }
+        }
+
+        .backgroundAnimated {
+            background-image: none !important;
+            -o-animation: fadeIt 5s ease-in-out;
+            animation: fadeIt 5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="skin-blue sidebar-mini" style="height: auto; min-height: 100%; color: #444444; background-color: #ebeff2; ">
+    <div class="" style="height: auto; min-height: 100%;">
+
+
+        @RenderPage("~/Views/Shared/_Header.cshtml")
+        <aside class="main-sidebar">
+            @RenderPage("~/Views/Shared/_LeftSideBar.cshtml")
+
+        </aside>
+
+        <div class="content-wrapper">
+            <section class="content-header" style="padding:0px;">
+                @RenderBody()
+            </section>
+        </div>
+    </div>
+    
+       
+
+    
+    <div id="areaMovePageTop" class="" style="position: fixed;right: 1rem;bottom: 1rem;">
+        <div class="btn btn-primary" style="border-radius: 30px;padding: 0;">
+            <div style="display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        color: #fff;
+                        width: 40px;
+                        height: 40px;
+                        cursor: pointer;">
+                <i class="glyphicon glyphicon-menu-up"></i>
+            </div>
+        </div>
+    </div>
+    <script>
+
+
+
+
+    </script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/signalR")
+    <script src="~/signalr/hubs"></script>
+    <script src="~/Scripts/demo.js"></script>
+    <script src="~/Scripts/admin.js"></script>
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/Common/Chat/employee-chat.js"></script>
+    @RenderSection("scripts", required: false)
+
+
+</body>
+</html>

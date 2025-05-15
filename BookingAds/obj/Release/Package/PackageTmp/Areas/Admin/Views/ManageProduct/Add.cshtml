@@ -1,0 +1,115 @@
+﻿@using BookingAds.Modules
+@model BookingAds.Areas.Admin.Models.ManageProduct.ViewCreateProduct
+@{
+    ViewBag.Title = ViewBag.Title;
+    var defaultPhoto = "/Images/defaultUpload.png";
+    var catelogProducts = SelectListUtils.GetCatelogProducts();
+}
+<style>
+    .box.box-info {
+        border-top-color: #00c0ef;
+    }
+
+    .box {
+        position: relative;
+        border-radius: 3px;
+        background: #ffffff;
+        border-top: 3px solid #d2d6de;
+        margin-bottom: 20px;
+        width: 100%;
+        box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+        padding: 5px;
+        margin: 3px 0;
+    }
+
+    .input-distance {
+        margin-bottom: 10px;
+    }
+</style>
+<ol class="breadcrumb" style="background-color: #fff;">
+    <li><a href="~/Admin/Dashboard">Trang chủ</a></li>
+    <li><a href="~/Admin/ManageProduct">Quản lý quảng cáo</a></li>
+    <li class="active">Thêm quảng cáo</li>
+</ol>
+
+@using (Html.BeginForm("Save", "ManageProduct", FormMethod.Post, new{ enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    if (TempData.ContainsKey("error_message"))
+    {
+        <div class="err-msg text-center" style="color: red; font-weight: bold;">@TempData["error_message"]</div>
+    }
+    <div id="boxItem">
+        <div class="box box-info">
+            <div style="display: flex; flex-direction: row; justify-content: center">
+                <div class="box-body" style="position: relative; margin-right: 30px;">
+                    @Html.HiddenFor(m => m.ProductID)
+                    @if (string.IsNullOrWhiteSpace(Model.Photo))
+                    {
+                    <img id="photo" src="@defaultPhoto"
+                         class="img-responsive img-rounded box-info" style="border: 1px solid #ddd;" 
+                            width="175" height="175" alt="Ảnh quảng cáo">
+                    } else
+                    {
+                        <img id="photo" src="~/Images/Products/@Model.Photo"
+                             class="img-responsive img-rounded box-info" style="border: 1px solid #ddd;" 
+                                width="175" height="175" alt="Ảnh quảng cáo">
+                    }
+                    <input name="photoUploaded" type="file" 
+                                accept="image/*"
+                                style="position: absolute; left: 50%; top: 0%; height:175px; 
+                                width: 175px; transform: translateX(-50%); opacity: 0;"
+                           onchange="document.getElementById('photo').src = window.URL.createObjectURL(this.files[0])" />
+                    @Html.ValidationMessageFor(m => m.Photo, "", new { @class = "error-msg" })
+                </div>
+
+            <div class="box-body">
+                <div class="input-distance">
+                    <div class="input-group">
+                        <span class="input-group-addon">Tên quảng cáo</span>
+                        @Html.TextBoxFor(m => m.ProductName, new { @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.ProductName, "", new { @class = "error-msg" })
+                </div>
+
+                <div class="input-distance">
+                    <div class="input-group">
+                        <span class="input-group-addon">Số lượng</span>
+                        @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control", type = "number" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Quantity, "", new { @class = "error-msg" })
+                </div>
+
+                <div class="input-distance">
+                    <div class="input-group">
+                        <span class="input-group-addon">Đơn giá</span>
+                        @Html.TextBoxFor(m => m.Price, new { @class = "form-control", type = "number" })
+                        <span class="input-group-addon">VNĐ</span>
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Price, "", new { @class = "error-msg" })
+                </div>
+
+            <div class="input-distance">
+                <div class="input-group">
+                    <span class="input-group-addon">Loại đồ ăn</span>
+                    @Html.DropDownListFor(m => m.CatelogProductsID, catelogProducts, new { @class = "form-control" })
+                    @*<select class="form-control" name="catelogProductID" id="selectCatelogProduct">
+                        @foreach (var item in SelectListUtils.GetCatelogProducts())
+                        {
+                            <option value="@item.Value">@item.Text</option>
+                        }
+                    </select>*@
+                </div>
+                @Html.ValidationMessageFor(m => m.CatelogProductsID, "", new { @class = "error-msg" })
+            </div>
+
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box-footer" style="display: flex; align-items: center; justify-content: space-evenly; margin-top: 10px;">
+        <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-saved"></i> Lưu lại</button>
+        <a href="~/Admin/ManageProduct" class="btn btn-default"><i class="glyphicon glyphicon-log-out"></i> Quay lại</a>
+    </div>
+}

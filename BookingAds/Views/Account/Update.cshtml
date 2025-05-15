@@ -1,0 +1,329 @@
+﻿@using System.Globalization
+@using BookingAds.Areas.Admin.Models.ManageEmployee
+@using BookingAds.Modules
+@using BookingAds.Entities
+@model BookingAds.Common.Models.Account.ViewUpdateEmployeeInfo
+@{
+    ViewBag.Title = "Cập nhật thông tin cá nhân";
+    var currentEmployee = ConvertUtils<Employee>.Deserialize(User.Identity.Name);
+    
+    var employeeAvatar = string.IsNullOrEmpty(Model.Avatar) 
+        ? $"/Images/Employees/{currentEmployee.Avatar}" 
+        : $"/Images/Employees/{Model.Avatar}";
+    
+    var employeeCoin = Model.Coin == 0
+        ? currentEmployee.Coin.ToString("C", CultureInfo.GetCultureInfo("vi-VN"))
+        : Model.Coin.ToString("C", CultureInfo.GetCultureInfo("vi-VN"));
+
+    var employeeUserName = string.IsNullOrEmpty(Model.UserName)
+        ? currentEmployee.UserName
+        : Model.UserName;
+
+    var employeeFullName = string.IsNullOrEmpty(Model.FirstName) || string.IsNullOrEmpty(Model.LastName)
+        ? $"{currentEmployee.LastName} {currentEmployee.FirstName}"
+        : $"{Model.LastName} {Model.FirstName}";
+}
+
+<style>
+    .account-settings .user-profile {
+        margin: 0 0 1rem 0;
+        padding-bottom: 1rem;
+        text-align: center;
+    }
+
+    .account-settings .user-profile .user-avatar {
+        margin: 0 0 1rem 0;
+    }
+
+    .account-settings .user-profile .user-avatar img {
+        width: 90px;
+        height: 90px;
+        -webkit-border-radius: 100px;
+        -moz-border-radius: 100px;
+        border-radius: 100px;
+    }
+
+    .account-settings .user-profile h5.user-name {
+    margin: 0 0 0.5rem 0;
+    }
+
+    .account-settings .user-profile h6.user-email {
+    margin: 0;
+        font-weight: 400;
+    color: #9fa8b9;
+    }
+
+    .account-settings .about {
+        margin: 2rem 0 0 0;
+        text-align: center;
+    }
+
+    .account-settings .about h5 {
+        margin: 0 0 15px 0;
+        color: #007ae1;
+    }
+
+    .account-settings .about p {
+        font-size: 0.825rem;
+    }
+
+    .form-control {
+        border: 1px solid #cfd1d8;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+        font-size: 1.2rem;
+        background: #ffffff;
+        color: #2e323c;
+    }
+
+    .card {
+        background: #ffffff;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 0;
+        margin-bottom: 1rem;
+        padding: 8px 15px;
+    }
+
+    #btnUpdateAvatar {
+        position: absolute;
+        right: 30%;
+        bottom: 0;
+        box-shadow: 0 1px 1px 1px rgb(0 0 0 / 6%);
+    padding: 2px 5px;
+        background: #fff;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    #avatarUploaded {
+        width: 20px;
+        opacity: 0;
+        position: absolute;
+        z-index: 1;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+</style>
+
+<div class="container" style="margin-top: 5%;">
+    <div class="row gutters">
+        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="account-settings">
+                        <div class="user-profile">
+                            <div class="user-avatar" style="position: relative;">
+                                <img style="object-fit: contain;" id="employeeAvatar" src="@employeeAvatar"
+                                     alt="Ảnh đại diện">
+                                <span id="btnUpdateAvatar">
+                                    <input type="file"
+                                           id="avatarUploaded"
+                                           name="avatarUploaded"
+                                           title="Chọn ảnh đại diện"
+                                           accept="image/*" />
+                                    <i class="glyphicon glyphicon-camera text-success"></i>
+                                </span>
+                            </div>
+                            <h5 id="employeeFullName" class="user-name text-capitalize" style="font-weight: bold;">
+                                @employeeFullName
+                            </h5>
+                          
+                            <h6 class="text-muted">
+                                <span><i class="glyphicon glyphicon-credit-card text-warning"></i></span>
+                                <span class="text-warning" style="font-weight: bold;">
+                                    @employeeCoin
+                                </span>
+                            </h6>
+
+                            <a href="/Account/Changepassword" style="background-color: #bcbcbc; color: white; padding: 5px; border-radius: 10px;" > Đổi mật khẩu</a>
+                        </div>
+                        <div class="about">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+                @using (Html.BeginForm("Update", "Account", FormMethod.Post, new
+                {
+                    accept_charset = "UTF-8",
+                    role = "form"
+                }))
+                {
+                    var keyErrorUpdateEmployeeInfo = "Key Error Update Employee Info";
+                    @Html.AntiForgeryToken()
+
+                    <div class="card-body">
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <h5 class="mb-2 text-primary text-center" style="font-weight: bold;">
+                                    Thông tin chi tiết
+                                </h5>
+                                @if (ViewData.ModelState.Keys.Contains(keyErrorUpdateEmployeeInfo))
+                                {
+                                    <div id="errorUpdateEmployeeInfo" class="error-msg text-center">
+                                        @ViewData.ModelState.SingleOrDefault(m => m.Key == keyErrorUpdateEmployeeInfo).Value.Errors.SingleOrDefault().ErrorMessage
+                                    </div>
+                                }
+                                @if (!string.IsNullOrWhiteSpace(ViewBag.Success))
+                                {
+                                    <p id="successUpdateEmployeeInfo"
+                                       class="text-success text-center"
+                                       style="font-weight: bold;">@ViewBag.Success</p>
+                                }
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.UserName)
+                                    @Html.HiddenFor(m => m.UserName, new
+                                   {
+                                       @class = "form-control",
+                                       value = employeeUserName,
+                                   })
+                                    @Html.TextBoxFor(m => m.UserName, new
+                                   {
+                                       @class = "form-control",
+                                       @readonly = "true",
+                                       disabled = "true",
+                                       value = employeeUserName,
+                                   })
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.LastName)
+                                        @Html.TextBoxFor(m => m.LastName, new
+                                        {
+                                            @class = "form-control",
+                                            placeholder = "Nhập họ và tên đệm...",
+                                        })
+                                        @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "error-msg" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.FirstName)
+                                    @Html.TextBoxFor(m => m.FirstName, new
+                                    {
+                                        @class = "form-control",
+                                        placeholder = "Nhập tên khách hàng...",
+                                    })
+                                    @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "error-msg" })
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Phone)
+                                    <div class="input-group">
+                                        <span class="input-group-addon">(+84)</span>
+                                        @Html.TextBoxFor(m => m.Phone, new
+                                        {
+                                            @class = "form-control",
+                                            placeholder = "Nhập số điện thoại cá nhân (Ví dụ: 3123456789)",
+                                        })
+                                    </div>
+                                    @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "error-msg" })
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="gender">Giới tính</label>
+                                    <select class="form-control" id="gender" name="Gender">
+                                        <option value="@FilterGender.Man"
+                                                selected="@(Model.Gender == FilterGender.Man)">
+                                            Nam
+                                        </option>
+                                        <option value="@FilterGender.Woman"
+                                                selected="@(Model.Gender == FilterGender.Woman)">
+                                            Nữ
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="text-right">
+                                    <a href="~/InformationBookingAds" id="submit" name="submit" class="btn btn-secondary">
+                                        Hủy bỏ
+                                    </a>
+                                    <button type="submit" id="btnUpdateEmployeeInfo" class="btn btn-success">
+                                        Cập nhật
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('form').each(function() {
+                this.reset();
+            });
+
+            // update fullname
+            const lastNameInput = $('#LastName').val();
+            const firstNameInput = $('#FirstName').val();
+            const employeeFullName = `${lastNameInput} ${firstNameInput}`;
+            $('#employeeFullNameNavbar').text(employeeFullName);
+
+            // update avatar
+            $('#btnUpdateAvatar').click(function (e) {
+                let isUpdateAvatar = window.confirm("Bạn có chắc chắn cập nhật lại ảnh đại diện không?");
+                if (!isUpdateAvatar) {
+                    e.preventDefault();
+                    return;
+                }
+
+                $('#avatarUploaded').change(function () {
+                    let fileInfo = $(this)[0].files[0];
+                    let src = window.URL.createObjectURL(fileInfo);
+                    $('#employeeAvatar').attr('src', src);
+                    $('#employeeAvatarNavbar').attr('src', src);
+
+                    // call ajax
+                    let dataDto = new FormData();
+                    dataDto.append('avatarUploaded', fileInfo);
+
+                    $.ajax({
+                        contentType: false, // Not to set any content header  
+                        processData: false, // Not to process data 
+                        url: '/Account/UpdateAvatar',
+                        method: "POST",
+                        data: dataDto,
+                        success: function (res) {
+                            if (res) {
+                                alert(res);
+                            }
+                        },
+                        error: function (err) {
+                            console.log("===> err: ", err);
+                        }
+                    });
+                });
+            });
+
+            // hide message
+            setTimeout(() => {
+                $('#errorUpdateEmployeeInfo').remove();
+            }, 3000);
+
+            setTimeout(() => {
+                $('#successUpdateEmployeeInfo').remove();
+            }, 3000);
+        });
+    </script>
+}

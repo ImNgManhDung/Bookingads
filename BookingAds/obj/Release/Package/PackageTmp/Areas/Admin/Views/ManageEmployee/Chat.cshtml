@@ -1,0 +1,458 @@
+﻿@using BookingAds.Modules
+@using BookingAds.Entities
+@model BookingAds.Areas.Admin.Models.ManageEmployee.ViewChat
+@{
+    ViewBag.Title = "Nhắn tin khách hàng";
+    var currentUser = ConvertUtils<Account>.Deserialize(User.Identity.Name);
+}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
+@section Styles{
+    <style>
+        .card {
+            background: #fff;
+            transition: .5s;
+            border: 0;
+            margin-bottom: 30px;
+            border-radius: .55rem;
+            position: relative;
+            width: 100%;
+            box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
+        }
+        .chat-app .people-list {
+            width: 280px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            padding: 20px;
+            z-index: 7
+        }
+
+        .chat-app .chat {
+            margin-left: 280px;
+            border-left: 1px solid #eaeaea
+        }
+
+        .people-list {
+            -moz-transition: .5s;
+            -o-transition: .5s;
+            -webkit-transition: .5s;
+            transition: .5s
+        }
+
+        .people-list .chat-list li {
+            padding: 10px 15px;
+            list-style: none;
+            border-radius: 3px
+        }
+
+        .people-list .chat-list li:hover {
+            background: #efefef;
+            cursor: pointer
+        }
+
+        .people-list .chat-list li.active {
+            background: #efefef
+        }
+
+        .people-list .chat-list li .name {
+            font-size: 15px;
+            width: 140px;
+        }
+
+        .people-list .chat-list img {
+            width: 45px;
+            border-radius: 50%
+        }
+
+        .people-list img {
+            float: left;
+            border-radius: 50%
+        }
+
+        .people-list .about {
+            float: left;
+            padding-left: 8px
+        }
+
+        .people-list .status {
+            color: #86c541;
+        }
+
+        .chat .chat-header {
+            padding: 15px 20px;
+            border-bottom: 2px solid #f4f7f6;
+        }
+
+        .chat .chat-header img {
+            float: left;
+            border-radius: 40px;
+            width: 40px;
+        }
+
+        .chat .chat-header .chat-about {
+            float: left;
+            padding-left: 10px;
+        }
+
+        .chat .chat-history {
+            padding: 20px;
+            border-bottom: 2px solid #fff;
+            height: 450px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .chat .chat-history ul {
+            padding: 0
+        }
+
+        .chat .chat-history ul li {
+            list-style: none;
+            margin-bottom: 5px;
+        }
+
+        .chat .chat-history ul li:last-child {
+            margin-bottom: 0px
+        }
+
+        .chat .chat-history .message-data {
+            margin-bottom: 15px
+        }
+
+        .chat .chat-history .message-data img {
+            border-radius: 40px;
+            width: 40px;
+        }
+
+        .chat .chat-history .message-data-time {
+            color: #434651;
+            padding-left: 6px;
+        }
+
+        .chat-my-message {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .chat .chat-history .message {
+            color: #444;
+            padding: 18px 20px;
+            line-height: 26px;
+            font-size: 16px;
+            border-radius: 7px;
+            display: inline-block;
+            position: relative
+        }
+
+        .chat .chat-history .message:after {
+            bottom: 100%;
+            left: 7%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+            border-bottom-color: #fff;
+            border-width: 10px;
+            margin-left: -10px
+        }
+
+        .my-message {
+            position: relative;
+        }
+
+        .chat .chat-history .my-message {
+            background: #efefef;
+            /*text-align: right;*/
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .chat .chat-history .other-message {
+            background: #e8f1f3;
+            text-align: left;
+        }
+
+        .chat .chat-message {
+            padding: 20px;
+        }
+
+        .online,
+        .offline,
+        .me {
+            margin-right: 2px;
+            font-size: 8px;
+            vertical-align: middle
+        }
+
+        .online {
+            color: #86c541
+        }
+
+        .offline {
+            color: #ddd;
+        }
+
+        .me {
+            color: #1d8ecd
+        }
+
+        .float-right {
+            float: right
+        }
+
+        .clearfix:after {
+            visibility: hidden;
+            display: block;
+            font-size: 0;
+            content: " ";
+            clear: both;
+            height: 0
+        }
+
+        #searchBoxEmployee {
+            display: flex;
+            justify-content: center;
+        }
+
+        .chat-message {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #chatContent {
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            /*height: 34px;*/
+            max-height: 150px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        #btnUploadFileChat {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .uploadFileChat {
+            position: absolute;
+            width: 41px;
+            height: 43px;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+        }
+
+        #listEmployees {
+            overflow-y: auto;
+            overflow-x: hidden;
+            height: 380px;
+            margin-top: 5px;
+        }
+
+        .message {
+            max-width: 60%;
+            width: auto;
+        }
+        #btnListEmployeesReponsive {
+            display: none;
+        }
+
+        #areaEditMessage {
+            padding: 0 20px;
+            margin: 0 20px -20px 20px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            /*justify-content: space-between;*/
+            opacity: 0.6;
+            background: gray;
+            color: white;
+            display: none;
+        }
+
+        #areaEditMessage span {
+            cursor: pointer;
+            flex: 1;
+            display: contents;
+        }
+
+        #editingContent {
+            max-width: 78%;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            flex: 2;
+            padding-left: 5px;
+        }
+
+        .default-editing-message {
+            font-weight: bold;
+            flex: 1;
+        }
+
+        @@media only screen and (max-width: 767px) {
+            .chat-app .people-list {
+                height: 465px;
+                width: 100%;
+                overflow-x: auto;
+                background: #fff;
+                left: -400px;
+                display: block;
+            }
+
+            #btnListEmployeesReponsive {
+                display: inline-block;
+            }
+
+            .chat-app .people-list.open {
+                left: 0;
+            }
+
+            .chat-app .chat {
+                margin: 0
+            }
+
+                .chat-app .chat .chat-header {
+                    border-radius: 0.55rem 0.55rem 0 0
+                }
+
+            .chat-app .chat-history {
+                height: 300px;
+                overflow-x: auto;
+            }
+
+            .listEmployees {
+                height: 315px;
+            }
+        }
+
+        @@media only screen and (min-width: 768px) and (max-width: 992px) {
+            .chat-app .chat-list {
+                height: 450px;
+                overflow-x: auto;
+            }
+
+            .chat-app .chat-history {
+                height: 450px;
+                overflow-x: auto;
+            }
+        }
+
+        @@media only screen and (min-width: 768px) and (max-width: 1024px) 
+            /*and (orientation: landscape) 
+            and (-webkit-min-device-pixel-ratio: 1)*/ 
+        {
+            .chat-app .chat-list {
+                height: 300px;
+                overflow-x: auto;
+            }
+            /*.chat-app .chat-history {
+                height: calc(100vh - 350px);
+                overflow-x: auto;
+            }*/
+        }
+    </style>
+}
+
+
+<ol class="breadcrumb" style="background-color: #fff;">
+    <li><a href="~/Admin">Trang chủ</a></li>
+    <li><a href="~/Admin/ManageEmployee">Quản lý khách hàng</a></li>
+    <li class="active">Nhắn tin khách hàng</li>
+</ol>
+
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-log-12">
+            <div id="btnListEmployeesReponsive" class="btn btn-primary">
+                <i class="glyphicon glyphicon-list"></i>
+            </div>
+            <div class="card chat-app">
+                <div id="plist" class="people-list open">
+                    @*<div id="searchBoxEmployee">
+                <input id="searchEmployee" type="text" class="form-control" placeholder="Tìm kiếm khách hàng...">
+            </div>*@
+                    <ul id="listEmployees" class="list-unstyled chat-list mt-2 mb-0">
+                        @foreach (var employee in Model.Employees)
+                        {
+                            var employeeJson = ConvertUtils<Employee>.Serialize(employee);
+
+                            <li class="itemOtherUser clearfix"
+                                @*data-user="@employeeJson"*@
+                                data-userName="@employee.UserName"
+                                data-fullName="@employee.LastName @employee.FirstName"
+                                data-avatar="@employee.Avatar">
+                                <img src="~/Images/Employees/@employee.Avatar" alt="avatar">
+                                <div class="about">
+                                    <div class="name">@employee.LastName @employee.FirstName</div>
+                                    <div id="status-@employee.UserName" class="statusUser text-muted">
+                                        <i class="fa fa-circle offline"></i>
+                                        <span>ngoại tuyến</span>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+                <input id="currentUserName" type="hidden" value="@currentUser.UserName" />
+                <input id="otherUserName" type="hidden" />
+                <input id="newMessageID" type="hidden" />
+                <input id="editingMessageID" type="hidden" />
+
+                <div class="chat">
+                    <div id="chatHeader" class="chat-header clearfix">
+                    </div>
+
+                    <div class="chat-history">
+                        <ul id="listChatHistory" class="m-b-0"></ul>
+                    </div>
+
+                    <div id="areaEditMessage">
+                        <span class="default-editing-message">Bạn đang sửa tin nhắn: </span>
+                        <div id="editingContent"></div>
+                        <span id="cancelEditingMessage">
+                            <i class="glyphicon glyphicon-remove"></i>
+                        </span>
+                    </div>
+                    <div id="actionChat" class="chat-message clearfix" style="display: none;">
+                        <div id="chatContent" class="form-control"
+                             autocomplete="off"
+                             autocorrect="off"
+                             autocapiatlise="off"
+                             spellcheck="false"
+                             contenteditable="true"></div>
+                        @*<div id="btnUploadFileChat" class="btn btn-outline-primary">
+                    <input class="uploadFileChat" type="file" />
+                    <i class="fa fa-image">
+                    </i>
+                </div>*@
+                        <button id="btnSendMessage" class="btn btn-primary">
+                            <i class="glyphicon glyphicon-send"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // default ui
+            $('#chatHeader').hide();
+            $('#actionChat').hide();
+        });
+    </script>
+}

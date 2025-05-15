@@ -1,0 +1,80 @@
+﻿@using BookingAds.Modules
+@using BookingAds.Entities
+@model BookingAds.Areas.Admin.Models.ManageEmployee.ViewChatHistory
+@{
+    Layout = null;
+    var currentUser = ConvertUtils<Account>.Deserialize(User.Identity.Name);
+}
+
+<style>
+    .btnIconToolMsg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        display: none;
+    }
+ </style>
+
+<input type="hidden" id="countChatHistory" value="@Model.Messages.Count" />
+<input type="hidden" id="oldCountChatHistory" value="0" />
+@foreach (var message in Model.Messages.Reverse())
+{
+    var createdTime = DateTimeUtils.ConvertToExposeTime(message.CreatedTime);
+    var readTime = DateTimeUtils.ConvertToExposeTime(message.ReadTime).Trim();
+    var defaultDatetime = "01/01/0001 00:00:00 AM";
+
+    // When I am the sender
+    if (currentUser.UserName == message.SenderID)
+    {
+        <li id="areaMyMessage-@message.MessageID" class="chat-my-message clearfix"
+            title="@(createdTime != null ? $"Đã gửi vào lúc {createdTime}" : "")">
+            
+            <div class="message my-message float-right">
+                <span id="content-@message.MessageID">@message.Content</span>
+                <div class="dropdown user user-menu btnIconToolMsg">
+                    <div class="dropdown-toggle glyphicon glyphicon-option-horizontal" 
+                            data-toggle="dropdown" aria-expanded="true"></div>
+                    <ul class="dropdown-menu sidebar-menu tree" data-widget="tree" >
+                        <li class="btnEditMessage" data-messageID="@message.MessageID">
+                            <a href="javascript:void(0)">
+                                <i class="glyphicon glyphicon-edit"></i>
+                                <span>Sửa tin nhắn</span>
+                            </a>
+                        </li>
+
+                        <li class="btnDeleteMessage" data-messageID="@message.MessageID">
+                            <a href="javascript:void(0)">
+                                <i class="glyphicon glyphicon-trash"></i>
+                                <span>Xóa tin nhắn</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="message-data float-right message-sender">
+                @if (readTime != null && readTime != defaultDatetime)
+                {
+                    <small class="message-data-time">
+                        <i class="fa fa-check"></i>
+                        @readTime
+                    </small>
+                }
+            </div>
+
+        </li>
+    }
+
+    // When I am the receiver
+    if (currentUser.UserName == message.ReceiverID)
+    {
+        <li class="clearfix message-receiver" title="@(readTime != null && readTime != defaultDatetime ? $"Bạn đã xem vào lúc {readTime}" : "")">
+            <div class="message-data">
+                <span class="message-data-time">@createdTime</span>
+            </div>
+            <div class="message other-message">@message.Content</div>
+        </li>
+    }
+}

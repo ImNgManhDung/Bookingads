@@ -1,0 +1,49 @@
+﻿@using BookingAds.Modules
+@using BookingAds.Constants
+@using BookingAds.Areas.Admin.Models.ManageProduct
+@model BookingAds.Areas.Admin.Models.ManageProduct.ViewManageBookingAds
+@{
+    ViewBag.Title = "Quản lý quảng cáo";
+    var catelogProducts = SelectListUtils.GetCatelogProducts();
+}
+<ol class="breadcrumb" style="background-color: #fff;">
+    <li><a href="~/Admin">Trang chủ</a></li>
+    <li class="active">Quản lý quảng cáo</li>
+</ol>
+
+<form id="formFilter" class="area-filter" style="display: flex; align-items: center; justify-content: center;flex-wrap: wrap;" 
+      action="~/Admin/ManageProduct/Filter" method="POST">
+    <div>
+        <a href="~/Admin/ManageProduct/Add" type="button" class="btn btn-primary">
+            <i class="glyphicon glyphicon-plus"></i>
+            Thêm quảng cáo
+        </a>
+    </div>
+    <input type="hidden" id="currentPageSize" value="@Model.CurrentPageSize" />
+    <select class="form-control" id="sort">
+        <option value="@SortField.Default-@SortTypeConstant.DEFAULT" 
+                selected="@(Model.SortType == SortTypeConstant.DEFAULT)">--Sắp xếp--</option>
+        <option value="@SortField.Price-@SortTypeConstant.DESC" 
+                selected="@(Model.Sort == $"{SortField.Price}-{SortTypeConstant.DESC}")">Giá từ cao đến thấp</option>
+        <option value="@SortField.Price-@SortTypeConstant.ASC" 
+                selected="@(Model.Sort == $"{SortField.Price}-{SortTypeConstant.ASC}")">Giá từ thấp đến cao</option>
+        <option value="@SortField.Quantity-@SortTypeConstant.DESC" 
+                selected="@(Model.Sort == $"{SortField.Quantity}-{SortTypeConstant.DESC}")">Số lượng giảm dần</option>
+        <option value="@SortField.Quantity-@SortTypeConstant.ASC" 
+                selected="@(Model.Sort == $"{SortField.Quantity}-{SortTypeConstant.ASC}")">Số lượng tăng dần</option>
+    </select>
+
+    @Html.DropDownListFor(m => m.CatelogProductsID, catelogProducts, new { @class = "form-control" })
+
+    <div class="input-group">
+        <input id="searchValue" name="searchValue" value="@Model.SearchValue" type="text" 
+               class="form-control" style="border-radius: 5px;" placeholder="Tìm kiếm...">
+    </div>
+    <button id="btnFilter" type="submit" class="btn btn-warning">Lọc</button>
+</form>
+
+<main id="filterResult" role="main"></main>
+
+@section Scripts {
+    <script src="~/Scripts/Admin/ManageProduct/index.js"></script>
+}

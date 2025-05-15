@@ -1,0 +1,79 @@
+﻿@using BookingAds.Entities
+@using BookingAds.Modules
+@using BookingAds.Controllers
+@using BookingAds.Constants
+@model BookingAds.Areas.Admin.Models.Supports.ViewIndex
+@{
+    ViewBag.Title = "SearchSupports";
+    Layout = null;
+
+}
+
+<table class="table table-bordered">
+    <tbody>
+        <tr>
+            <th style="width:0px"></th>
+            <th style="text-align:center">Mã Yêu Cầu</th>
+            <th style="text-align:center">Tên Hhách Hàng</th>
+            <th>Tiêu Đề</th>
+            <th>Gửi Đến</th>
+            <th>Thời Gian</th>
+            <th style="text-align: center;">Trạng Thái</th>
+            <th style="width:250px">Dịch Vụ</th>
+
+        </tr>
+    </tbody>
+    <tbody id="tbodyHistory">
+        @if (Model.Data.Count == 0)
+        {
+            <tr class="text-danger text-center" style="font-weight: bold;">
+                <td colspan="8">Không có bản ghi nào.</td>
+            </tr>
+        }
+        @foreach (var items in Model.Data)
+        {
+            var fullname = items.Employee.FirstName + " " + items.Employee.LastName;
+            <tr>
+                <td></td>
+                <td style="text-align: center;  ">  <a href="~/Admin/ManageSupports/Details?SupportsID=@items.SupportsID" style="color: cornflowerblue;  ">  @items.SupportsID    </a>        </td>
+
+                <td>
+                    @fullname
+                </td>
+
+                <td>
+                    @items.Subject
+                </td>
+                <td>
+                    @items.To
+                </td>
+                <td>
+                    @DateTimeUtils.ConvertToExposeTime(@items.TimeSend)
+                </td>
+                @*<td>@(items.Type == PayTypeConstant.CASH ? "Tiền mặt" : "Ví điện tử")</td>*@
+            <td style="text-align: center;" id="status-@items.SupportsID">
+                @if (items.Status == @SupportsStatus.RequestDone.Code)
+                {
+                    <span class="badge bg-green" style="padding: 10px 19px; width: 200px; ">@SupportsStatus.RequestDone.Message</span>
+                }
+                else if (items.Status == @SupportsStatus.RequestForFeedback.Code)
+                {
+                    <span class="badge bg-yellow" style="padding: 10px 19px; width: 200px;">Đã phản hồi cho khách</span>
+                }
+                else if (items.Status == @SupportsStatus.RequestSend.Code)
+                {
+                    <span class="badge bg-primary" style="padding: 10px 19px; width: 200px;">Yêu cầu từ khách hàng</span>
+                }
+
+
+            </td>
+
+                <th id="textlink-@items.SupportsID">@items.Service.ProductName ( @items.CatelogProduct.CatelogName  )  </th>
+
+
+
+            </tr>
+        }
+    </tbody>
+
+</table>

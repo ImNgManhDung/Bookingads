@@ -1,0 +1,269 @@
+﻿@using BookingAds.Modules
+@using BookingAds.Entities
+@{
+    var currentAdmin = ConvertUtils<Admin>.Deserialize(User.Identity.Name);
+    var defaultAvatar = "/Images/defaultUploadAdmin.png";
+    var adminAvatar = string.IsNullOrEmpty(currentAdmin.Avatar) ? defaultAvatar : $"/Images/Admin/{currentAdmin.Avatar}";
+}
+<style>
+    body {
+        background: #F1F3FA;
+    }
+
+    /* Profile container */
+    .profile {
+        margin: 20px 0;
+    }
+
+    /* Profile sidebar */
+    .profile-sidebar {
+        padding: 20px 0 10px 0;
+        background: #fff;
+    }
+
+    .profile-sidebar-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; 
+    }
+
+    .profile-userpic img {
+        float: none;
+        margin: 0 auto;
+        width: 50%;
+        height: 50%;
+        -webkit-border-radius: 50% !important;
+        -moz-border-radius: 50% !important;
+        border-radius: 50% !important;
+    }
+
+    .profile-usertitle {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .profile-usertitle-name {
+        color: #5a7391;
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 7px;
+    }
+
+    .profile-usertitle-job {
+        text-transform: uppercase;
+        color: #5b9bd1;
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+    .profile-userbuttons {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .profile-userbuttons .btn {
+        text-transform: uppercase;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 6px 15px;
+        margin-right: 5px;
+    }
+
+    .profile-userbuttons .btn:last-child {
+        margin-right: 0px;
+    }
+
+    .profile-usermenu {
+        margin-top: 30px;
+    }
+
+    .profile-usermenu ul li {
+        border-bottom: 1px solid #f0f4f7;
+    }
+
+    .profile-usermenu ul li:last-child {
+        border-bottom: none;
+    }
+
+    .profile-usermenu ul li a {
+        color: #93a3b5;
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    .profile-usermenu ul li a i {
+        margin-right: 8px;
+        font-size: 14px;
+    }
+
+    .profile-usermenu ul li a:hover {
+        background-color: #fafcfd;
+        color: #5b9bd1;
+    }
+
+    .profile-usermenu ul li.active {
+        border-bottom: none;
+    }
+
+    .profile-usermenu ul li.active a {
+        color: #5b9bd1;
+        background-color: #f6f9fb;
+        border-left: 2px solid #5b9bd1;
+        margin-left: -2px;
+    }
+
+    /* Profile Content */
+    .profile-content {
+        padding: 20px;
+        background: #fff;
+        min-height: 460px;
+    }
+
+    #btnUpdateAvatar{
+        position: absolute;
+        right: 30%;
+        bottom: 0;
+        box-shadow: 0 1px 1px 1px rgb(0 0 0 / 6%);
+        padding: 2px 5px;
+        background: #fff;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    #avatarUploaded {
+        width: 20px; 
+        opacity: 0; 
+        position: absolute; 
+        z-index: 1; left: 50%; 
+        transform: translateX(-50%);
+    }
+
+    #btnUpdateAvatar i {
+        font-size: 20px;
+    }
+
+    @@media (max-width: 767.98px) {
+        .custom-column {
+            width: 100%;
+        }
+    }
+</style>
+
+<div class="col-lg-2 container-fluid">
+    <div class="profile-sidebar">
+        <div class="profile-sidebar-info">
+            <div class="profile-userpic text-center" style="position: relative;">
+                <img id="adminAvatar" src="@adminAvatar" class="img-responsive img-circle" 
+                     width="75" height="75" alt="Ảnh đại diện">
+                <span id="btnUpdateAvatar">
+                    <input type="file" 
+                        id="avatarUploaded"
+                        name="avatarUploaded" 
+                        title="Chọn ảnh đại diện"
+                        accept="image/*" 
+                     />
+                    <i class="glyphicon glyphicon-camera text-primary"></i>
+                </span>
+            </div>
+
+            <div class="profile-usertitle text-center">
+
+                @if (currentAdmin != null)
+                {
+                    <div class="profile-usertitle-name" 
+                            style="display: flex; align-items: center; flex-wrap: wrap; justify-content: space-around;">
+                        <span>Quản trị viên (username: @currentAdmin.UserName)</span>
+                        <div id="btnIconBell" class="dropdown user user-menu" style="position: relative;">
+                            <a href="#" class="dropdown-toggle glyphicon glyphicon-bell" data-toggle="dropdown" aria-expanded="false">
+                            </a>
+                            <ul class="dropdown-menu sidebar-menu tree" data-widget="tree" >
+                                <li class="">
+                                    <a id="notifyOrder" href="/Admin/ManageOrder">
+                                        <i class="	glyphicon glyphicon-calendar"></i>
+                                        <span>Thông báo đơn hàng</span>
+                                        <span id="badgeNotifyOrder" class="badge alert-danger bg-danger" 
+                                              style="display: none; ">0</span>
+                                        <span class="pull-right-container"></span>
+                                    </a>
+
+                                </li>
+
+                                <li class="">
+                                    <a id="notifyMessage" href="/Admin/ManageEmployee/Chat">
+                                        <i class="glyphicon glyphicon-envelope"></i>
+                                        <span>Tin nhắn</span>
+                                        <span id="badgeNotifyMessage" class="badge alert-danger bg-danger" 
+                                              style="display: none;">0</span>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <span id="activeNotify" class="glyphicon glyphicon-certificate"
+                                    style="color: red; font-size: 10px; position: absolute; display: none;">
+                            </span>
+                        </div>
+                    </div>
+                }
+
+                <div class="row">
+                    <div class="col-xs-12 custom-column">
+                        <a href="/Admin/Account/ChangePassword" class="btn btn-success btn-lg btn-block" style="font-size:14px;">
+                            Thay đổi mật khẩu
+                        </a>
+                    </div>
+                    <div class="col-xs-12 custom-column">
+                        <input type="hidden" id="currentUserName" value="@currentAdmin.UserName" />
+                        <a id="btnLogout" href="/Admin/Account/Logout" class="btn btn-danger btn-lg btn-block" style="font-size:14px; margin-top: 5px;">
+                            Đăng xuất
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIDEBAR MENU -->
+        <div class="profile-usermenu">
+            <ul id="menuNav" class="nav">
+                <li id="tabDashboard">
+                    <a href="/Admin/Dashboard">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <span style="margin-left: 2px;">Trang chủ</span>
+                    </a>
+                </li>
+                <li id="tabManageEmployee">
+                    <a href="/Admin/ManageEmployee">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <span style="margin-left: 2px;">Quản lý khách hàng</span>
+                    </a>
+                </li>
+                <li id="tabManageOrder">
+                    <a href="/Admin/ManageOrder">
+                        <i class="glyphicon glyphicon-book"></i>
+                        <span style="margin-left: 2px;">Quản lý đơn hàng</span>
+                    </a>
+                </li>
+                <li id="tabManageCatelogProduct">
+                    <a href="/Admin/ManageCatelogProduct">
+                        <i class="glyphicon glyphicon-tag"></i>
+                        <span style="margin-left: 2px;">Quản lý loại quảng cáo</span>
+                    </a>
+                </li>
+                <li id="tabManageProduct">
+                    <a href="/Admin/ManageProduct">
+                        <i class="fa-solid fa-border-all"></i>
+                        <span style="margin-left: 2px;">Quản lý quảng cáo</span>
+                    </a>
+                </li>
+
+                <li id="tabManageProduct">
+                    <a href="/Admin/ManageSupports">
+                        <i class="fa-solid fa-border-all"></i>
+                        <span style="margin-left: 2px;">Quản lý lý hỗ trợ</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
